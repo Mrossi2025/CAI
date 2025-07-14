@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace TPCAI
 {
-    public partial class Form1 : Form
+    public partial class VentanaLogin : Form
     {
-        public Form1()
+        public VentanaLogin()
         {
             InitializeComponent();
         }
+
+       
     }
 }

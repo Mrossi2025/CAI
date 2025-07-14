@@ -1,6 +1,6 @@
 ﻿namespace TPCAI
 {
-    partial class Form1
+    partial class MenuAdmin
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,95 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.grpMenuAdmin = new System.Windows.Forms.GroupBox();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.btnLiquidaciones = new System.Windows.Forms.Button();
+            this.btmAbmDocentes = new System.Windows.Forms.Button();
+            this.btnAbmAlumnos = new System.Windows.Forms.Button();
+            this.btnEgresados = new System.Windows.Forms.Button();
+            this.grpMenuAdmin.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // grpMenuAdmin
+            // 
+            this.grpMenuAdmin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.grpMenuAdmin.Controls.Add(this.btnEgresados);
+            this.grpMenuAdmin.Controls.Add(this.btnCerrarSesion);
+            this.grpMenuAdmin.Controls.Add(this.btnLiquidaciones);
+            this.grpMenuAdmin.Controls.Add(this.btmAbmDocentes);
+            this.grpMenuAdmin.Controls.Add(this.btnAbmAlumnos);
+            this.grpMenuAdmin.Location = new System.Drawing.Point(35, 24);
+            this.grpMenuAdmin.Name = "grpMenuAdmin";
+            this.grpMenuAdmin.Size = new System.Drawing.Size(340, 401);
+            this.grpMenuAdmin.TabIndex = 0;
+            this.grpMenuAdmin.TabStop = false;
+            this.grpMenuAdmin.Text = "Menu Admin";
+            // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Location = new System.Drawing.Point(83, 285);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(173, 44);
+            this.btnCerrarSesion.TabIndex = 3;
+            this.btnCerrarSesion.Text = "Cerrar Sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            // 
+            // btnLiquidaciones
+            // 
+            this.btnLiquidaciones.Location = new System.Drawing.Point(83, 167);
+            this.btnLiquidaciones.Name = "btnLiquidaciones";
+            this.btnLiquidaciones.Size = new System.Drawing.Size(173, 44);
+            this.btnLiquidaciones.TabIndex = 2;
+            this.btnLiquidaciones.Text = "Liquidaciónes";
+            this.btnLiquidaciones.UseVisualStyleBackColor = true;
+            // 
+            // btmAbmDocentes
+            // 
+            this.btmAbmDocentes.Location = new System.Drawing.Point(83, 111);
+            this.btmAbmDocentes.Name = "btmAbmDocentes";
+            this.btmAbmDocentes.Size = new System.Drawing.Size(173, 44);
+            this.btmAbmDocentes.TabIndex = 1;
+            this.btmAbmDocentes.Text = "ABM Docentes";
+            this.btmAbmDocentes.UseVisualStyleBackColor = true;
+            // 
+            // btnAbmAlumnos
+            // 
+            this.btnAbmAlumnos.Location = new System.Drawing.Point(83, 59);
+            this.btnAbmAlumnos.Name = "btnAbmAlumnos";
+            this.btnAbmAlumnos.Size = new System.Drawing.Size(173, 37);
+            this.btnAbmAlumnos.TabIndex = 0;
+            this.btnAbmAlumnos.Text = "ABM Alumnos";
+            this.btnAbmAlumnos.UseVisualStyleBackColor = true;
+            // 
+            // btnEgresados
+            // 
+            this.btnEgresados.Location = new System.Drawing.Point(83, 226);
+            this.btnEgresados.Name = "btnEgresados";
+            this.btnEgresados.Size = new System.Drawing.Size(173, 44);
+            this.btnEgresados.TabIndex = 4;
+            this.btnEgresados.Text = "Egresados";
+            this.btnEgresados.UseVisualStyleBackColor = true;
+            // 
+            // MenuAdmin
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(413, 450);
+            this.Controls.Add(this.grpMenuAdmin);
+            this.Name = "MenuAdmin";
+            this.Text = "Menu Principal - Administrador";
+            this.grpMenuAdmin.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.GroupBox grpMenuAdmin;
+        private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.Button btnLiquidaciones;
+        private System.Windows.Forms.Button btmAbmDocentes;
+        private System.Windows.Forms.Button btnAbmAlumnos;
+        private System.Windows.Forms.Button btnEgresados;
     }
 }

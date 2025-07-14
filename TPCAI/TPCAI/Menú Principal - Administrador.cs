@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace TPCAI
 {
-    public partial class Form1 : Form
+    public partial class MenuAdmin : Form
     {
-        public Form1()
+        public MenuAdmin()
         {
             InitializeComponent();
         }
+
+        
     }
 }

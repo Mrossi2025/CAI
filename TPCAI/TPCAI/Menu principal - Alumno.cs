@@ -16,5 +16,10 @@ namespace TPCAI
         {
             InitializeComponent();
         }
+
+        private void lblSeleccione_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

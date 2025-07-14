@@ -46,14 +46,71 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="ABM Alumnos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ABM Alumnos.Designer.cs">
+      <DependentUpon>ABM Alumnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AMB Docentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AMB Docentes.Designer.cs">
+      <DependentUpon>AMB Docentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Liquidaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Liquidaciones.Designer.cs">
+      <DependentUpon>Liquidaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu Egresados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu Egresados.Designer.cs">
+      <DependentUpon>Menu Egresados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu principal - Alumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu principal - Alumno.Designer.cs">
+      <DependentUpon>Menu principal - Alumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menú Principal - Administrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menú Principal - Administrador.Designer.cs">
+      <DependentUpon>Menú Principal - Administrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaLogin.Designer.cs">
+      <DependentUpon>VentanaLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ABM Alumnos.resx">
+      <DependentUpon>ABM Alumnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AMB Docentes.resx">
+      <DependentUpon>AMB Docentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Liquidaciones.resx">
+      <DependentUpon>Liquidaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu Egresados.resx">
+      <DependentUpon>Menu Egresados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu principal - Alumno.resx">
+      <DependentUpon>Menu principal - Alumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menú Principal - Administrador.resx">
+      <DependentUpon>Menú Principal - Administrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaLogin.resx">
+      <DependentUpon>VentanaLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
