@@ -29,17 +29,19 @@
         private void InitializeComponent()
         {
             this.grpMenuAdmin = new System.Windows.Forms.GroupBox();
+            this.btnEgresados = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.btnLiquidaciones = new System.Windows.Forms.Button();
             this.btmAbmDocentes = new System.Windows.Forms.Button();
             this.btnAbmAlumnos = new System.Windows.Forms.Button();
-            this.btnEgresados = new System.Windows.Forms.Button();
+            this.btnDesbloquearUsuario = new System.Windows.Forms.Button();
             this.grpMenuAdmin.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpMenuAdmin
             // 
             this.grpMenuAdmin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.grpMenuAdmin.Controls.Add(this.btnDesbloquearUsuario);
             this.grpMenuAdmin.Controls.Add(this.btnEgresados);
             this.grpMenuAdmin.Controls.Add(this.btnCerrarSesion);
             this.grpMenuAdmin.Controls.Add(this.btnLiquidaciones);
@@ -52,9 +54,18 @@
             this.grpMenuAdmin.TabStop = false;
             this.grpMenuAdmin.Text = "Menu Admin";
             // 
+            // btnEgresados
+            // 
+            this.btnEgresados.Location = new System.Drawing.Point(83, 255);
+            this.btnEgresados.Name = "btnEgresados";
+            this.btnEgresados.Size = new System.Drawing.Size(173, 44);
+            this.btnEgresados.TabIndex = 4;
+            this.btnEgresados.Text = "Egresados";
+            this.btnEgresados.UseVisualStyleBackColor = true;
+            // 
             // btnCerrarSesion
             // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(83, 285);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(83, 314);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(173, 44);
             this.btnCerrarSesion.TabIndex = 3;
@@ -63,7 +74,7 @@
             // 
             // btnLiquidaciones
             // 
-            this.btnLiquidaciones.Location = new System.Drawing.Point(83, 167);
+            this.btnLiquidaciones.Location = new System.Drawing.Point(83, 196);
             this.btnLiquidaciones.Name = "btnLiquidaciones";
             this.btnLiquidaciones.Size = new System.Drawing.Size(173, 44);
             this.btnLiquidaciones.TabIndex = 2;
@@ -72,7 +83,7 @@
             // 
             // btmAbmDocentes
             // 
-            this.btmAbmDocentes.Location = new System.Drawing.Point(83, 111);
+            this.btmAbmDocentes.Location = new System.Drawing.Point(83, 140);
             this.btmAbmDocentes.Name = "btmAbmDocentes";
             this.btmAbmDocentes.Size = new System.Drawing.Size(173, 44);
             this.btmAbmDocentes.TabIndex = 1;
@@ -81,21 +92,21 @@
             // 
             // btnAbmAlumnos
             // 
-            this.btnAbmAlumnos.Location = new System.Drawing.Point(83, 59);
+            this.btnAbmAlumnos.Location = new System.Drawing.Point(83, 88);
             this.btnAbmAlumnos.Name = "btnAbmAlumnos";
             this.btnAbmAlumnos.Size = new System.Drawing.Size(173, 37);
             this.btnAbmAlumnos.TabIndex = 0;
             this.btnAbmAlumnos.Text = "ABM Alumnos";
             this.btnAbmAlumnos.UseVisualStyleBackColor = true;
             // 
-            // btnEgresados
+            // btnDesbloquearUsuario
             // 
-            this.btnEgresados.Location = new System.Drawing.Point(83, 226);
-            this.btnEgresados.Name = "btnEgresados";
-            this.btnEgresados.Size = new System.Drawing.Size(173, 44);
-            this.btnEgresados.TabIndex = 4;
-            this.btnEgresados.Text = "Egresados";
-            this.btnEgresados.UseVisualStyleBackColor = true;
+            this.btnDesbloquearUsuario.Location = new System.Drawing.Point(83, 36);
+            this.btnDesbloquearUsuario.Name = "btnDesbloquearUsuario";
+            this.btnDesbloquearUsuario.Size = new System.Drawing.Size(173, 37);
+            this.btnDesbloquearUsuario.TabIndex = 5;
+            this.btnDesbloquearUsuario.Text = "Desbloquear Usuario";
+            this.btnDesbloquearUsuario.UseVisualStyleBackColor = true;
             // 
             // MenuAdmin
             // 
@@ -118,5 +129,6 @@
         private System.Windows.Forms.Button btmAbmDocentes;
         private System.Windows.Forms.Button btnAbmAlumnos;
         private System.Windows.Forms.Button btnEgresados;
+        private System.Windows.Forms.Button btnDesbloquearUsuario;
     }
 }
