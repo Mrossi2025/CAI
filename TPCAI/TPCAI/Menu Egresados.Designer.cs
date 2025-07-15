@@ -28,70 +28,127 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
+            this.cmbCarrera = new System.Windows.Forms.ComboBox();
+            this.grpReportes = new System.Windows.Forms.GroupBox();
+            this.btnReporte = new System.Windows.Forms.Button();
+            this.lblCarrera = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PromedioFinal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TituloHonorificoAsignado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grpReportes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cmbCarrera
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(8, 47);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(305, 24);
-            this.comboBox1.TabIndex = 0;
+            this.cmbCarrera.FormattingEnabled = true;
+            this.cmbCarrera.Location = new System.Drawing.Point(218, 67);
+            this.cmbCarrera.Name = "cmbCarrera";
+            this.cmbCarrera.Size = new System.Drawing.Size(299, 24);
+            this.cmbCarrera.TabIndex = 0;
             // 
-            // groupBox1
+            // grpReportes
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 24);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(313, 389);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Generar Reportes";
+            this.grpReportes.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.grpReportes.Controls.Add(this.dataGridView1);
+            this.grpReportes.Controls.Add(this.btnReporte);
+            this.grpReportes.Controls.Add(this.lblCarrera);
+            this.grpReportes.Controls.Add(this.cmbCarrera);
+            this.grpReportes.Location = new System.Drawing.Point(12, 24);
+            this.grpReportes.Name = "grpReportes";
+            this.grpReportes.Size = new System.Drawing.Size(757, 414);
+            this.grpReportes.TabIndex = 1;
+            this.grpReportes.TabStop = false;
+            this.grpReportes.Text = "Generar Reportes";
             // 
-            // button1
+            // btnReporte
             // 
-            this.button1.Location = new System.Drawing.Point(96, 77);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 62);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Generar Reporte";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnReporte.Location = new System.Drawing.Point(313, 97);
+            this.btnReporte.Name = "btnReporte";
+            this.btnReporte.Size = new System.Drawing.Size(103, 62);
+            this.btnReporte.TabIndex = 2;
+            this.btnReporte.Text = "Generar Reporte";
+            this.btnReporte.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lblCarrera
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Seleccione Carrera";
+            this.lblCarrera.AutoSize = true;
+            this.lblCarrera.Location = new System.Drawing.Point(310, 48);
+            this.lblCarrera.Name = "lblCarrera";
+            this.lblCarrera.Size = new System.Drawing.Size(123, 16);
+            this.lblCarrera.TabIndex = 1;
+            this.lblCarrera.Text = "Seleccione Carrera";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Nombre,
+            this.Registro,
+            this.PromedioFinal,
+            this.TituloHonorificoAsignado});
+            this.dataGridView1.Location = new System.Drawing.Point(95, 165);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(552, 229);
+            this.dataGridView1.TabIndex = 2;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Registro";
+            this.Nombre.MinimumWidth = 6;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.Width = 125;
+            // 
+            // Registro
+            // 
+            this.Registro.HeaderText = "Nombre Completo";
+            this.Registro.MinimumWidth = 6;
+            this.Registro.Name = "Registro";
+            this.Registro.Width = 125;
+            // 
+            // PromedioFinal
+            // 
+            this.PromedioFinal.HeaderText = "Promedio";
+            this.PromedioFinal.MinimumWidth = 6;
+            this.PromedioFinal.Name = "PromedioFinal";
+            this.PromedioFinal.Width = 125;
+            // 
+            // TituloHonorificoAsignado
+            // 
+            this.TituloHonorificoAsignado.HeaderText = "Titulo Honorifico";
+            this.TituloHonorificoAsignado.MinimumWidth = 6;
+            this.TituloHonorificoAsignado.Name = "TituloHonorificoAsignado";
+            this.TituloHonorificoAsignado.Width = 125;
             // 
             // Menu_Egresados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpReportes);
             this.Name = "Menu_Egresados";
             this.Text = "Menu_Egresados";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpReportes.ResumeLayout(false);
+            this.grpReportes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmbCarrera;
+        private System.Windows.Forms.GroupBox grpReportes;
+        private System.Windows.Forms.Button btnReporte;
+        private System.Windows.Forms.Label lblCarrera;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Registro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PromedioFinal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TituloHonorificoAsignado;
     }
 }

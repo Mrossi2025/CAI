@@ -58,6 +58,18 @@
     <Compile Include="AMB Docentes.Designer.cs">
       <DependentUpon>AMB Docentes.cs</DependentUpon>
     </Compile>
+    <Compile Include="InscripcionAMaterias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InscripcionAMaterias.Designer.cs">
+      <DependentUpon>InscripcionAMaterias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inscripciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inscripciones.Designer.cs">
+      <DependentUpon>Inscripciones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Liquidaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +108,12 @@
     <EmbeddedResource Include="AMB Docentes.resx">
       <DependentUpon>AMB Docentes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InscripcionAMaterias.resx">
+      <DependentUpon>InscripcionAMaterias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inscripciones.resx">
+      <DependentUpon>Inscripciones.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Liquidaciones.resx">
       <DependentUpon>Liquidaciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +150,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Capa de Negocios\Capa de Negocios.csproj">
+      <Project>{c145ee8b-9d42-4422-b10c-106f35bad5de}</Project>
+      <Name>Capa de Negocios</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

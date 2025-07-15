@@ -30,33 +30,42 @@
         {
             this.btnInscribirte = new System.Windows.Forms.Button();
             this.grpMenuAlumnos = new System.Windows.Forms.GroupBox();
-            this.lblSeleccione = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.lblSeleccione = new System.Windows.Forms.Label();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.grpMenuAlumnos.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnInscribirte
             // 
-            this.btnInscribirte.Location = new System.Drawing.Point(33, 104);
+            this.btnInscribirte.Location = new System.Drawing.Point(42, 113);
             this.btnInscribirte.Name = "btnInscribirte";
-            this.btnInscribirte.Size = new System.Drawing.Size(204, 68);
+            this.btnInscribirte.Size = new System.Drawing.Size(181, 68);
             this.btnInscribirte.TabIndex = 1;
-            this.btnInscribirte.Text = "Inscribirte a materias";
+            this.btnInscribirte.Text = "Inscripciónes";
             this.btnInscribirte.UseVisualStyleBackColor = true;
             // 
             // grpMenuAlumnos
             // 
+            this.grpMenuAlumnos.Controls.Add(this.btnCerrarSesion);
             this.grpMenuAlumnos.Controls.Add(this.button2);
-            this.grpMenuAlumnos.Controls.Add(this.button1);
             this.grpMenuAlumnos.Controls.Add(this.lblSeleccione);
             this.grpMenuAlumnos.Controls.Add(this.btnInscribirte);
-            this.grpMenuAlumnos.Location = new System.Drawing.Point(55, 71);
+            this.grpMenuAlumnos.Location = new System.Drawing.Point(12, 71);
             this.grpMenuAlumnos.Name = "grpMenuAlumnos";
-            this.grpMenuAlumnos.Size = new System.Drawing.Size(708, 287);
+            this.grpMenuAlumnos.Size = new System.Drawing.Size(631, 287);
             this.grpMenuAlumnos.TabIndex = 2;
             this.grpMenuAlumnos.TabStop = false;
             this.grpMenuAlumnos.Text = "Menú Alumnos";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(229, 112);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(181, 68);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Calculo de Ranking";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // lblSeleccione
             // 
@@ -68,29 +77,20 @@
             this.lblSeleccione.Text = "Seleccione:";
             this.lblSeleccione.Click += new System.EventHandler(this.lblSeleccione_Click);
             // 
-            // button1
+            // btnCerrarSesion
             // 
-            this.button1.Location = new System.Drawing.Point(243, 104);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(204, 68);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Inscribirte a finales";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(453, 104);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(204, 68);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Calculo de Ranking";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(416, 113);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(181, 68);
+            this.btnCerrarSesion.TabIndex = 6;
+            this.btnCerrarSesion.Text = "Cerrar Sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
             // 
             // Menu_principal___Alumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(687, 450);
             this.Controls.Add(this.grpMenuAlumnos);
             this.Name = "Menu_principal___Alumno";
             this.Text = "Menu_principal___Alumno";
@@ -104,7 +104,7 @@
         private System.Windows.Forms.Button btnInscribirte;
         private System.Windows.Forms.GroupBox grpMenuAlumnos;
         private System.Windows.Forms.Label lblSeleccione;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCerrarSesion;
     }
 }
