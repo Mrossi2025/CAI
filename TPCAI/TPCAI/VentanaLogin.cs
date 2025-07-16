@@ -28,7 +28,7 @@ namespace TPCAI
         {
             Usuarios nuevo = new Usuarios() { NombreUsuario = "MarcosRossi1999", Contraseña = "Mnrcdvs123@", Nombre = "Marcos", Apellido = "Rossi", DNI = 42283285, Registro = 900546, Tipo = Capa_de_Negocios.Usuarios.TipoUsuario.Alumno, Estado = true };
 
-            List<Usuarios> ListaUsuarios = new List<Usuarios>();
+            List<Usuarios> ListaUsuarios = new List<Usuarios>(); //Esto se va a reemplazar con los datos que nos pasen los profes cuando usemos webservices
 
             ListaUsuarios.Add(nuevo);
 
@@ -67,10 +67,10 @@ namespace TPCAI
                     switch (UsuarioEncontrado.Tipo)
                     {
                         case Usuarios.TipoUsuario.Alumno:
-                            // Si querés pasarle el objeto para mostrar datos:
-                            Menu_principal___Alumno frmAlu = new Menu_principal___Alumno(UsuarioEncontrado);
-                            frmAlu.Show();
-                            this.Hide();          // ocultar o this.Close();
+                            
+                            Menu_principal___Alumno frmAlu = new Menu_principal___Alumno(UsuarioEncontrado); //Paso el usuario como parametro para usarlo en la otra ventana
+                            frmAlu.Show(); //Muestro ese nuevo form instanciado
+                            this.Close();          // Cierra el form, podria usarse This.Hide, pero si volvemos a este form queremos que este reiniciado sin datos y con 5 intentos nuevos.
                             break;
 
                         case Usuarios.TipoUsuario.Administrador:
