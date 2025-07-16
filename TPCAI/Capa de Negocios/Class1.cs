@@ -8,27 +8,27 @@ namespace Capa_de_Negocios
 {
     public class Login
     {
-        public string ValidarUsuario(string usuario, string contraseña,out int ContadorDeErrores)
+        public string ValidarUsuario(string usuario, string contraseña, List<Usuarios> ListaUsuarios)
 
         {
             
-            List<Usuarios> Listadeusuarios = new List<Usuarios>(); //Aca iria la lista de usuarios (Clase). 
-            string usuarioEncontrado;
+            
+            Usuarios usuarioEncontrado;
             string errores = "";
 
-            usuarioEncontrado = Usuarios.Find(u => u.usuario == usuario);
+            usuarioEncontrado = ListaUsuarios.Find(u => u.NombreUsuario == usuario);
             
                 if (usuarioEncontrado == null)
                 {
-                ContadorDeErrores++;
-                errores = "No se ha encontrado un usuario con ese dato. \n Quedan " + (5 - ContadorDeErrores) + " intentos restantes." ;
+                
+                errores = "No se ha encontrado un usuario con ese dato." ;
                 
 
                 }
-                else if (  usuarioEncontrado.contraseña != contraseña)
+                else if (  usuarioEncontrado.Contraseña != contraseña)
                 {
-                ContadorDeErrores++;
-                errores = "La contraseña es incorrecta. \n Quedan" + (5 - ContadorDeErrores) + " intentos restantes.";
+                
+                errores = "La contraseña es incorrecta.";
                 
                 }
                 else { errores = "";  }
@@ -40,7 +40,18 @@ namespace Capa_de_Negocios
         }
 
 
+        public string BloquearUsuario(string usuario, List<Usuarios> lista)
+        {
+            Usuarios Encontrado = lista.Find(a => a.NombreUsuario == usuario);
 
+            if (Encontrado == null) return "El usuario no existe.";
+
+
+            Encontrado.Estado = false;
+
+                return "Se ha bloqueado el usuario, por favor pida a un administrador que lo desbloquee";
+
+        }
 
 
     }

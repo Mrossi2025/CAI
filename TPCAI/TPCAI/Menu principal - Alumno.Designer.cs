@@ -30,9 +30,10 @@
         {
             this.btnInscribirte = new System.Windows.Forms.Button();
             this.grpMenuAlumnos = new System.Windows.Forms.GroupBox();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.lblSeleccione = new System.Windows.Forms.Label();
-            this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.lblBienvenida = new System.Windows.Forms.Label();
             this.grpMenuAlumnos.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +59,15 @@
             this.grpMenuAlumnos.TabStop = false;
             this.grpMenuAlumnos.Text = "Menú Alumnos";
             // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Location = new System.Drawing.Point(416, 113);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(181, 68);
+            this.btnCerrarSesion.TabIndex = 6;
+            this.btnCerrarSesion.Text = "Cerrar Sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(229, 112);
@@ -75,28 +85,30 @@
             this.lblSeleccione.Size = new System.Drawing.Size(78, 16);
             this.lblSeleccione.TabIndex = 2;
             this.lblSeleccione.Text = "Seleccione:";
-            this.lblSeleccione.Click += new System.EventHandler(this.lblSeleccione_Click);
             // 
-            // btnCerrarSesion
+            // lblBienvenida
             // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(416, 113);
-            this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(181, 68);
-            this.btnCerrarSesion.TabIndex = 6;
-            this.btnCerrarSesion.Text = "Cerrar Sesión";
-            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.lblBienvenida.AutoSize = true;
+            this.lblBienvenida.Location = new System.Drawing.Point(164, 21);
+            this.lblBienvenida.Name = "lblBienvenida";
+            this.lblBienvenida.Size = new System.Drawing.Size(89, 16);
+            this.lblBienvenida.TabIndex = 3;
+            this.lblBienvenida.Text = "lblBienvenida";
             // 
             // Menu_principal___Alumno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(687, 450);
+            this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.grpMenuAlumnos);
             this.Name = "Menu_principal___Alumno";
             this.Text = "Menu_principal___Alumno";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menu_principal___Alumno_FormClosed_1);
             this.grpMenuAlumnos.ResumeLayout(false);
             this.grpMenuAlumnos.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -106,5 +118,6 @@
         private System.Windows.Forms.Label lblSeleccione;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.Label lblBienvenida;
     }
 }
