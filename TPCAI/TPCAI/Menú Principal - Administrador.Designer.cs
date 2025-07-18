@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.grpMenuAdmin = new System.Windows.Forms.GroupBox();
+            this.btnDesbloquearUsuario = new System.Windows.Forms.Button();
             this.btnEgresados = new System.Windows.Forms.Button();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.btnLiquidaciones = new System.Windows.Forms.Button();
             this.btmAbmDocentes = new System.Windows.Forms.Button();
             this.btnAbmAlumnos = new System.Windows.Forms.Button();
-            this.btnDesbloquearUsuario = new System.Windows.Forms.Button();
             this.grpMenuAdmin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +53,15 @@
             this.grpMenuAdmin.TabIndex = 0;
             this.grpMenuAdmin.TabStop = false;
             this.grpMenuAdmin.Text = "Menu Admin";
+            // 
+            // btnDesbloquearUsuario
+            // 
+            this.btnDesbloquearUsuario.Location = new System.Drawing.Point(83, 36);
+            this.btnDesbloquearUsuario.Name = "btnDesbloquearUsuario";
+            this.btnDesbloquearUsuario.Size = new System.Drawing.Size(173, 37);
+            this.btnDesbloquearUsuario.TabIndex = 5;
+            this.btnDesbloquearUsuario.Text = "Desbloquear Usuario";
+            this.btnDesbloquearUsuario.UseVisualStyleBackColor = true;
             // 
             // btnEgresados
             // 
@@ -99,15 +108,6 @@
             this.btnAbmAlumnos.Text = "ABM Alumnos";
             this.btnAbmAlumnos.UseVisualStyleBackColor = true;
             // 
-            // btnDesbloquearUsuario
-            // 
-            this.btnDesbloquearUsuario.Location = new System.Drawing.Point(83, 36);
-            this.btnDesbloquearUsuario.Name = "btnDesbloquearUsuario";
-            this.btnDesbloquearUsuario.Size = new System.Drawing.Size(173, 37);
-            this.btnDesbloquearUsuario.TabIndex = 5;
-            this.btnDesbloquearUsuario.Text = "Desbloquear Usuario";
-            this.btnDesbloquearUsuario.UseVisualStyleBackColor = true;
-            // 
             // MenuAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -116,6 +116,7 @@
             this.Controls.Add(this.grpMenuAdmin);
             this.Name = "MenuAdmin";
             this.Text = "Menu Principal - Administrador";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuAdmin_FormClosed);
             this.grpMenuAdmin.ResumeLayout(false);
             this.ResumeLayout(false);
 
