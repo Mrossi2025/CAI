@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{023F8BE8-3E69-4609-86DA-9E3527CA761E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TPCAI</RootNamespace>
+    <AssemblyName>TPCAI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ABM Alumnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM Alumnos.Designer.cs">
+      <DependentUpon>ABM Alumnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AMB Docentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AMB Docentes.Designer.cs">
+      <DependentUpon>AMB Docentes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InscripcionAMaterias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InscripcionAMaterias.Designer.cs">
+      <DependentUpon>InscripcionAMaterias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inscripciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inscripciones.Designer.cs">
+      <DependentUpon>Inscripciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Liquidaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Liquidaciones.Designer.cs">
+      <DependentUpon>Liquidaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu Egresados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu Egresados.Designer.cs">
+      <DependentUpon>Menu Egresados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPrincipalAlumno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuPrincipalAlumno.Designer.cs">
+      <DependentUpon>MenuPrincipalAlumno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menú Principal - Administrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menú Principal - Administrador.Designer.cs">
+      <DependentUpon>Menú Principal - Administrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VentanaLogin.Designer.cs">
+      <DependentUpon>VentanaLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ABM Alumnos.resx">
+      <DependentUpon>ABM Alumnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AMB Docentes.resx">
+      <DependentUpon>AMB Docentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InscripcionAMaterias.resx">
+      <DependentUpon>InscripcionAMaterias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inscripciones.resx">
+      <DependentUpon>Inscripciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Liquidaciones.resx">
+      <DependentUpon>Liquidaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu Egresados.resx">
+      <DependentUpon>Menu Egresados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuPrincipalAlumno.resx">
+      <DependentUpon>MenuPrincipalAlumno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menú Principal - Administrador.resx">
+      <DependentUpon>Menú Principal - Administrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaLogin.resx">
+      <DependentUpon>VentanaLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Capa de Negocios\Capa de Negocios.csproj">
+      <Project>{c145ee8b-9d42-4422-b10c-106f35bad5de}</Project>
+      <Name>Capa de Negocios</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{f1ee3ea5-7a23-4a51-b2f9-63e74aa10b83}</Project>
+      <Name>Datos</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
