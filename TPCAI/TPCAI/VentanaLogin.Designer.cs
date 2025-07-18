@@ -75,6 +75,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(135, 22);
             this.txtUsuario.TabIndex = 2;
+          
             // 
             // lblContraseña
             // 
@@ -102,6 +103,7 @@
             this.Controls.Add(this.grpSystemLogin);
             this.Name = "VentanaLogin";
             this.Text = "VentanaLogin";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VentanaLogin_FormClosed);
             this.grpSystemLogin.ResumeLayout(false);
             this.grpSystemLogin.PerformLayout();
             this.ResumeLayout(false);

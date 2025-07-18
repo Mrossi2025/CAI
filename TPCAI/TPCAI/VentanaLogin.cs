@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_de_Negocios;
+using Datos;
 
 namespace TPCAI
 {
@@ -17,88 +18,64 @@ namespace TPCAI
         public VentanaLogin()
         {
             InitializeComponent();
+
         }
-
-
-
-        public int ContadorDeErrores;
 
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            Usuarios nuevo = new Usuarios() { NombreUsuario = "MarcosRossi1999", Contraseña = "Mnrcdvs123@", Nombre = "Marcos", Apellido = "Rossi", DNI = 42283285, Registro = 900546, Tipo = Capa_de_Negocios.Usuarios.TipoUsuario.Alumno, Estado = true };
-
-            List<Usuarios> ListaUsuarios = new List<Usuarios>(); //Esto se va a reemplazar con los datos que nos pasen los profes cuando usemos webservices
-
-            ListaUsuarios.Add(nuevo);
+            string usuario = txtUsuario.Text;
+            string contraseña = txtConstraseña.Text;
 
 
-            Login login = new Login();
-            string Usuario;
-            string Contraseña;
-            Usuario = txtUsuario.Text;
-            Contraseña = txtConstraseña.Text;
-           
-            string errores = "Inicio";
-            if (string.IsNullOrEmpty(Usuario)) { MessageBox.Show("El campo usuario no puede estar vacio");}
-            else if (string.IsNullOrEmpty(Contraseña)) { MessageBox.Show("El campo de contraseña no puede estar vacio");}
-            else
+            if (string.IsNullOrEmpty(usuario))
+            { MessageBox.Show("El campo usuario no puede estar vacio"); }
+            else if (string.IsNullOrEmpty(contraseña))
+            { MessageBox.Show("El campo contraseña no puede estar vacio"); }
+            else 
             {
-                errores = login.ValidarUsuario(Usuario, Contraseña, ListaUsuarios);
-                if (!string.IsNullOrEmpty(errores))
+                try
                 {
-                    if (errores == "No se ha encontrado un usuario con ese dato.") { MessageBox.Show("El usuario no existe."); }
-                    else if (errores == "La contraseña es incorrecta.") //Este else if, se podria transformar en un else solamente porque hay 2 opciones de errores por ahora
+                    Negocio capaNegocio = new Negocio();//Instancia de la capa de negocio
+                    LoginResponse resp = capaNegocio.login(txtUsuario.Text, txtConstraseña.Text); //llama al metodo y el metodo pide autenticación, y si es incorrecto manda la exeption que pisamos en la capa de negocios "Credenciales incorrectas"
+
+                    switch (resp.perfilUsuario)              // Según el perfil recibido, abre el menú correspondiente "ADMIN", "PERSONAL", "ALUMNO"
                     {
-                        ContadorDeErrores++;
-                        if (ContadorDeErrores < 5) { MessageBox.Show(errores + " Quedan " + (5 - ContadorDeErrores) + " Intentos."); }
-                        else if (ContadorDeErrores == 5) { string MensajeDeBloqueo = login.BloquearUsuario(Usuario, ListaUsuarios); MessageBox.Show(MensajeDeBloqueo); }
-                        else { MessageBox.Show("El Usuario " + Usuario + " Se encuentra bloqueado, pida ayuda a un administrador para desbloquearlo"); }
-
-
-                    }
-                }
-
-                else
-                {
-                    Usuarios UsuarioEncontrado;
-                    UsuarioEncontrado = ListaUsuarios.Find(a => a.NombreUsuario == Usuario);
-
-                    switch (UsuarioEncontrado.Tipo)
-                    {
-                        case Usuarios.TipoUsuario.Alumno:
-                            
-                            Menu_principal___Alumno frmAlu = new Menu_principal___Alumno(UsuarioEncontrado); //Paso el usuario como parametro para usarlo en la otra ventana
-                            frmAlu.Show(); //Muestro ese nuevo form instanciado
-                            this.Close();          // Cierra el form, podria usarse This.Hide, pero si volvemos a este form queremos que este reiniciado sin datos y con 5 intentos nuevos.
+                        case "ADMIN":
+                            new MenuAdmin(resp.id).Show();
                             break;
 
-                        case Usuarios.TipoUsuario.Administrador:
-                            MenuAdmin frmAdm = new MenuAdmin();
-                            frmAdm.Show();
-                            this.Close();
-                            break;
+                        case "PERSONAL":
+                         new MenuAdmin(resp.id).Show(); 
+                        break;
 
-                        // case Usuarios.TipoUsuario.Personal:
-                        //   Menu_principal___Personal frmPer = new Menu_principal___Personal(usuarioEncontrado);
-                        // frmPer.Show();
-                        //this.Hide();
-                        // break;
+                        case "ALUMNO":
+                            new Menu_principal___Alumno(resp.id).Show();
+                            break;
 
                         default:
-                            MessageBox.Show("Tipo de usuario sin menú asignado.");
-                            break;
+                            MessageBox.Show($"Perfil desconocido: {resp.perfilUsuario}");
+                            return;                          // no continúes si el tipo es inválido
                     }
 
+                    // 4)  Si todo salió bien, ocultar (o cerrar) el login
+                    this.Hide();      // ó this.Close() si usás patrón raíz = menú
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error de inicio de sesión");
                 }
 
-                
             }
 
-            
+        }
 
-
+        private void VentanaLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
 
         }
+
+       
     }
 }

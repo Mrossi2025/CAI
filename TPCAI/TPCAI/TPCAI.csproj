@@ -82,11 +82,11 @@
     <Compile Include="Menu Egresados.Designer.cs">
       <DependentUpon>Menu Egresados.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu principal - Alumno.cs">
+    <Compile Include="MenuPrincipalAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu principal - Alumno.Designer.cs">
-      <DependentUpon>Menu principal - Alumno.cs</DependentUpon>
+    <Compile Include="MenuPrincipalAlumno.Designer.cs">
+      <DependentUpon>MenuPrincipalAlumno.cs</DependentUpon>
     </Compile>
     <Compile Include="Menú Principal - Administrador.cs">
       <SubType>Form</SubType>
@@ -120,8 +120,8 @@
     <EmbeddedResource Include="Menu Egresados.resx">
       <DependentUpon>Menu Egresados.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu principal - Alumno.resx">
-      <DependentUpon>Menu principal - Alumno.cs</DependentUpon>
+    <EmbeddedResource Include="MenuPrincipalAlumno.resx">
+      <DependentUpon>MenuPrincipalAlumno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menú Principal - Administrador.resx">
       <DependentUpon>Menú Principal - Administrador.cs</DependentUpon>
@@ -155,6 +155,10 @@
     <ProjectReference Include="..\Capa de Negocios\Capa de Negocios.csproj">
       <Project>{c145ee8b-9d42-4422-b10c-106f35bad5de}</Project>
       <Name>Capa de Negocios</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Datos\Datos.csproj">
+      <Project>{f1ee3ea5-7a23-4a51-b2f9-63e74aa10b83}</Project>
+      <Name>Datos</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,22 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_de_Negocios;
+using Datos;
 
 namespace TPCAI
 {
     public partial class Menu_principal___Alumno : Form
     {
 
-        private readonly Usuarios Alumno;
+        
+        
 
-        public Menu_principal___Alumno(Usuarios alumno) //Constructor que recibe el parametro del usuario que ingresa para ya tener sus datos a mano.
+
+        public Menu_principal___Alumno(int idAlumno) //Constructor que recibe el parametro del usuario que ingresa para ya tener sus datos a mano.
         {
-            InitializeComponent();
-            Alumno = alumno;
+            int IdAlumno;
 
-            lblBienvenida.Text = $"Bienvenido/a {alumno.Nombre}"; //Da la bienvenida con el dato del usuario que traje por parametros.
+            InitializeComponent();
+            IdAlumno = idAlumno;
+
+            lblBienvenida.Text = $"Bienvenido/a {IdAlumno}"; //Da la bienvenida con el dato del usuario que traje por parametros.
 
         }
+
+       
 
 
 

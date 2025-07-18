@@ -17,6 +17,18 @@ namespace TPCAI
             InitializeComponent();
         }
 
-       
+       public MenuAdmin(int idAdmin)
+        {
+            int Idadmin = idAdmin;
+            InitializeComponent();
+
+        }
+
+        private void MenuAdmin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            VentanaLogin ventanaLogin = new VentanaLogin();
+            ventanaLogin.Show();
+            MessageBox.Show("Sesion cerrada");
+        }
     }
 }
