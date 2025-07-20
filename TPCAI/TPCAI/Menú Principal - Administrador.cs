@@ -30,5 +30,45 @@ namespace TPCAI
             ventanaLogin.Show();
             MessageBox.Show("Sesion cerrada");
         }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show("Sesion cerrada");
+            this.Close();
+        }
+
+        private void btnDesbloquearUsuario_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnAbmAlumnos_Click(object sender, EventArgs e)
+        {
+            MenuAdmin1 ABMAlumnos = new MenuAdmin1(this);
+            ABMAlumnos.Show();
+            this.Hide();
+        }
+
+        private void btmAbmDocentes_Click(object sender, EventArgs e)
+        {
+            ABM_Docentes ABMDocentes = new ABM_Docentes();
+            ABMDocentes.Show();
+            this.Hide();
+        }
+
+        private void btnLiquidaciones_Click(object sender, EventArgs e)
+        {
+            Liquidaciones Liquidaciones = new Liquidaciones();
+            Liquidaciones.Show();
+            this.Hide();
+        }
+
+        private void btnEgresados_Click(object sender, EventArgs e)
+        {
+            Menu_Egresados menuEgresados = new Menu_Egresados();    
+            menuEgresados.Show();
+            this.Hide();
+        }
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TPCAI
 {
-    public partial class AMB_Docentes : Form
+    public partial class ABM_Docentes : Form
     {
-        public AMB_Docentes()
+        public ABM_Docentes()
         {
             InitializeComponent();
         }

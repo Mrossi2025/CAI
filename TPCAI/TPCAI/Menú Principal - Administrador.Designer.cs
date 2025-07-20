@@ -62,6 +62,7 @@
             this.btnDesbloquearUsuario.TabIndex = 5;
             this.btnDesbloquearUsuario.Text = "Desbloquear Usuario";
             this.btnDesbloquearUsuario.UseVisualStyleBackColor = true;
+            this.btnDesbloquearUsuario.Click += new System.EventHandler(this.btnDesbloquearUsuario_Click);
             // 
             // btnEgresados
             // 
@@ -71,6 +72,7 @@
             this.btnEgresados.TabIndex = 4;
             this.btnEgresados.Text = "Egresados";
             this.btnEgresados.UseVisualStyleBackColor = true;
+            this.btnEgresados.Click += new System.EventHandler(this.btnEgresados_Click);
             // 
             // btnCerrarSesion
             // 
@@ -80,6 +82,7 @@
             this.btnCerrarSesion.TabIndex = 3;
             this.btnCerrarSesion.Text = "Cerrar Sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // btnLiquidaciones
             // 
@@ -89,6 +92,7 @@
             this.btnLiquidaciones.TabIndex = 2;
             this.btnLiquidaciones.Text = "Liquidaciónes";
             this.btnLiquidaciones.UseVisualStyleBackColor = true;
+            this.btnLiquidaciones.Click += new System.EventHandler(this.btnLiquidaciones_Click);
             // 
             // btmAbmDocentes
             // 
@@ -98,6 +102,7 @@
             this.btmAbmDocentes.TabIndex = 1;
             this.btmAbmDocentes.Text = "ABM Docentes";
             this.btmAbmDocentes.UseVisualStyleBackColor = true;
+            this.btmAbmDocentes.Click += new System.EventHandler(this.btmAbmDocentes_Click);
             // 
             // btnAbmAlumnos
             // 
@@ -107,6 +112,7 @@
             this.btnAbmAlumnos.TabIndex = 0;
             this.btnAbmAlumnos.Text = "ABM Alumnos";
             this.btnAbmAlumnos.UseVisualStyleBackColor = true;
+            this.btnAbmAlumnos.Click += new System.EventHandler(this.btnAbmAlumnos_Click);
             // 
             // MenuAdmin
             // 

@@ -52,11 +52,11 @@
     <Compile Include="ABM Alumnos.Designer.cs">
       <DependentUpon>ABM Alumnos.cs</DependentUpon>
     </Compile>
-    <Compile Include="AMB Docentes.cs">
+    <Compile Include="ABM Docentes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AMB Docentes.Designer.cs">
-      <DependentUpon>AMB Docentes.cs</DependentUpon>
+    <Compile Include="ABM Docentes.Designer.cs">
+      <DependentUpon>ABM Docentes.cs</DependentUpon>
     </Compile>
     <Compile Include="InscripcionAMaterias.cs">
       <SubType>Form</SubType>
@@ -105,8 +105,8 @@
     <EmbeddedResource Include="ABM Alumnos.resx">
       <DependentUpon>ABM Alumnos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AMB Docentes.resx">
-      <DependentUpon>AMB Docentes.cs</DependentUpon>
+    <EmbeddedResource Include="ABM Docentes.resx">
+      <DependentUpon>ABM Docentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InscripcionAMaterias.resx">
       <DependentUpon>InscripcionAMaterias.cs</DependentUpon>

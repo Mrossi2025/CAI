@@ -1,6 +1,6 @@
 ﻿namespace TPCAI
 {
-    partial class AMB_Docentes
+    partial class ABM_Docentes
     {
         /// <summary>
         /// Required designer variable.

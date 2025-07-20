@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.grpDatosAlumno = new System.Windows.Forms.GroupBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.grpCarreras = new System.Windows.Forms.GroupBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.txtRegistro = new System.Windows.Forms.TextBox();
-            this.lblRegistro = new System.Windows.Forms.Label();
+            this.clbCarreras = new System.Windows.Forms.CheckedListBox();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.lblDni = new System.Windows.Forms.Label();
@@ -41,13 +41,13 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.grpBuscarAlumno = new System.Windows.Forms.GroupBox();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.lblRegistro2 = new System.Windows.Forms.Label();
+            this.lblId = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.btnCargarAlumnos = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.grpDatosAlumno.SuspendLayout();
             this.grpCarreras.SuspendLayout();
             this.grpBuscarAlumno.SuspendLayout();
@@ -58,8 +58,7 @@
             this.grpDatosAlumno.Controls.Add(this.btnEliminar);
             this.grpDatosAlumno.Controls.Add(this.btnAgregar);
             this.grpDatosAlumno.Controls.Add(this.grpCarreras);
-            this.grpDatosAlumno.Controls.Add(this.txtRegistro);
-            this.grpDatosAlumno.Controls.Add(this.lblRegistro);
+            this.grpDatosAlumno.Controls.Add(this.btnModificar);
             this.grpDatosAlumno.Controls.Add(this.txtDni);
             this.grpDatosAlumno.Controls.Add(this.txtApellido);
             this.grpDatosAlumno.Controls.Add(this.lblDni);
@@ -68,51 +67,54 @@
             this.grpDatosAlumno.Controls.Add(this.txtNombre);
             this.grpDatosAlumno.Location = new System.Drawing.Point(41, 21);
             this.grpDatosAlumno.Name = "grpDatosAlumno";
-            this.grpDatosAlumno.Size = new System.Drawing.Size(349, 417);
+            this.grpDatosAlumno.Size = new System.Drawing.Size(349, 407);
             this.grpDatosAlumno.TabIndex = 0;
             this.grpDatosAlumno.TabStop = false;
             this.grpDatosAlumno.Text = "Datos Alumno";
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(113, 338);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(96, 31);
+            this.btnEliminar.TabIndex = 11;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(11, 338);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(96, 31);
+            this.btnAgregar.TabIndex = 10;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
             // grpCarreras
             // 
-            this.grpCarreras.Controls.Add(this.checkedListBox1);
-            this.grpCarreras.Location = new System.Drawing.Point(5, 221);
+            this.grpCarreras.Controls.Add(this.clbCarreras);
+            this.grpCarreras.Location = new System.Drawing.Point(5, 176);
             this.grpCarreras.Name = "grpCarreras";
-            this.grpCarreras.Size = new System.Drawing.Size(225, 133);
+            this.grpCarreras.Size = new System.Drawing.Size(244, 149);
             this.grpCarreras.TabIndex = 9;
             this.grpCarreras.TabStop = false;
             this.grpCarreras.Text = "Carreras";
             // 
-            // checkedListBox1
+            // clbCarreras
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
+            this.clbCarreras.FormattingEnabled = true;
+            this.clbCarreras.Items.AddRange(new object[] {
             "Carrera 1",
             "Carrera 2",
             "Carrera 3",
             "Carrera 4",
             "Carrera 5",
             "Carrera 6"});
-            this.checkedListBox1.Location = new System.Drawing.Point(6, 21);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(112, 106);
-            this.checkedListBox1.TabIndex = 8;
-            // 
-            // txtRegistro
-            // 
-            this.txtRegistro.Location = new System.Drawing.Point(9, 173);
-            this.txtRegistro.Name = "txtRegistro";
-            this.txtRegistro.Size = new System.Drawing.Size(221, 22);
-            this.txtRegistro.TabIndex = 7;
-            // 
-            // lblRegistro
-            // 
-            this.lblRegistro.AutoSize = true;
-            this.lblRegistro.Location = new System.Drawing.Point(6, 154);
-            this.lblRegistro.Name = "lblRegistro";
-            this.lblRegistro.Size = new System.Drawing.Size(58, 16);
-            this.lblRegistro.TabIndex = 6;
-            this.lblRegistro.Text = "Registro";
+            this.clbCarreras.Location = new System.Drawing.Point(6, 21);
+            this.clbCarreras.Name = "clbCarreras";
+            this.clbCarreras.Size = new System.Drawing.Size(219, 106);
+            this.clbCarreras.TabIndex = 8;
             // 
             // txtDni
             // 
@@ -165,7 +167,7 @@
             // grpBuscarAlumno
             // 
             this.grpBuscarAlumno.Controls.Add(this.btnBuscar);
-            this.grpBuscarAlumno.Controls.Add(this.lblRegistro2);
+            this.grpBuscarAlumno.Controls.Add(this.lblId);
             this.grpBuscarAlumno.Controls.Add(this.label4);
             this.grpBuscarAlumno.Controls.Add(this.textBox5);
             this.grpBuscarAlumno.Location = new System.Drawing.Point(408, 23);
@@ -183,15 +185,16 @@
             this.btnBuscar.TabIndex = 10;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // lblRegistro2
+            // lblId
             // 
-            this.lblRegistro2.AutoSize = true;
-            this.lblRegistro2.Location = new System.Drawing.Point(11, 21);
-            this.lblRegistro2.Name = "lblRegistro2";
-            this.lblRegistro2.Size = new System.Drawing.Size(58, 16);
-            this.lblRegistro2.TabIndex = 9;
-            this.lblRegistro2.Text = "Registro";
+            this.lblId.AutoSize = true;
+            this.lblId.Location = new System.Drawing.Point(11, 21);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(66, 16);
+            this.lblId.TabIndex = 9;
+            this.lblId.Text = "Id Alumno";
             // 
             // label4
             // 
@@ -208,27 +211,9 @@
             this.textBox5.Size = new System.Drawing.Size(221, 22);
             this.textBox5.TabIndex = 8;
             // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Location = new System.Drawing.Point(10, 366);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(96, 31);
-            this.btnAgregar.TabIndex = 10;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(112, 366);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(96, 31);
-            this.btnEliminar.TabIndex = 11;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(256, 387);
+            this.btnModificar.Location = new System.Drawing.Point(215, 338);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(96, 31);
             this.btnModificar.TabIndex = 12;
@@ -237,30 +222,54 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(651, 358);
+            this.btnVolver.Location = new System.Drawing.Point(587, 340);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(123, 69);
             this.btnVolver.TabIndex = 13;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // btnCargarAlumnos
+            // 
+            this.btnCargarAlumnos.Location = new System.Drawing.Point(472, 216);
+            this.btnCargarAlumnos.Name = "btnCargarAlumnos";
+            this.btnCargarAlumnos.Size = new System.Drawing.Size(138, 66);
+            this.btnCargarAlumnos.TabIndex = 14;
+            this.btnCargarAlumnos.Text = "Cargar Alumnos";
+            this.btnCargarAlumnos.UseVisualStyleBackColor = true;
+            this.btnCargarAlumnos.Click += new System.EventHandler(this.btnCargarAlumnos_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(396, 197);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(333, 16);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Presione para cargar la lista de alumnos en el sistema.";
             // 
             // MenuAdmin1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(738, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnCargarAlumnos);
             this.Controls.Add(this.btnVolver);
-            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.grpBuscarAlumno);
             this.Controls.Add(this.grpDatosAlumno);
             this.Name = "MenuAdmin1";
             this.Text = "ABM Alumnos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuAdmin1_FormClosed);
+            this.Load += new System.EventHandler(this.MenuAdmin1_Load);
             this.grpDatosAlumno.ResumeLayout(false);
             this.grpDatosAlumno.PerformLayout();
             this.grpCarreras.ResumeLayout(false);
             this.grpBuscarAlumno.ResumeLayout(false);
             this.grpBuscarAlumno.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -269,22 +278,22 @@
         private System.Windows.Forms.GroupBox grpDatosAlumno;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.TextBox txtRegistro;
-        private System.Windows.Forms.Label lblRegistro;
         private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label lblDni;
         private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.GroupBox grpBuscarAlumno;
         private System.Windows.Forms.Button btnBuscar;
-        private System.Windows.Forms.Label lblRegistro2;
+        private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.GroupBox grpCarreras;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox clbCarreras;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Button btnCargarAlumnos;
+        private System.Windows.Forms.Label label1;
     }
 }
