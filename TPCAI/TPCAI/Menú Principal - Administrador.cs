@@ -26,7 +26,7 @@ namespace TPCAI
 
         private void MenuAdmin_FormClosed(object sender, FormClosedEventArgs e)
         {
-            VentanaLogin ventanaLogin = new VentanaLogin();
+            Login ventanaLogin = new Login();
             ventanaLogin.Show();
             MessageBox.Show("Sesion cerrada");
         }
@@ -69,6 +69,11 @@ namespace TPCAI
             Menu_Egresados menuEgresados = new Menu_Egresados();    
             menuEgresados.Show();
             this.Hide();
+        }
+
+        private void MenuAdmin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

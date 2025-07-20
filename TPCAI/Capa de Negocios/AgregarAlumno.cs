@@ -12,10 +12,6 @@ namespace Capa_de_Negocios
     {
         public string AgregarAlumnoNegocio(Alumnos alumnoNuevo)
         {
-
-           
-
-             
             AgregarAlumnoPersistencia respuesta = new AgregarAlumnoPersistencia();//Instanciamos a AgregarAlumnoPersistencia
             string resultado = respuesta.AgregarAlumno(alumnoNuevo);   // El resultado se almacena, puede ser "OK" o "Error …"
 
@@ -24,10 +20,7 @@ namespace Capa_de_Negocios
 
             // O podriamos lanzar una excepcion: throw new Exception(resultado);
 
-            return $"Error al agregar alumno: {resultado}"; 
+            return $"Error al agregar alumno: {resultado}";
         }
-
-
-
     }
 }

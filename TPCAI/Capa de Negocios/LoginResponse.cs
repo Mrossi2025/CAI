@@ -9,16 +9,16 @@ using System.Runtime.CompilerServices;
 
 namespace Capa_de_Negocios
 {
-    public class Negocio
+    public class LoginResponse
     {
-        public LoginResponse login(string username, string password)
+        public Datos.LoginResponse login(string username, string password)
         {
 
             try
             {
 
                 LoginPersistencia loginPersistencia = new LoginPersistencia();
-                LoginResponse Respuesta = loginPersistencia.login(username, password);
+                Datos.LoginResponse Respuesta = loginPersistencia.login(username, password);
 
                 if (Respuesta == null)
                 {

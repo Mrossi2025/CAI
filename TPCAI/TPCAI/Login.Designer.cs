@@ -1,6 +1,6 @@
 ﻿namespace TPCAI
 {
-    partial class VentanaLogin
+    partial class Login
     {
         /// <summary>
         /// Variable del diseñador necesaria.

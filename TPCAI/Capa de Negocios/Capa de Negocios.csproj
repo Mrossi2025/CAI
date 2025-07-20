@@ -44,7 +44,7 @@
     <Compile Include="AgregarAlumno.cs" />
     <Compile Include="CargarCarreras.cs" />
     <Compile Include="ListaAlumnos.cs" />
-    <Compile Include="Negocio.cs" />
+    <Compile Include="LoginResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

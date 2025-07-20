@@ -44,7 +44,7 @@ namespace TPCAI
         private void Menu_principal___Alumno_FormClosed_1(object sender, FormClosedEventArgs e)
         {
             MessageBox.Show("Sesion Cerrada");
-            VentanaLogin formLogin = new VentanaLogin();
+            Login formLogin = new Login();
             formLogin.Show();
         }
     }

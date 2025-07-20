@@ -19,7 +19,5 @@ namespace Capa_de_Negocios
             return lista; //el metodo devuelve la lista
         }
 
-
-
     }
 }

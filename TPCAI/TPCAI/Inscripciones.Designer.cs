@@ -38,36 +38,40 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(65, 184);
+            this.button1.Location = new System.Drawing.Point(49, 150);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 64);
+            this.button1.Size = new System.Drawing.Size(93, 52);
             this.button1.TabIndex = 0;
             this.button1.Text = "Calculo de Ranking";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(65, 114);
+            this.button2.Location = new System.Drawing.Point(49, 38);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 64);
+            this.button2.Size = new System.Drawing.Size(93, 52);
             this.button2.TabIndex = 1;
             this.button2.Text = "Inscribirse a Materias";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(65, 44);
+            this.button3.Location = new System.Drawing.Point(49, 94);
+            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(124, 64);
+            this.button3.Size = new System.Drawing.Size(93, 52);
             this.button3.TabIndex = 2;
             this.button3.Text = "Inscribirse a Finales";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(65, 254);
+            this.button4.Location = new System.Drawing.Point(49, 206);
+            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(124, 64);
+            this.button4.Size = new System.Drawing.Size(93, 52);
             this.button4.TabIndex = 3;
             this.button4.Text = "Volver";
             this.button4.UseVisualStyleBackColor = true;
@@ -78,19 +82,22 @@
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Location = new System.Drawing.Point(164, 37);
+            this.groupBox1.Location = new System.Drawing.Point(123, 30);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(250, 381);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(188, 310);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Menu inscripciónes";
             // 
             // Inscripciones
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Inscripciones";
             this.Text = "Inscripciones";
             this.groupBox1.ResumeLayout(false);

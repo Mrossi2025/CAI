@@ -24,13 +24,8 @@ namespace Persistencia
                 throw new Exception(
                     $"[{(int)resp.StatusCode}] {resp.ReasonPhrase}");
 
-
-
-
             // 3) Leer el JSON
             string json = resp.Content.ReadAsStringAsync().Result;
-
-
 
             // 4) Deserializar a lista
             List<CarrerasResponse> lista =
@@ -40,9 +35,8 @@ namespace Persistencia
             //Si ves “Lista count: 5” en la ventana Salida(Debug), la lista está bien.
 
 
-
             // 5) Devolver la lista (puede estar vacía, pero nunca null)
-            return lista; 
+            return lista;
         }
 
 

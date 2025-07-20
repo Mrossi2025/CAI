@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="AgregarAlumnoPersistencia.cs" />
     <Compile Include="AgregarCarrerasPersistencia.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="LoginPersistencia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositorioAlumno.cs" />

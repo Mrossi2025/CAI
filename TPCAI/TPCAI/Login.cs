@@ -13,9 +13,9 @@ using Datos;
 
 namespace TPCAI
 {
-    public partial class VentanaLogin : Form
+    public partial class Login : Form
     {
-        public VentanaLogin()
+        public Login()
         {
             InitializeComponent();
 
@@ -36,8 +36,8 @@ namespace TPCAI
             {
                 try
                 {
-                    Negocio capaNegocio = new Negocio();//Instancia de la capa de negocio
-                    LoginResponse resp = capaNegocio.login(txtUsuario.Text, txtConstraseña.Text); //llama al metodo y el metodo pide autenticación, y si es incorrecto manda la exeption que pisamos en la capa de negocios "Credenciales incorrectas"
+                    Capa_de_Negocios.LoginResponse capaNegocio = new Capa_de_Negocios.LoginResponse();//Instancia de la capa de negocio
+                    Datos.LoginResponse resp = capaNegocio.login(txtUsuario.Text, txtConstraseña.Text); //llama al metodo y el metodo pide autenticación, y si es incorrecto manda la exeption que pisamos en la capa de negocios "Credenciales incorrectas"
 
                     switch (resp.perfilUsuario)              // Según el perfil recibido, abre el menú correspondiente "ADMIN", "PERSONAL", "ALUMNO"
                     {

@@ -12,8 +12,9 @@ namespace Datos
         public string apellido { get; set; }
         public string dni { get; set; }
 
-        
-        public List<int> carrerasIds { get; set; } = new List<int>(); //Si un alumno puede cursar varias carreras, List<int>
+
+        // Si un alumno puede cursar varias carreras
+        public List<int> carrerasIds { get; set; } = new List<int>();
 
     }
 }
