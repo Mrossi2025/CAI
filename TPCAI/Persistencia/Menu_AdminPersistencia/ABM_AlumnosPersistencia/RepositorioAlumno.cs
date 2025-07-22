@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Persistencia.utils;
 using Datos;
+using Capa_de_Negocios;
 
 namespace Persistencia
 {
@@ -24,8 +25,8 @@ namespace Persistencia
 
                 // 2) Deserializar el array JSON → List<Alumno>
                 string json = resp.Content.ReadAsStringAsync().Result;
-                return JsonConvert.DeserializeObject<List<Alumnos>>(json);
-            }//Esto descerializa los datos que vienen del GET y forma la lista con los datos en cache.
+                return JsonConvert.DeserializeObject<List<Alumnos>>(json) ?? new List<Alumnos>();
+        }//Esto deserializa los datos que vienen del GET y forma la lista con los datos en cache.
         
 
 

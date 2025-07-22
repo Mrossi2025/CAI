@@ -36,17 +36,17 @@ namespace TPCAI
             {
                 try
                 {
-                    Capa_de_Negocios.LoginResponse capaNegocio = new Capa_de_Negocios.LoginResponse();//Instancia de la capa de negocio
+                    Capa_de_Negocios.Login capaNegocio = new Capa_de_Negocios.Login();//Instancia de la capa de negocio
                     Datos.LoginResponse resp = capaNegocio.login(txtUsuario.Text, txtConstraseña.Text); //llama al metodo y el metodo pide autenticación, y si es incorrecto manda la exeption que pisamos en la capa de negocios "Credenciales incorrectas"
 
-                    switch (resp.perfilUsuario)              // Según el perfil recibido, abre el menú correspondiente "ADMIN", "PERSONAL", "ALUMNO"
+                    switch (resp.perfilUsuario)              // Según el perfil recibido, abre el menú correspondiente "ADMIN", "PERSONAL", "ALUMNO" y se deberia llevar por parametro el id en caso de personal
                     {
                         case "ADMIN":
                             new MenuAdmin(resp.id).Show();
                             break;
 
                         case "PERSONAL":
-                         new MenuAdmin(resp.id).Show(); 
+                         //new MenuPersonal(resp.id).Show(); 
                         break;
 
                         case "ALUMNO":

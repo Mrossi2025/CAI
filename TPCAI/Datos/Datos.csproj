@@ -44,6 +44,7 @@
     <Compile Include="Alumnos.cs" />
     <Compile Include="CarrerasResponse.cs" />
     <Compile Include="DesbloquearUsuarioRequest.cs" />
+    <Compile Include="Docente.cs" />
     <Compile Include="LoginRequest.cs" />
     <Compile Include="LoginResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

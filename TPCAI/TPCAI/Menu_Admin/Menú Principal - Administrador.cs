@@ -54,7 +54,7 @@ namespace TPCAI
 
         private void btmAbmDocentes_Click(object sender, EventArgs e)
         {
-            ABM_Docentes ABMDocentes = new ABM_Docentes();
+            ABM_Docentes ABMDocentes = new ABM_Docentes(this);
             ABMDocentes.Show();
             this.Hide();
         }

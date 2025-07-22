@@ -45,7 +45,8 @@
     <Compile Include="CargarCarreras.cs" />
     <Compile Include="DesbloquearUsuarioNegocio.cs" />
     <Compile Include="ListaAlumnos.cs" />
-    <Compile Include="LoginResponse.cs" />
+    <Compile Include="ListaDocentes.cs" />
+    <Compile Include="Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
