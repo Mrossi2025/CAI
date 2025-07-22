@@ -34,13 +34,15 @@ namespace TPCAI
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
 
-            MessageBox.Show("Sesion cerrada");
+            MessageBox.Show("Sesión cerrada");
             this.Close();
         }
 
         private void btnDesbloquearUsuario_Click(object sender, EventArgs e)
         {
-            
+            DesbloquearUsuario menuDesbloquear = new DesbloquearUsuario(this);
+            menuDesbloquear.Show();
+            this.Hide();
         }
 
         private void btnAbmAlumnos_Click(object sender, EventArgs e)

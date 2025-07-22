@@ -63,7 +63,7 @@ namespace TPCAI
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Error de inicio de sesión");
+                    MessageBox.Show(ex.Message,"Credenciales inválidas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }

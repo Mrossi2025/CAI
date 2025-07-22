@@ -58,6 +58,12 @@
     <Compile Include="ABM Docentes.Designer.cs">
       <DependentUpon>ABM Docentes.cs</DependentUpon>
     </Compile>
+    <Compile Include="DesbloquearUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DesbloquearUsuario.Designer.cs">
+      <DependentUpon>DesbloquearUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="InscripcionAMaterias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,12 @@
     </Compile>
     <Compile Include="Liquidaciones.Designer.cs">
       <DependentUpon>Liquidaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu Egresados.cs">
       <SubType>Form</SubType>
@@ -94,12 +106,6 @@
     <Compile Include="Menú Principal - Administrador.Designer.cs">
       <DependentUpon>Menú Principal - Administrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="VentanaLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VentanaLogin.Designer.cs">
-      <DependentUpon>VentanaLogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ABM Alumnos.resx">
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM Docentes.resx">
       <DependentUpon>ABM Docentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DesbloquearUsuario.resx">
+      <DependentUpon>DesbloquearUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InscripcionAMaterias.resx">
       <DependentUpon>InscripcionAMaterias.cs</DependentUpon>
@@ -117,6 +126,9 @@
     <EmbeddedResource Include="Liquidaciones.resx">
       <DependentUpon>Liquidaciones.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Menu Egresados.resx">
       <DependentUpon>Menu Egresados.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,9 +137,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menú Principal - Administrador.resx">
       <DependentUpon>Menú Principal - Administrador.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VentanaLogin.resx">
-      <DependentUpon>VentanaLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

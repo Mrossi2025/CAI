@@ -20,16 +20,12 @@ namespace Capa_de_Negocios
                 LoginPersistencia loginPersistencia = new LoginPersistencia();
                 Datos.LoginResponse Respuesta = loginPersistencia.login(username, password);
 
-                if (Respuesta == null)
-                {
-                    throw new Exception("Credenciales incorrectas");
-
-                }
 
                 return Respuesta;
             }
-            catch (Exception ex) { throw new Exception("Credenciales incorrectas", ex); }
-
+            //Si pongo entre comillas adelante me reemplaza el mensaje
+            //catch (Exception ex) { throw new Exception("Credenciales inválidas", ex);}
+            catch (Exception ex) { throw; }
         }
 
 

@@ -17,7 +17,8 @@ namespace TPCAI
     public partial class MenuAdmin1 : Form
     {
 
-        
+        List<Alumnos> listaAlumnos = new List<Alumnos>(); //Declaro la lista donde se van a guardar
+
 
 
         private MenuAdmin menuAdmin;
@@ -48,7 +49,43 @@ namespace TPCAI
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-           
+
+            
+            Alumnos alumnoAbuscar;
+
+            alumnoAbuscar = listaAlumnos.Find(d => d.dni == txtDni.Text.Trim());
+
+            if (string.IsNullOrWhiteSpace(txtDni.Text))
+            { MessageBox.Show("El campo DNI no puede estar vacío ingrese uno..."); }
+            else if (listaAlumnos.Count == 0)
+            { MessageBox.Show("Debe cargar la lista de alumnos"); }
+            else if (alumnoAbuscar == null)
+            //El return de aca es para que entre ahi y que no siga con el resto del codigo.
+            { MessageBox.Show("No se encontró un alumno con ese DNI"); return; }
+            else
+            {
+                txtNombre.Text = alumnoAbuscar.nombre;
+                txtApellido.Text = alumnoAbuscar.apellido;
+
+                // a) Primero desmarca todo para empezar limpio
+                for (int i = 0; i < clbCarreras.Items.Count; i++)
+                    clbCarreras.SetItemChecked(i, false);
+
+                // b) Luego marca solo los Ids que el alumno tiene
+                //    Recorremos por índice para poder llamar SetItemChecked
+                for (int i = 0; i < clbCarreras.Items.Count; i++)
+                {
+                    // Cada ítem es CarrerasResponse porque fue el DataSource
+                    var carrera = (CarrerasResponse)clbCarreras.Items[i];
+
+                    if (alumnoAbuscar.carrerasIds.Contains(carrera.id))
+                        clbCarreras.SetItemChecked(i, true);
+                }
+
+                MessageBox.Show("Alumno encontrado con exito");
+
+            }
+
 
             
 
@@ -63,10 +100,20 @@ namespace TPCAI
             {
             try
             {
-                List<Alumnos> listaAlumnos = new List<Alumnos>(); //Declaro la lista donde se van a guardar
-                ListaAlumnos listaAllamar = new ListaAlumnos(); //Instancio la clase de Negocio que contiene el metodo a llamar
+                 ListaAlumnos listaAllamar = new ListaAlumnos(); //Instancio la clase de Negocio que contiene el metodo a llamar
 
                 listaAlumnos = listaAllamar.TraerAlumnos();
+
+                int cantidad = listaAlumnos.Count;   // si es null → 0
+                MessageBox.Show($"Se han cargado con exito {cantidad} alumnos", "Exito",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+                if (listaAlumnos == null || listaAlumnos.Count == 0)
+                {
+                    MessageBox.Show("La lista de alumnos está vacía.");
+                    return;
+                }
+
+
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error al traer alumnos"); }
 
@@ -166,5 +213,19 @@ namespace TPCAI
 
             catch (Exception ex) { MessageBox.Show("Error al cargar las carreras",ex.ToString()); }
         }
+
+            private void btnLimpiar_Click(object sender, EventArgs e)
+            {
+                txtDni.Clear();
+                txtNombre.Clear();
+                txtApellido.Clear();
+            // Esto destilda todas las carreras
+            for (int i = 0; i < clbCarreras.Items.Count; i++)
+                clbCarreras.SetItemChecked(i, false);
+
+            // (opcional) sacar también el resaltado
+            clbCarreras.ClearSelected();
+
+            }
     }
 }
