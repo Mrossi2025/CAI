@@ -51,7 +51,9 @@
     <Compile Include="ABM_DocentesClases\Docente.cs" />
     <Compile Include="LoginClases\LoginRequest.cs" />
     <Compile Include="LoginClases\LoginResponse.cs" />
+    <Compile Include="Menu_PersonalClases\LiquidacionSueldo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,7 +8,7 @@ namespace Capa_de_Negocios
 {
     public class Docente
     {
-        public long id {  get; set; }
+        public long id { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string cuit { get; set; }
@@ -16,7 +16,6 @@ namespace Capa_de_Negocios
         public int antiguedad { get; set; }
         public string tipo { get; set; }
 
-
-
     }
+
 }

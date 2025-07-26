@@ -50,6 +50,7 @@
     <Compile Include="Menu_Admin\ABM_Alumnos\ListaAlumnos.cs" />
     <Compile Include="Menu_Admin\ABM_Docentes\ListaDocentes.cs" />
     <Compile Include="Menu_Login\Login\Login.cs" />
+    <Compile Include="Menu_Personal\LiquidarSueldoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

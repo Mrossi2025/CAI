@@ -56,5 +56,10 @@ namespace TPCAI
         {
             menuAdmin.Show();
         }
+
+        private void DesbloquearUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

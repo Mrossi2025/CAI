@@ -173,7 +173,7 @@ namespace TPCAI
                         break;
 
                     case "Sistemas":
-                        carrerasSeleccionadas.Add(4);    // id 5
+                        carrerasSeleccionadas.Add(5);    // id 5
                         break;
 
                     default:

@@ -39,9 +39,10 @@
             // 
             // btnInscribirte
             // 
-            this.btnInscribirte.Location = new System.Drawing.Point(42, 113);
+            this.btnInscribirte.Location = new System.Drawing.Point(32, 92);
+            this.btnInscribirte.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnInscribirte.Name = "btnInscribirte";
-            this.btnInscribirte.Size = new System.Drawing.Size(181, 68);
+            this.btnInscribirte.Size = new System.Drawing.Size(136, 55);
             this.btnInscribirte.TabIndex = 1;
             this.btnInscribirte.Text = "Inscripciónes";
             this.btnInscribirte.UseVisualStyleBackColor = true;
@@ -52,27 +53,32 @@
             this.grpMenuAlumnos.Controls.Add(this.button2);
             this.grpMenuAlumnos.Controls.Add(this.lblSeleccione);
             this.grpMenuAlumnos.Controls.Add(this.btnInscribirte);
-            this.grpMenuAlumnos.Location = new System.Drawing.Point(12, 71);
+            this.grpMenuAlumnos.Location = new System.Drawing.Point(9, 58);
+            this.grpMenuAlumnos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grpMenuAlumnos.Name = "grpMenuAlumnos";
-            this.grpMenuAlumnos.Size = new System.Drawing.Size(631, 287);
+            this.grpMenuAlumnos.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpMenuAlumnos.Size = new System.Drawing.Size(473, 233);
             this.grpMenuAlumnos.TabIndex = 2;
             this.grpMenuAlumnos.TabStop = false;
             this.grpMenuAlumnos.Text = "Menú Alumnos";
+            this.grpMenuAlumnos.Enter += new System.EventHandler(this.grpMenuAlumnos_Enter);
             // 
             // btnCerrarSesion
             // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(416, 113);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(312, 92);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(181, 68);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(136, 55);
             this.btnCerrarSesion.TabIndex = 6;
             this.btnCerrarSesion.Text = "Cerrar Sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(229, 112);
+            this.button2.Location = new System.Drawing.Point(172, 91);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(181, 68);
+            this.button2.Size = new System.Drawing.Size(136, 55);
             this.button2.TabIndex = 4;
             this.button2.Text = "Calculo de Ranking";
             this.button2.UseVisualStyleBackColor = true;
@@ -80,28 +86,31 @@
             // lblSeleccione
             // 
             this.lblSeleccione.AutoSize = true;
-            this.lblSeleccione.Location = new System.Drawing.Point(30, 64);
+            this.lblSeleccione.Location = new System.Drawing.Point(22, 52);
+            this.lblSeleccione.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSeleccione.Name = "lblSeleccione";
-            this.lblSeleccione.Size = new System.Drawing.Size(78, 16);
+            this.lblSeleccione.Size = new System.Drawing.Size(63, 13);
             this.lblSeleccione.TabIndex = 2;
             this.lblSeleccione.Text = "Seleccione:";
             // 
             // lblBienvenida
             // 
             this.lblBienvenida.AutoSize = true;
-            this.lblBienvenida.Location = new System.Drawing.Point(164, 21);
+            this.lblBienvenida.Location = new System.Drawing.Point(123, 17);
+            this.lblBienvenida.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBienvenida.Name = "lblBienvenida";
-            this.lblBienvenida.Size = new System.Drawing.Size(89, 16);
+            this.lblBienvenida.Size = new System.Drawing.Size(70, 13);
             this.lblBienvenida.TabIndex = 3;
             this.lblBienvenida.Text = "lblBienvenida";
             // 
             // Menu_principal___Alumno
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 450);
+            this.ClientSize = new System.Drawing.Size(515, 366);
             this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.grpMenuAlumnos);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Menu_principal___Alumno";
             this.Text = "Menu_principal___Alumno";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menu_principal___Alumno_FormClosed_1);

@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Datos.Menu_PersonalClases;
+using Capa_de_Negocios;
+
+namespace Capa_de_Negocios.Menu_Personal
+{
+    public class LiquidarSueldoNegocio
+    {
+        private const decimal PRECIO_HORA = 7700m;
+
+        public decimal CalcularSueldo(Docente docente, int horas)
+        {
+            if (docente == null)
+                throw new Exception("El docente no existe.");
+
+            if (horas <= 0)
+                throw new Exception("Las horas deben ser mayores a cero.");
+
+            // Validamos el tipo
+            string tipo = docente.tipo.ToUpper();
+            decimal coefCargo;
+            if (tipo == "PROFESOR")
+                coefCargo = 1.2m;
+            else if (tipo == "AYUDANTE")
+                coefCargo = 1.05m;
+            else if (tipo.Contains("AD HONOREM"))
+                throw new Exception("El docente es Ayudante Ad Honorem. No corresponde liquidación.");
+            else
+                throw new Exception("Al tipo de docente no le corresponde liquidación.");
+
+            // Calculamos coeficiente por antigüedad REVISAR RESPUESTA PROFESOR!!!!!!!!!!!!!!
+            int tramos = docente.antiguedad / 5;  // cada 5 años
+            decimal coefAntiguedad = 1 + (0.1m * tramos);
+
+            // Fórmula
+            decimal sueldo = horas * PRECIO_HORA * coefCargo * coefAntiguedad;
+
+            return sueldo;
+        }
+    }
+}

@@ -16,5 +16,10 @@ namespace TPCAI
         {
             InitializeComponent();
         }
+
+        private void InscripcionAMaterias_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

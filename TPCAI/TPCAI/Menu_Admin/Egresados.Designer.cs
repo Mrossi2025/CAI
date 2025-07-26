@@ -45,7 +45,7 @@
             // 
             this.cmbCarrera.FormattingEnabled = true;
             this.cmbCarrera.Location = new System.Drawing.Point(164, 54);
-            this.cmbCarrera.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cmbCarrera.Margin = new System.Windows.Forms.Padding(2);
             this.cmbCarrera.Name = "cmbCarrera";
             this.cmbCarrera.Size = new System.Drawing.Size(225, 21);
             this.cmbCarrera.TabIndex = 0;
@@ -58,13 +58,14 @@
             this.grpReportes.Controls.Add(this.lblCarrera);
             this.grpReportes.Controls.Add(this.cmbCarrera);
             this.grpReportes.Location = new System.Drawing.Point(9, 20);
-            this.grpReportes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpReportes.Margin = new System.Windows.Forms.Padding(2);
             this.grpReportes.Name = "grpReportes";
-            this.grpReportes.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpReportes.Padding = new System.Windows.Forms.Padding(2);
             this.grpReportes.Size = new System.Drawing.Size(568, 336);
             this.grpReportes.TabIndex = 1;
             this.grpReportes.TabStop = false;
             this.grpReportes.Text = "Generar Reportes";
+            this.grpReportes.Enter += new System.EventHandler(this.grpReportes_Enter);
             // 
             // dataGridView1
             // 
@@ -75,7 +76,7 @@
             this.PromedioFinal,
             this.TituloHonorificoAsignado});
             this.dataGridView1.Location = new System.Drawing.Point(4, 133);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -113,7 +114,7 @@
             // btnReporte
             // 
             this.btnReporte.Location = new System.Drawing.Point(235, 79);
-            this.btnReporte.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnReporte.Margin = new System.Windows.Forms.Padding(2);
             this.btnReporte.Name = "btnReporte";
             this.btnReporte.Size = new System.Drawing.Size(77, 50);
             this.btnReporte.TabIndex = 2;
@@ -136,9 +137,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.grpReportes);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Menu_Egresados";
             this.Text = "Menu_Egresados";
+            this.Load += new System.EventHandler(this.Menu_Egresados_Load);
             this.grpReportes.ResumeLayout(false);
             this.grpReportes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

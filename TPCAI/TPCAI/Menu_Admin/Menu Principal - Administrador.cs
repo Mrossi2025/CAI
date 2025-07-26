@@ -77,5 +77,10 @@ namespace TPCAI
         {
 
         }
+
+        private void grpMenuAdmin_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -45,21 +45,22 @@
             this.grpMenuAdmin.Controls.Add(this.btnCerrarSesion);
             this.grpMenuAdmin.Controls.Add(this.btmAbmDocentes);
             this.grpMenuAdmin.Controls.Add(this.btnAbmAlumnos);
-            this.grpMenuAdmin.Location = new System.Drawing.Point(35, 25);
-            this.grpMenuAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpMenuAdmin.Location = new System.Drawing.Point(26, 20);
+            this.grpMenuAdmin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grpMenuAdmin.Name = "grpMenuAdmin";
-            this.grpMenuAdmin.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.grpMenuAdmin.Size = new System.Drawing.Size(340, 401);
+            this.grpMenuAdmin.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpMenuAdmin.Size = new System.Drawing.Size(255, 326);
             this.grpMenuAdmin.TabIndex = 0;
             this.grpMenuAdmin.TabStop = false;
             this.grpMenuAdmin.Text = "Menu Admin";
+            this.grpMenuAdmin.Enter += new System.EventHandler(this.grpMenuAdmin_Enter);
             // 
             // btnDesbloquearUsuario
             // 
-            this.btnDesbloquearUsuario.Location = new System.Drawing.Point(83, 50);
-            this.btnDesbloquearUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDesbloquearUsuario.Location = new System.Drawing.Point(62, 41);
+            this.btnDesbloquearUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDesbloquearUsuario.Name = "btnDesbloquearUsuario";
-            this.btnDesbloquearUsuario.Size = new System.Drawing.Size(173, 44);
+            this.btnDesbloquearUsuario.Size = new System.Drawing.Size(130, 36);
             this.btnDesbloquearUsuario.TabIndex = 5;
             this.btnDesbloquearUsuario.Text = "Desbloquear Usuario";
             this.btnDesbloquearUsuario.UseVisualStyleBackColor = true;
@@ -67,10 +68,10 @@
             // 
             // btnEgresados
             // 
-            this.btnEgresados.Location = new System.Drawing.Point(83, 255);
-            this.btnEgresados.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEgresados.Location = new System.Drawing.Point(62, 207);
+            this.btnEgresados.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEgresados.Name = "btnEgresados";
-            this.btnEgresados.Size = new System.Drawing.Size(173, 44);
+            this.btnEgresados.Size = new System.Drawing.Size(130, 36);
             this.btnEgresados.TabIndex = 4;
             this.btnEgresados.Text = "Egresados";
             this.btnEgresados.UseVisualStyleBackColor = true;
@@ -78,10 +79,10 @@
             // 
             // btnCerrarSesion
             // 
-            this.btnCerrarSesion.Location = new System.Drawing.Point(83, 324);
-            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(62, 263);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
-            this.btnCerrarSesion.Size = new System.Drawing.Size(173, 44);
+            this.btnCerrarSesion.Size = new System.Drawing.Size(130, 36);
             this.btnCerrarSesion.TabIndex = 3;
             this.btnCerrarSesion.Text = "Cerrar Sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
@@ -89,10 +90,10 @@
             // 
             // btmAbmDocentes
             // 
-            this.btmAbmDocentes.Location = new System.Drawing.Point(83, 187);
-            this.btmAbmDocentes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btmAbmDocentes.Location = new System.Drawing.Point(62, 152);
+            this.btmAbmDocentes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btmAbmDocentes.Name = "btmAbmDocentes";
-            this.btmAbmDocentes.Size = new System.Drawing.Size(173, 44);
+            this.btmAbmDocentes.Size = new System.Drawing.Size(130, 36);
             this.btmAbmDocentes.TabIndex = 1;
             this.btmAbmDocentes.Text = "ABM Docentes";
             this.btmAbmDocentes.UseVisualStyleBackColor = true;
@@ -100,10 +101,10 @@
             // 
             // btnAbmAlumnos
             // 
-            this.btnAbmAlumnos.Location = new System.Drawing.Point(83, 119);
-            this.btnAbmAlumnos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAbmAlumnos.Location = new System.Drawing.Point(62, 97);
+            this.btnAbmAlumnos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAbmAlumnos.Name = "btnAbmAlumnos";
-            this.btnAbmAlumnos.Size = new System.Drawing.Size(173, 44);
+            this.btnAbmAlumnos.Size = new System.Drawing.Size(130, 36);
             this.btnAbmAlumnos.TabIndex = 0;
             this.btnAbmAlumnos.Text = "ABM Alumnos";
             this.btnAbmAlumnos.UseVisualStyleBackColor = true;
@@ -111,11 +112,11 @@
             // 
             // MenuAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(413, 450);
+            this.ClientSize = new System.Drawing.Size(310, 366);
             this.Controls.Add(this.grpMenuAdmin);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "MenuAdmin";
             this.Text = "Menu Principal - Administrador";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuAdmin_FormClosed);

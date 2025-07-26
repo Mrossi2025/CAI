@@ -17,6 +17,14 @@ namespace TPCAI
             InitializeComponent();
         }
 
-        
+        private void grpReportes_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Menu_Egresados_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -47,5 +47,10 @@ namespace TPCAI
             Login formLogin = new Login();
             formLogin.Show();
         }
+
+        private void grpMenuAlumnos_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
