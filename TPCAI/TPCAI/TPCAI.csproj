@@ -46,96 +46,96 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABM Alumnos.cs">
+    <Compile Include="Menu_Admin\ABM Alumnos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM Alumnos.Designer.cs">
+    <Compile Include="Menu_Admin\ABM Alumnos.Designer.cs">
       <DependentUpon>ABM Alumnos.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM Docentes.cs">
+    <Compile Include="Menu_Admin\ABM Docentes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM Docentes.Designer.cs">
+    <Compile Include="Menu_Admin\ABM Docentes.Designer.cs">
       <DependentUpon>ABM Docentes.cs</DependentUpon>
     </Compile>
-    <Compile Include="DesbloquearUsuario.cs">
+    <Compile Include="Menu_Admin\DesbloquearUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DesbloquearUsuario.Designer.cs">
+    <Compile Include="Menu_Admin\DesbloquearUsuario.Designer.cs">
       <DependentUpon>DesbloquearUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="InscripcionAMaterias.cs">
+    <Compile Include="Menu_Alumno\InscripcionAMaterias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InscripcionAMaterias.Designer.cs">
+    <Compile Include="Menu_Alumno\InscripcionAMaterias.Designer.cs">
       <DependentUpon>InscripcionAMaterias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inscripciones.cs">
+    <Compile Include="Menu_Alumno\Inscripciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inscripciones.Designer.cs">
+    <Compile Include="Menu_Alumno\Inscripciones.Designer.cs">
       <DependentUpon>Inscripciones.cs</DependentUpon>
     </Compile>
-    <Compile Include="Liquidaciones.cs">
+    <Compile Include="Menu_Docente\Liquidaciones.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Liquidaciones.Designer.cs">
+    <Compile Include="Menu_Docente\Liquidaciones.Designer.cs">
       <DependentUpon>Liquidaciones.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="Menu_Login\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Menu_Login\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu Egresados.cs">
+    <Compile Include="Menu_Admin\Egresados.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu Egresados.Designer.cs">
-      <DependentUpon>Menu Egresados.cs</DependentUpon>
+    <Compile Include="Menu_Admin\Egresados.Designer.cs">
+      <DependentUpon>Egresados.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuPrincipalAlumno.cs">
+    <Compile Include="Menu_Alumno\MenuPrincipalAlumno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuPrincipalAlumno.Designer.cs">
+    <Compile Include="Menu_Alumno\MenuPrincipalAlumno.Designer.cs">
       <DependentUpon>MenuPrincipalAlumno.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menú Principal - Administrador.cs">
+    <Compile Include="Menu_Admin\Menú Principal - Administrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menú Principal - Administrador.Designer.cs">
+    <Compile Include="Menu_Admin\Menú Principal - Administrador.Designer.cs">
       <DependentUpon>Menú Principal - Administrador.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ABM Alumnos.resx">
+    <EmbeddedResource Include="Menu_Admin\ABM Alumnos.resx">
       <DependentUpon>ABM Alumnos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM Docentes.resx">
+    <EmbeddedResource Include="Menu_Admin\ABM Docentes.resx">
       <DependentUpon>ABM Docentes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DesbloquearUsuario.resx">
+    <EmbeddedResource Include="Menu_Admin\DesbloquearUsuario.resx">
       <DependentUpon>DesbloquearUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InscripcionAMaterias.resx">
+    <EmbeddedResource Include="Menu_Alumno\InscripcionAMaterias.resx">
       <DependentUpon>InscripcionAMaterias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inscripciones.resx">
+    <EmbeddedResource Include="Menu_Alumno\Inscripciones.resx">
       <DependentUpon>Inscripciones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Liquidaciones.resx">
+    <EmbeddedResource Include="Menu_Docente\Liquidaciones.resx">
       <DependentUpon>Liquidaciones.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Menu_Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu Egresados.resx">
-      <DependentUpon>Menu Egresados.cs</DependentUpon>
+    <EmbeddedResource Include="Menu_Admin\Egresados.resx">
+      <DependentUpon>Egresados.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuPrincipalAlumno.resx">
+    <EmbeddedResource Include="Menu_Alumno\MenuPrincipalAlumno.resx">
       <DependentUpon>MenuPrincipalAlumno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menú Principal - Administrador.resx">
+    <EmbeddedResource Include="Menu_Admin\Menú Principal - Administrador.resx">
       <DependentUpon>Menú Principal - Administrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

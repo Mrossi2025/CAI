@@ -23,10 +23,12 @@ namespace Persistencia
 
             // Éxito  (códigos 2xx)
             if (resp.IsSuccessStatusCode)
-                return "OK";
-
-            // Falla: devolvés un mensaje con el código y la razón
-            return $"Error {(int)resp.StatusCode} – {resp.ReasonPhrase}";
+            { return "OK"; }
+            else
+            {
+                // Falla: devolvés un mensaje con el código y la razón
+                return $"Error {(int)resp.StatusCode} – {resp.ReasonPhrase}";
+            }
         }
 
 

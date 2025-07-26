@@ -18,7 +18,7 @@ namespace TPCAI
     {
 
         List<Alumnos> listaAlumnos = new List<Alumnos>(); //Declaro la lista donde se van a guardar
-
+        List<CarrerasResponse> Carreras = new List<CarrerasResponse>();
 
 
         private MenuAdmin menuAdmin;
@@ -203,7 +203,7 @@ namespace TPCAI
             try
             {
                 CargarCarreras cc = new CargarCarreras();
-                List<CarrerasResponse> Carreras = cc.cargarCarreras();
+                Carreras = cc.cargarCarreras();
 
                 clbCarreras.Items.Clear();
                 foreach (CarrerasResponse carrera in Carreras)

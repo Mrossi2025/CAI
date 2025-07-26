@@ -41,12 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alumnos.cs" />
-    <Compile Include="CarrerasResponse.cs" />
-    <Compile Include="DesbloquearUsuarioRequest.cs" />
-    <Compile Include="Docente.cs" />
-    <Compile Include="LoginRequest.cs" />
-    <Compile Include="LoginResponse.cs" />
+    <Compile Include="ABM_AlumnosClases\Alumnos.cs" />
+    <Compile Include="ABM_AlumnosClases\CarrerasResponse.cs" />
+    <Compile Include="ABM_DocentesClases\AgregarDocenteRequest.cs" />
+    <Compile Include="ABM_DocentesClases\Cursos.cs" />
+    <Compile Include="ABM_DocentesClases\Horarios.cs" />
+    <Compile Include="ABM_DocentesClases\Materias.cs" />
+    <Compile Include="DesbloquearClases\DesbloquearUsuarioRequest.cs" />
+    <Compile Include="ABM_DocentesClases\Docente.cs" />
+    <Compile Include="LoginClases\LoginRequest.cs" />
+    <Compile Include="LoginClases\LoginResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

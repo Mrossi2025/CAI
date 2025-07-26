@@ -25,7 +25,7 @@ namespace Capa_de_Negocios
             }
             //Si pongo entre comillas adelante me reemplaza el mensaje
             //catch (Exception ex) { throw new Exception("Credenciales inválidas", ex);}
-            catch (Exception ex) { throw; }
+            catch (Exception ex) { throw ex; }
         }
 
 

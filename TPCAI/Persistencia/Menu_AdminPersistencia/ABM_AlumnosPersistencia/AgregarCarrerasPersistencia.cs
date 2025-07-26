@@ -31,8 +31,8 @@ namespace Persistencia
             List<CarrerasResponse> lista =
             JsonConvert.DeserializeObject<List<CarrerasResponse>>(json) ?? new List<CarrerasResponse>();
 
-            System.Diagnostics.Debug.WriteLine($"Lista count: {lista.Count}");   // ← NUEVO
-            //Si ves “Lista count: 5” en la ventana Salida(Debug), la lista está bien.
+            //System.Diagnostics.Debug.WriteLine($"Lista count: {lista.Count}");   // ← NUEVO
+            //Si se ve “Lista count: 5” en la ventana Salida(Debug), la lista está bien.
 
 
             // 5) Devolver la lista (puede estar vacía, pero nunca null)
