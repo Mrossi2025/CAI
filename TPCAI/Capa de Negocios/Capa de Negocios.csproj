@@ -41,16 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menu_Admin\ABM_Alumnos\AgregarAlumno.cs" />
-    <Compile Include="Menu_Admin\ABM_Alumnos\CargarCarreras.cs" />
-    <Compile Include="Menu_Admin\ABM_Docentes\ActualizarDocenteNegocio.cs" />
-    <Compile Include="Menu_Admin\ABM_Docentes\AgregarDocente.cs" />
-    <Compile Include="Menu_Admin\ABM_Docentes\EliminarDocenteNegocio.cs" />
-    <Compile Include="Menu_Admin\DesbloquearUsuario\DesbloquearUsuarioNegocio.cs" />
-    <Compile Include="Menu_Admin\ABM_Alumnos\ListaAlumnos.cs" />
-    <Compile Include="Menu_Admin\ABM_Docentes\ListaDocentes.cs" />
-    <Compile Include="Menu_Login\Login\Login.cs" />
-    <Compile Include="Menu_Personal\LiquidarSueldoNegocio.cs" />
+    <Compile Include="AgregarAlumno.cs" />
+    <Compile Include="CargarCarreras.cs" />
+    <Compile Include="ActualizarDocenteNegocio.cs" />
+    <Compile Include="AgregarDocente.cs" />
+    <Compile Include="EliminarDocenteNegocio.cs" />
+    <Compile Include="DesbloquearUsuarioNegocio.cs" />
+    <Compile Include="ListaAlumnos.cs" />
+    <Compile Include="ListaDocentes.cs" />
+    <Compile Include="Login.cs" />
+    <Compile Include="LiquidarSueldoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

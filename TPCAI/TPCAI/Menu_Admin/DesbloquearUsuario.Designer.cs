@@ -37,10 +37,9 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(290, 150);
-            this.btnVolver.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVolver.Location = new System.Drawing.Point(387, 185);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(77, 54);
+            this.btnVolver.Size = new System.Drawing.Size(103, 67);
             this.btnVolver.TabIndex = 0;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
@@ -49,27 +48,24 @@
             // lblIdUsuario
             // 
             this.lblIdUsuario.AutoSize = true;
-            this.lblIdUsuario.Location = new System.Drawing.Point(9, 26);
-            this.lblIdUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblIdUsuario.Location = new System.Drawing.Point(12, 32);
             this.lblIdUsuario.Name = "lblIdUsuario";
-            this.lblIdUsuario.Size = new System.Drawing.Size(177, 13);
+            this.lblIdUsuario.Size = new System.Drawing.Size(224, 16);
             this.lblIdUsuario.TabIndex = 1;
             this.lblIdUsuario.Text = "Ingrese el Id Usuario a desbloquear:";
             // 
             // txtIdUsuario
             // 
-            this.txtIdUsuario.Location = new System.Drawing.Point(189, 21);
-            this.txtIdUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtIdUsuario.Location = new System.Drawing.Point(252, 26);
             this.txtIdUsuario.Name = "txtIdUsuario";
-            this.txtIdUsuario.Size = new System.Drawing.Size(152, 20);
+            this.txtIdUsuario.Size = new System.Drawing.Size(201, 22);
             this.txtIdUsuario.TabIndex = 2;
             // 
             // btnDesbloquear
             // 
-            this.btnDesbloquear.Location = new System.Drawing.Point(146, 60);
-            this.btnDesbloquear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDesbloquear.Location = new System.Drawing.Point(194, 74);
             this.btnDesbloquear.Name = "btnDesbloquear";
-            this.btnDesbloquear.Size = new System.Drawing.Size(112, 42);
+            this.btnDesbloquear.Size = new System.Drawing.Size(150, 52);
             this.btnDesbloquear.TabIndex = 3;
             this.btnDesbloquear.Text = "Desbloquear Usuario";
             this.btnDesbloquear.UseVisualStyleBackColor = true;
@@ -77,10 +73,9 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(262, 60);
-            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLimpiar.Location = new System.Drawing.Point(350, 74);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(77, 42);
+            this.btnLimpiar.Size = new System.Drawing.Size(103, 52);
             this.btnLimpiar.TabIndex = 4;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -88,19 +83,17 @@
             // 
             // DesbloquearUsuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(376, 214);
+            this.ClientSize = new System.Drawing.Size(502, 264);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnDesbloquear);
             this.Controls.Add(this.txtIdUsuario);
             this.Controls.Add(this.lblIdUsuario);
             this.Controls.Add(this.btnVolver);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "DesbloquearUsuario";
             this.Text = "DesbloquearUsuario";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DesbloquearUsuario_FormClosed);
-            this.Load += new System.EventHandler(this.DesbloquearUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

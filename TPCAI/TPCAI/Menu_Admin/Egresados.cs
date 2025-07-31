@@ -7,24 +7,90 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Capa_de_Negocios.ReportesEgresados;
+using Datos.EgresadosReportes;
 
 namespace TPCAI
 {
     public partial class Menu_Egresados : Form
     {
-        public Menu_Egresados()
+
+        MenuAdmin MenuAdmin2 = new MenuAdmin();
+
+
+        public Menu_Egresados(MenuAdmin menuAdmin2)
         {
             InitializeComponent();
+            MenuAdmin2 = menuAdmin2;
         }
 
-        private void grpReportes_Enter(object sender, EventArgs e)
+        private void Menu_Egresados_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            MenuAdmin2.Show();
         }
 
-        private void Menu_Egresados_Load(object sender, EventArgs e)
+        private void btnReporte_Click(object sender, EventArgs e)
         {
+            Reporte reporte = new Reporte();
+            GenerarReporteNegocio grn = new GenerarReporteNegocio();
+            try
+            {
+                reporte = grn.Reportenuevo();
+
+                List<ReporteFila> tabla = new List<ReporteFila>
+{
+                    new ReporteFila
+                    {
+                        Carrera = "Administración",
+                        Recibidos = reporte.RecibidosAdmin,
+                        Cum = reporte.AdminCum,
+                        Magna = reporte.AdminMagna,
+                        Summa = reporte.AdminSumma
+                    },
+                    new ReporteFila
+                    {
+                        Carrera = "Actuario",
+                        Recibidos = reporte.RecibidosActuario,
+                        Cum = reporte.ActuarioCum,
+                        Magna = reporte.ActuarioMagna,
+                        Summa = reporte.ActuarioSumma
+                    },
+                    new ReporteFila
+                    {
+                        Carrera = "Contador",
+                        Recibidos = reporte.RecibidosContador,
+                        Cum = reporte.ContadorCum,
+                        Magna = reporte.ContadorMagna,
+                        Summa = reporte.ContadorSumma
+                     },
+                    new ReporteFila
+                    {
+                        Carrera = "Economía",
+                        Recibidos = reporte.RecibidosEconomia,
+                        Cum = reporte.EconomiaCum,
+                        Magna = reporte.EconomiaMagna,
+                        Summa = reporte.EconomiaSumma
+                    },
+                    new ReporteFila
+                    {
+                        Carrera = "Sistemas",
+                        Recibidos = reporte.RecibidosSistemas,
+                        Cum = reporte.SistemasCum,
+                        Magna = reporte.SistemasMagna,
+                        Summa = reporte.SistemasSumma
+                    }
+
+                };
+
+                dgvReporte.DataSource = tabla;
+                MessageBox.Show("Reporte generado con exito.");
+
+            }
+            catch (Exception ex) {MessageBox.Show(ex.Message); }
+
 
         }
+
+        
     }
 }

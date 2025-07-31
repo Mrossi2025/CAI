@@ -44,16 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Menu_AdminPersistencia\ABM_AlumnosPersistencia\AgregarAlumnoPersistencia.cs" />
-    <Compile Include="Menu_AdminPersistencia\ABM_AlumnosPersistencia\AgregarCarrerasPersistencia.cs" />
-    <Compile Include="Menu_AdminPersistencia\AMB_DocentesPersistencia\ActualizarDocentePersistencia.cs" />
-    <Compile Include="Menu_AdminPersistencia\AMB_DocentesPersistencia\AgregarDocentePersistencia.cs" />
-    <Compile Include="Menu_AdminPersistencia\AMB_DocentesPersistencia\EliminarDocentePersistencia.cs" />
-    <Compile Include="Menu_AdminPersistencia\DesbloquearUsuariosPersistencia\DesbloquearUsuarioPersistencia.cs" />
-    <Compile Include="Menu_Login\LoginPersistencia\LoginPersistencia.cs" />
-    <Compile Include="Menu_AdminPersistencia\AMB_DocentesPersistencia\ObtenerDocentesPersistencia.cs" />
+    <Compile Include="AgregarAlumnoPersistencia.cs" />
+    <Compile Include="AgregarCarrerasPersistencia.cs" />
+    <Compile Include="ActualizarDocentePersistencia.cs" />
+    <Compile Include="AgregarDocentePersistencia.cs" />
+    <Compile Include="EliminarDocentePersistencia.cs" />
+    <Compile Include="DesbloquearUsuarioPersistencia.cs" />
+    <Compile Include="LoginPersistencia.cs" />
+    <Compile Include="ObtenerDocentesPersistencia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Menu_AdminPersistencia\ABM_AlumnosPersistencia\RepositorioAlumno.cs" />
+    <Compile Include="RepositorioAlumno.cs" />
     <Compile Include="utils\WebHelper.cs" />
   </ItemGroup>
   <ItemGroup>

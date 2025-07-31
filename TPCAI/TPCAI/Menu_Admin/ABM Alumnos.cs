@@ -129,7 +129,7 @@ namespace TPCAI
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            List<int> carrerasSeleccionadas = new List<int>();
+            List<long> carrerasSeleccionadas = new List<long>();
 
             string nombre = txtNombre.Text;
             string apellido = txtApellido.Text;
@@ -173,7 +173,7 @@ namespace TPCAI
                         break;
 
                     case "Sistemas":
-                        carrerasSeleccionadas.Add(5);    // id 5
+                        carrerasSeleccionadas.Add(4);    // id 5
                         break;
 
                     default:

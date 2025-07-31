@@ -41,17 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABM_AlumnosClases\Alumnos.cs" />
-    <Compile Include="ABM_AlumnosClases\CarrerasResponse.cs" />
-    <Compile Include="ABM_DocentesClases\AgregarDocenteRequest.cs" />
-    <Compile Include="ABM_DocentesClases\Cursos.cs" />
-    <Compile Include="ABM_DocentesClases\Horarios.cs" />
-    <Compile Include="ABM_DocentesClases\Materias.cs" />
-    <Compile Include="DesbloquearClases\DesbloquearUsuarioRequest.cs" />
-    <Compile Include="ABM_DocentesClases\Docente.cs" />
-    <Compile Include="LoginClases\LoginRequest.cs" />
-    <Compile Include="LoginClases\LoginResponse.cs" />
-    <Compile Include="Menu_PersonalClases\LiquidacionSueldo.cs" />
+    <Compile Include="Alumnos.cs" />
+    <Compile Include="CarrerasResponse.cs" />
+    <Compile Include="AgregarDocenteRequest.cs" />
+    <Compile Include="Cursos.cs" />
+    <Compile Include="Horarios.cs" />
+    <Compile Include="Materias.cs" />
+    <Compile Include="DesbloquearUsuarioRequest.cs" />
+    <Compile Include="Docente.cs" />
+    <Compile Include="LoginRequest.cs" />
+    <Compile Include="LoginResponse.cs" />
+    <Compile Include="LiquidacionSueldo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
