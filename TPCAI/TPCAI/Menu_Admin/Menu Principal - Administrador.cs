@@ -68,7 +68,7 @@ namespace TPCAI
 
         private void btnEgresados_Click(object sender, EventArgs e)
         {
-            Menu_Egresados menuEgresados = new Menu_Egresados();    
+            Menu_Egresados menuEgresados = new Menu_Egresados(this);    
             menuEgresados.Show();
             this.Hide();
         }
