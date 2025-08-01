@@ -11,7 +11,7 @@ namespace Datos.Menu_Admin.ABM_DocentesClases
         public long id {  get; set; }
         public string nombre { get; set; }
         public int horasSemanales {  get; set; }
-        public Materias correlativas { get; set; }
+        public List<Materias> Correlativas { get; set; }
 
 
 
