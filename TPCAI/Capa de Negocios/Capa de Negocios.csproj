@@ -50,12 +50,8 @@
     <Compile Include="ListaAlumnos.cs" />
     <Compile Include="ListaDocentes.cs" />
     <Compile Include="Login.cs" />
-<<<<<<< Updated upstream
     <Compile Include="LiquidarSueldoNegocio.cs" />
-=======
->>>>>>> Stashed changes
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GenerarReporteNegocio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Datos\Datos.csproj">

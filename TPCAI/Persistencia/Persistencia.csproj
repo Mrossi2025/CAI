@@ -50,15 +50,8 @@
     <Compile Include="AgregarDocentePersistencia.cs" />
     <Compile Include="EliminarDocentePersistencia.cs" />
     <Compile Include="DesbloquearUsuarioPersistencia.cs" />
-<<<<<<< Updated upstream
     <Compile Include="LoginPersistencia.cs" />
     <Compile Include="ObtenerDocentesPersistencia.cs" />
-=======
-    <Compile Include="GenerarReportePersistencia.cs" />
-    <Compile Include="LoginPersistencia.cs" />
-    <Compile Include="ObtenerDocentesPersistencia.cs" />
-    <Compile Include="CargarMateriasCarreraPersistencia.cs" />
->>>>>>> Stashed changes
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositorioAlumno.cs" />
     <Compile Include="utils\WebHelper.cs" />

@@ -41,10 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< Updated upstream
-=======
-    <Compile Include="AgregarCarrerasPersistencia.cs" />
->>>>>>> Stashed changes
     <Compile Include="Alumnos.cs" />
     <Compile Include="CarrerasResponse.cs" />
     <Compile Include="AgregarDocenteRequest.cs" />
@@ -53,17 +49,9 @@
     <Compile Include="Materias.cs" />
     <Compile Include="DesbloquearUsuarioRequest.cs" />
     <Compile Include="Docente.cs" />
-<<<<<<< Updated upstream
     <Compile Include="LoginRequest.cs" />
     <Compile Include="LoginResponse.cs" />
     <Compile Include="LiquidacionSueldo.cs" />
-=======
-    <Compile Include="MateriaInscriptaDTO.cs" />
-    <Compile Include="Reporte.cs" />
-    <Compile Include="ReporteFila.cs" />
-    <Compile Include="LoginRequest.cs" />
-    <Compile Include="LoginResponse.cs" />
->>>>>>> Stashed changes
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
