@@ -48,8 +48,10 @@
     <Compile Include="AgregarCarrerasPersistencia.cs" />
     <Compile Include="ActualizarDocentePersistencia.cs" />
     <Compile Include="AgregarDocentePersistencia.cs" />
+    <Compile Include="CargarMateriasCarreraPersistencia.cs" />
     <Compile Include="EliminarDocentePersistencia.cs" />
     <Compile Include="DesbloquearUsuarioPersistencia.cs" />
+    <Compile Include="GenerarReportePersistencia.cs" />
     <Compile Include="LoginPersistencia.cs" />
     <Compile Include="ObtenerDocentesPersistencia.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
