@@ -31,6 +31,7 @@
             this.grpReportes = new System.Windows.Forms.GroupBox();
             this.dgvReporte = new System.Windows.Forms.DataGridView();
             this.btnReporte = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.grpReportes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReporte)).BeginInit();
             this.SuspendLayout();
@@ -38,6 +39,7 @@
             // grpReportes
             // 
             this.grpReportes.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.grpReportes.Controls.Add(this.btnVolver);
             this.grpReportes.Controls.Add(this.dgvReporte);
             this.grpReportes.Controls.Add(this.btnReporte);
             this.grpReportes.Location = new System.Drawing.Point(12, 25);
@@ -71,6 +73,16 @@
             this.btnReporte.UseVisualStyleBackColor = true;
             this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
             // 
+            // btnVolver
+            // 
+            this.btnVolver.Location = new System.Drawing.Point(618, 356);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(107, 53);
+            this.btnVolver.TabIndex = 2;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
             // Menu_Egresados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -91,5 +103,6 @@
         private System.Windows.Forms.GroupBox grpReportes;
         private System.Windows.Forms.Button btnReporte;
         private System.Windows.Forms.DataGridView dgvReporte;
+        private System.Windows.Forms.Button btnVolver;
     }
 }

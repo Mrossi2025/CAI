@@ -145,6 +145,7 @@
             this.clbCarreras.Name = "clbCarreras";
             this.clbCarreras.Size = new System.Drawing.Size(219, 106);
             this.clbCarreras.TabIndex = 8;
+            this.clbCarreras.Enter += new System.EventHandler(this.clbCarreras_Enter);
             // 
             // btnModificar
             // 

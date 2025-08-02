@@ -86,6 +86,7 @@ namespace TPCAI
             Docente Busqueda = new Docente();
             float IdDocente;
 
+            
             if (!float.TryParse(txtIdDocente.Text, out IdDocente))
             { MessageBox.Show("El Id debe ser númerico."); }
             else
@@ -109,7 +110,9 @@ namespace TPCAI
 
                     txtNombre.Text = Busqueda.nombre;
                     txtApellido.Text = Busqueda.apellido;
-                    txtCUIT.Text = Busqueda.cuit;
+                    string[] partes = Busqueda.cuit.Split('-'); //Separo el dato del cuit en 3 
+                    txtCUIT.Text = partes[0];
+                    txtCUIT2.Text = partes[2];
                     txtDni.Text = Busqueda.dni;
                     //  txtAntiguedad.Text = Busqueda.antiguedad.ToString(); (No es necesaria esta info aca)
                     cmbCargo.SelectedItem = Busqueda.tipo;
@@ -147,6 +150,11 @@ namespace TPCAI
                 txtDniAgregarDocente.BackColor = Color.LightBlue;
                 hayCamposIncompletos = true;
             }
+            if (string.IsNullOrWhiteSpace(txtCuitAgregarDocente2.Text))
+            {
+                txtCuitAgregarDocente2.BackColor = Color.LightBlue;
+                hayCamposIncompletos = true;
+            }
             if (cmbCargoDocenteNuevo.SelectedItem == null)
             {
                 cmbCargoDocenteNuevo.BackColor = Color.LightBlue;
@@ -166,15 +174,30 @@ namespace TPCAI
 
 
 
-            string nombre = txtNombreAgregardocente.Text;
-            string apellido = txtApellidoAgregarDocente.Text;
-            string cuit = txtCuitAgregarDocente.Text;
-            string dni = txtDniAgregarDocente.Text;
-            string tipo = cmbCargoDocenteNuevo.SelectedItem.ToString();
-            long curso;
+            if (!int.TryParse(txtCuitAgregarDocente.Text, out int CuitParte1) ||
+                !int.TryParse(txtCuitAgregarDocente2.Text, out int CuitParte2) || 
+                !int.TryParse(txtDniAgregarDocente.Text, out int dniNumerico))
+            { MessageBox.Show("El CUIT ingresdo es invalido, por favor verifique que sea numerico"); return; }
 
-            if (!long.TryParse(txtCursoAgregarDocente.Text, out curso))
+            string cuitConcatenado = txtCuitAgregarDocente.Text + "-" + txtDniAgregarDocente.Text + "-" + txtCuitAgregarDocente2.Text;
+
+            if (cuitConcatenado.Length > 13 || cuitConcatenado.Length < 12)
+            { MessageBox.Show("El CUIT ingresdo es invalido, por favor verifique la longitud"); return; }
+
+            if (txtNombreAgregardocente.Text.Any(char.IsDigit))
+            {Console.WriteLine("El Nombre no puede contener números."); return;}
+            if (txtApellidoAgregarDocente.Text.Any(char.IsDigit))
+            { Console.WriteLine("El Apellido no puede contener números."); return; }
+            if (!long.TryParse(txtCursoAgregarDocente.Text, out long curso))
             { MessageBox.Show("Debe ingresar un numero de curso válido"); return; }
+
+
+            string apellido = txtApellidoAgregarDocente.Text;
+            string nombre = txtNombreAgregardocente.Text;
+            string tipo = cmbCargoDocenteNuevo.SelectedItem.ToString();
+            string dni = txtDniAgregarDocente.Text;
+            
+
 
 
 
@@ -184,11 +207,7 @@ namespace TPCAI
                 if (d.dni == dni)
                 { MessageBox.Show("El docente/ayudante que desea ingresar, ya esta registrado en el sistema."); return; }
 
-
-
             }
-
-
 
 
             AgregarDocente a = new AgregarDocente();
@@ -196,7 +215,7 @@ namespace TPCAI
             lista.Add(curso);
 
 
-            string Respuesta = a.CargarDocente(nombre, apellido, cuit, dni, tipo, lista);
+            string Respuesta = a.CargarDocente(nombre, apellido, cuitConcatenado, dni, tipo, lista);
 
             if (Respuesta == "OK")
             {
@@ -212,6 +231,7 @@ namespace TPCAI
             txtNombre.Clear();
             txtApellido.Clear();
             txtCUIT.Clear();
+            txtCUIT2.Clear();
             txtDni.Clear();
             //txtAntiguedad.Clear();
             cmbCargo.SelectedIndex = -1;
@@ -225,6 +245,7 @@ namespace TPCAI
             txtApellidoAgregarDocente.Clear();
             txtCuitAgregarDocente.Clear();
             txtDniAgregarDocente.Clear();
+            txtCuitAgregarDocente2.Clear();
             cmbCargoDocenteNuevo.SelectedIndex = -1;
             txtCursoAgregarDocente.Clear();
         }
@@ -250,6 +271,8 @@ namespace TPCAI
         {
             txtDniAgregarDocente.BackColor = Color.White;
         }
+
+       
 
         private void cmbCargoDocenteNuevo_Enter(object sender, EventArgs e)
         {
@@ -290,6 +313,12 @@ namespace TPCAI
                 hayIncompletos = true;
             }
 
+            if (string.IsNullOrWhiteSpace(txtCUIT2.Text))
+            {
+                txtCUIT2.BackColor = Color.LightBlue;
+                hayIncompletos = true;
+            }
+
             if (string.IsNullOrWhiteSpace(txtDni.Text))
             {
                 txtDni.BackColor = Color.LightBlue;
@@ -315,26 +344,37 @@ namespace TPCAI
                 }
 
 
-            long id;
+                if (!long.TryParse(txtCurso.Text, out long curso))
+                { MessageBox.Show("Debe ingresar un numero de curso válido"); return; } //Valido que sea numerico el curso
+                if (!long.TryParse(txtIdDocente.Text, out long id))
+                { MessageBox.Show("Debe ingresar un numero de curso válido"); return; } //Valido que sea numerico el id
+                if (!int.TryParse(txtCUIT.Text, out int CuitParte1) ||
+                    !int.TryParse(txtCUIT2.Text, out int CuitParte2) ||
+                    !int.TryParse(txtDni.Text, out int dniNumerico))
+                { MessageBox.Show("El CUIT ingresdo es invalido, por favor verifique que sea numerico"); return; }
+
+                string cuitConcatenado = txtCUIT.Text + "-" + txtDni.Text + "-" + txtCUIT2.Text;
+
+                if (cuitConcatenado.Length > 13 || cuitConcatenado.Length < 12)
+                { MessageBox.Show("El CUIT ingresdo es invalido, por favor verifique la longitud"); return; }
+                if (txtNombreAgregardocente.Text.Any(char.IsDigit))
+                { Console.WriteLine("El Nombre no puede contener números."); return; }
+                if (txtApellidoAgregarDocente.Text.Any(char.IsDigit))
+                { Console.WriteLine("El Apellido no puede contener números."); return; }
+
                 string nombre = txtNombre.Text;
                 string apellido = txtApellido.Text;
-                string cuit = txtCUIT.Text;
                 string dni = txtDni.Text;
                 string tipo = cmbCargo.SelectedItem.ToString();
-                long curso;
-
-                if (!long.TryParse(txtCurso.Text, out curso))
-                { MessageBox.Show("Debe ingresar un numero de curso válido"); return; } //Valido que sea numerico el id
-                if (!long.TryParse(txtIdDocente.Text, out id))
-                { MessageBox.Show("Debe ingresar un numero de curso válido"); return; } //Valido que sea numerico el id
+                
 
 
-                ActualizarDocenteNegocio a = new ActualizarDocenteNegocio();
-                List<long> lista = new List<long>();
-                lista.Add(curso);
+            ActualizarDocenteNegocio a = new ActualizarDocenteNegocio();
+                List<long> listaCursos = new List<long>();
+                listaCursos.Add(curso);
 
 
-                string Respuesta = a.ActualizarDocente(nombre, apellido, cuit, dni, tipo, lista, id);
+                string Respuesta = a.ActualizarDocente(nombre, apellido, cuitConcatenado, dni, tipo, listaCursos, id);
 
                 if (Respuesta == "OK")
                 {
@@ -369,6 +409,8 @@ namespace TPCAI
         {
             txtCUIT.BackColor = Color.White;
         }
+        
+
 
         private void txtApellido_Enter(object sender, EventArgs e)
         {
@@ -425,6 +467,17 @@ namespace TPCAI
         private void btnEliminar_Enter(object sender, EventArgs e)
         {
             txtIdDocente.BackColor = Color.White;
+        }
+
+        private void txtCuitAgregarDocente2_Enter(object sender, EventArgs e)
+        {
+            txtCuitAgregarDocente2.BackColor = Color.White;
+
+        }
+
+        private void txtCUIT2_Enter(object sender, EventArgs e)
+        {
+            txtCUIT2.BackColor = Color.White;
         }
     }
 }

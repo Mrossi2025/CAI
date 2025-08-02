@@ -320,7 +320,7 @@ namespace TPCAI
                 hayIncompletos = true;
             }
 
-            if (clbCarreras.SelectedItem == null)
+            if (clbCarreras.CheckedItems.Count == 0)
             {
                 clbCarreras.BackColor = Color.LightBlue;
                 hayIncompletos = true;
@@ -347,37 +347,14 @@ namespace TPCAI
             string dnitexto = txtDni.Text;
             List<long> carrerasSeleccionadas = new List<long>();
 
-            foreach (var item in clbCarreras.CheckedItems) //Por cada seleccion en la checked list box...
 
+            //Por cada Item checked, como esa lista son los objetos carreraResponse cargados, carrera lo transformo en Carrerarepsonde item, que es cada seleccion.
+            foreach (var item in clbCarreras.CheckedItems)
             {
-                switch (item)                 // ← compara el texto que ve el usuario
-                {
-                    case "Administración":
-                        carrerasSeleccionadas.Add(1);    // id 1
-                        break;
-
-                    case "Actuario":
-                        carrerasSeleccionadas.Add(2);    // id 2
-                        break;
-
-                    case "Contador":
-                        carrerasSeleccionadas.Add(3);    // id 3
-                        break;
-
-                    case "Economía":
-                        carrerasSeleccionadas.Add(4);    // id 4
-                        break;
-
-                    case "Sistemas":
-                        carrerasSeleccionadas.Add(4);    // id 5
-                        break;
-
-                    default:
-                        MessageBox.Show($"Carrera no reconocida: {item}");
-                        break;
-                }
+                var carrera = (CarrerasResponse)item; //casteo o transformo
+                carrerasSeleccionadas.Add(carrera.id); //Agrego el ide a la lista de carrerasSeleccionadas
             }
-            
+
 
 
             ActualizarAlumnoNegocio a = new ActualizarAlumnoNegocio();
@@ -391,6 +368,11 @@ namespace TPCAI
             }
             else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }
 
+        }
+
+        private void clbCarreras_Enter(object sender, EventArgs e)
+        {
+            clbCarreras.BackColor = Color.White;
         }
     }
 }
