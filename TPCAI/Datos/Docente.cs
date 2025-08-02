@@ -16,6 +16,8 @@ namespace Capa_de_Negocios
         public int antiguedad { get; set; }
         public string tipo { get; set; }
 
+        public string DocenteCompleto => $"{apellido}, {nombre}";
+
     }
 
 }
