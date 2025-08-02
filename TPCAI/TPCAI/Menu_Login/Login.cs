@@ -46,8 +46,8 @@ namespace TPCAI
                             break;
 
                         case "PERSONAL":
-                         //new MenuPersonal(resp.id).Show(); 
-                        break;
+                            new Liquidaciones().Show();
+                            break;
 
                         case "ALUMNO":
                             new Menu_principal___Alumno(resp.id).Show();
