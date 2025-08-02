@@ -14,12 +14,6 @@ namespace Capa_de_Negocios.Menu_Personal
 
         public decimal CalcularSueldo(Docente docente, int horas)
         {
-            if (docente == null)
-                throw new Exception("El docente no existe.");
-
-            if (horas <= 0)
-                throw new Exception("Las horas deben ser mayores a cero.");
-
             // Validamos el tipo
             string tipo = docente.tipo.ToUpper();
             decimal coefCargo;
@@ -32,9 +26,9 @@ namespace Capa_de_Negocios.Menu_Personal
             else
                 throw new Exception("Al tipo de docente no le corresponde liquidación.");
 
-            // Calculamos coeficiente por antigüedad REVISAR RESPUESTA PROFESOR!!!!!!!!!!!!!!
+            // Calculamos coeficiente por antigüedad 
             int tramos = docente.antiguedad / 5;  // cada 5 años
-            decimal coefAntiguedad = 1 + (0.1m * tramos);
+            decimal coefAntiguedad = 1.1m * tramos;
 
             // Fórmula
             decimal sueldo = horas * PRECIO_HORA * coefCargo * coefAntiguedad;

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_de_Negocios;
+using Capa_de_Negocios.Menu_Personal;
 using Datos.Menu_Admin.ABM_DocentesClases;
 
 namespace TPCAI
@@ -32,6 +33,7 @@ namespace TPCAI
         private void Liquidaciones_Load(object sender, EventArgs e)
         {
             CargarDocentesValidos();
+            cmbDocentes.SelectedIndexChanged += cmbDocentes_SelectedIndexChanged; //dispara automáticamente el sistema
         }
 
         private void CargarDocentesValidos()
@@ -49,10 +51,10 @@ namespace TPCAI
                     .Where(d => d.tipo.ToUpper() == "PROFESOR" || d.tipo.ToUpper() == "AYUDANTE")
                     .ToList();
 
-                // 4) Cargar el ComboBox con "Apellido, Nombre"
+                // 4) Cargar el ComboBox 
                 cmbDocentes.DataSource = docentesValidos;
-                cmbDocentes.DisplayMember = "apellido";  // Podés usar $"{apellido}, {nombre}" pero ahora no tenemos nombreCompleto
-                cmbDocentes.ValueMember = "id";          // ID del docente
+                cmbDocentes.DisplayMember = "DocenteCompleto";
+                cmbDocentes.ValueMember = "id"; // ID del docente
             }
             catch (Exception ex)
             {
@@ -60,5 +62,60 @@ namespace TPCAI
             }
         }
 
+        //Completa los datos según profesor elegido
+        private void cmbDocentes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDocentes.SelectedItem is Docente docente)
+            {
+                txtNombre.Text = docente.nombre;
+                txtApellido.Text = docente.apellido;
+                txtDNI.Text = docente.dni;
+                txtAntiguedad.Text = docente.antiguedad.ToString();
+
+                if (docente.tipo.ToUpper() == "PROFESOR")
+                    rbtnProfesor.Checked = true;
+                else if (docente.tipo.ToUpper() == "AYUDANTE")
+                    rbtnAyudante.Checked = true;
+            }
+        }
+
+        private void btnLiquidar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1) Validar selección de docente
+                if (cmbDocentes.SelectedItem == null)
+                {
+                    MessageBox.Show("Por favor, seleccione un docente.");
+                    return;
+                }
+
+                // 2) Validar horas ingresadas
+                if (!int.TryParse(txtHoras.Text, out int horas) || horas <= 0)
+                {
+                    MessageBox.Show("Ingrese una cantidad válida de horas.");
+                    return;
+                }
+
+                // 3) Obtener docente seleccionado
+                Docente docenteSeleccionado = (Docente)cmbDocentes.SelectedItem;
+
+                // 4) Llamar a capa de negocio para calcular sueldo
+                var negocio = new LiquidarSueldoNegocio();
+                decimal sueldo = negocio.CalcularSueldo(docenteSeleccionado, horas);
+
+                // 5) Mostrar resultado
+                MessageBox.Show($"Sueldo a liquidar: ${sueldo:N2}", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al calcular sueldo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
