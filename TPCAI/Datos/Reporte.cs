@@ -28,6 +28,11 @@ namespace Datos.EgresadosReportes
         public int SistemasCum { get; set; }
         public int SistemasMagna { get; set; }
         public int SistemasSumma { get; set; }
+        public int AdminSinTitulo {  get; set; }
+        public int ActuarioSinTitulo { get; set; }
+        public int ContadorSinTitulo { get; set; }
+        public int EconomiaSinTitulo { get; set; }
+        public int SistemasSinTitulo { get; set; }
 
 
     }

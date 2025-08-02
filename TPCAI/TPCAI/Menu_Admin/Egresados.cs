@@ -45,7 +45,8 @@ namespace TPCAI
                         Recibidos = reporte.RecibidosAdmin,
                         Cum = reporte.AdminCum,
                         Magna = reporte.AdminMagna,
-                        Summa = reporte.AdminSumma
+                        Summa = reporte.AdminSumma,
+                        SinTituloHonorifico = reporte.AdminSinTitulo
                     },
                     new ReporteFila
                     {
@@ -53,7 +54,8 @@ namespace TPCAI
                         Recibidos = reporte.RecibidosActuario,
                         Cum = reporte.ActuarioCum,
                         Magna = reporte.ActuarioMagna,
-                        Summa = reporte.ActuarioSumma
+                        Summa = reporte.ActuarioSumma,
+                        SinTituloHonorifico = reporte.ActuarioSinTitulo
                     },
                     new ReporteFila
                     {
@@ -61,7 +63,8 @@ namespace TPCAI
                         Recibidos = reporte.RecibidosContador,
                         Cum = reporte.ContadorCum,
                         Magna = reporte.ContadorMagna,
-                        Summa = reporte.ContadorSumma
+                        Summa = reporte.ContadorSumma,
+                        SinTituloHonorifico = reporte.ContadorSinTitulo
                      },
                     new ReporteFila
                     {
@@ -69,7 +72,8 @@ namespace TPCAI
                         Recibidos = reporte.RecibidosEconomia,
                         Cum = reporte.EconomiaCum,
                         Magna = reporte.EconomiaMagna,
-                        Summa = reporte.EconomiaSumma
+                        Summa = reporte.EconomiaSumma,
+                        SinTituloHonorifico = reporte.EconomiaSinTitulo
                     },
                     new ReporteFila
                     {
@@ -77,8 +81,10 @@ namespace TPCAI
                         Recibidos = reporte.RecibidosSistemas,
                         Cum = reporte.SistemasCum,
                         Magna = reporte.SistemasMagna,
-                        Summa = reporte.SistemasSumma
+                        Summa = reporte.SistemasSumma,
+                        SinTituloHonorifico = reporte.SistemasSinTitulo
                     }
+
 
                 };
 

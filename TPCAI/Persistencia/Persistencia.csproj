@@ -44,11 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActualizarAlumnoPersistencia.cs" />
     <Compile Include="AgregarAlumnoPersistencia.cs" />
     <Compile Include="AgregarCarrerasPersistencia.cs" />
     <Compile Include="ActualizarDocentePersistencia.cs" />
     <Compile Include="AgregarDocentePersistencia.cs" />
     <Compile Include="CargarMateriasCarreraPersistencia.cs" />
+    <Compile Include="EliminarAlumnoPersistencia.cs" />
     <Compile Include="EliminarDocentePersistencia.cs" />
     <Compile Include="DesbloquearUsuarioPersistencia.cs" />
     <Compile Include="GenerarReportePersistencia.cs" />

@@ -338,9 +338,9 @@ namespace TPCAI
 
                 if (Respuesta == "OK")
                 {
-                    MessageBox.Show("Docente Agregado con exito. Actualice la lista para buscarlo.", Respuesta);
+                    MessageBox.Show("Docente Actualizado con exito. Actualice la lista para buscarlo.", Respuesta);
                 }
-                else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }
+                else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }   
 
 
 

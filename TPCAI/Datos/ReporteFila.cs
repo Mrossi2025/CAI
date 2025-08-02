@@ -14,5 +14,7 @@ namespace Datos.EgresadosReportes
         public int Magna { get; set; }
         public int Summa { get; set; }
 
+        public int SinTituloHonorifico { get; set; }    
+
     }
 }

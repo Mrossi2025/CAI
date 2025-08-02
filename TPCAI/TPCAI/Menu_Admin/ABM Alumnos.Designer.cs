@@ -29,24 +29,26 @@
         private void InitializeComponent()
         {
             this.grpDatosAlumno = new System.Windows.Forms.GroupBox();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.lblDni = new System.Windows.Forms.Label();
+            this.txtDni = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.grpCarreras = new System.Windows.Forms.GroupBox();
             this.clbCarreras = new System.Windows.Forms.CheckedListBox();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.txtDni = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
-            this.lblDni = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.grpBuscarAlumno = new System.Windows.Forms.GroupBox();
+            this.lblidAlumno = new System.Windows.Forms.Label();
+            this.txtidAlumno = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
             this.btnCargarAlumnos = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnLimpiar = new System.Windows.Forms.Button();
             this.grpDatosAlumno.SuspendLayout();
             this.grpCarreras.SuspendLayout();
             this.grpBuscarAlumno.SuspendLayout();
@@ -56,6 +58,8 @@
             // 
             this.grpDatosAlumno.Controls.Add(this.btnLimpiar);
             this.grpDatosAlumno.Controls.Add(this.btnEliminar);
+            this.grpDatosAlumno.Controls.Add(this.lblDni);
+            this.grpDatosAlumno.Controls.Add(this.txtDni);
             this.grpDatosAlumno.Controls.Add(this.btnAgregar);
             this.grpDatosAlumno.Controls.Add(this.grpCarreras);
             this.grpDatosAlumno.Controls.Add(this.btnModificar);
@@ -70,18 +74,46 @@
             this.grpDatosAlumno.TabStop = false;
             this.grpDatosAlumno.Text = "Datos Alumno";
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(93, 379);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(122, 26);
+            this.btnLimpiar.TabIndex = 13;
+            this.btnLimpiar.Text = "Limpiar Datos";
+            this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(108, 293);
+            this.btnEliminar.Location = new System.Drawing.Point(108, 331);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(96, 31);
             this.btnEliminar.TabIndex = 11;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // lblDni
+            // 
+            this.lblDni.AutoSize = true;
+            this.lblDni.Location = new System.Drawing.Point(6, 115);
+            this.lblDni.Name = "lblDni";
+            this.lblDni.Size = new System.Drawing.Size(30, 16);
+            this.lblDni.TabIndex = 3;
+            this.lblDni.Text = "DNI";
+            // 
+            // txtDni
+            // 
+            this.txtDni.Location = new System.Drawing.Point(9, 134);
+            this.txtDni.Name = "txtDni";
+            this.txtDni.Size = new System.Drawing.Size(221, 22);
+            this.txtDni.TabIndex = 5;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(6, 293);
+            this.btnAgregar.Location = new System.Drawing.Point(6, 331);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(96, 31);
             this.btnAgregar.TabIndex = 10;
@@ -92,7 +124,7 @@
             // grpCarreras
             // 
             this.grpCarreras.Controls.Add(this.clbCarreras);
-            this.grpCarreras.Location = new System.Drawing.Point(6, 124);
+            this.grpCarreras.Location = new System.Drawing.Point(6, 162);
             this.grpCarreras.Name = "grpCarreras";
             this.grpCarreras.Size = new System.Drawing.Size(244, 149);
             this.grpCarreras.TabIndex = 9;
@@ -116,19 +148,13 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(210, 293);
+            this.btnModificar.Location = new System.Drawing.Point(210, 331);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(96, 31);
             this.btnModificar.TabIndex = 12;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
-            // 
-            // txtDni
-            // 
-            this.txtDni.Location = new System.Drawing.Point(6, 40);
-            this.txtDni.Name = "txtDni";
-            this.txtDni.Size = new System.Drawing.Size(221, 22);
-            this.txtDni.TabIndex = 5;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // txtApellido
             // 
@@ -136,15 +162,6 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(221, 22);
             this.txtApellido.TabIndex = 4;
-            // 
-            // lblDni
-            // 
-            this.lblDni.AutoSize = true;
-            this.lblDni.Location = new System.Drawing.Point(3, 21);
-            this.lblDni.Name = "lblDni";
-            this.lblDni.Size = new System.Drawing.Size(30, 16);
-            this.lblDni.TabIndex = 3;
-            this.lblDni.Text = "DNI";
             // 
             // lblApellido
             // 
@@ -173,16 +190,32 @@
             // 
             // grpBuscarAlumno
             // 
+            this.grpBuscarAlumno.Controls.Add(this.lblidAlumno);
+            this.grpBuscarAlumno.Controls.Add(this.txtidAlumno);
             this.grpBuscarAlumno.Controls.Add(this.btnBuscar);
             this.grpBuscarAlumno.Controls.Add(this.label4);
-            this.grpBuscarAlumno.Controls.Add(this.txtDni);
-            this.grpBuscarAlumno.Controls.Add(this.lblDni);
             this.grpBuscarAlumno.Location = new System.Drawing.Point(408, 23);
             this.grpBuscarAlumno.Name = "grpBuscarAlumno";
             this.grpBuscarAlumno.Size = new System.Drawing.Size(270, 125);
             this.grpBuscarAlumno.TabIndex = 1;
             this.grpBuscarAlumno.TabStop = false;
             this.grpBuscarAlumno.Text = "Buscar Alumno";
+            // 
+            // lblidAlumno
+            // 
+            this.lblidAlumno.AutoSize = true;
+            this.lblidAlumno.Location = new System.Drawing.Point(6, 21);
+            this.lblidAlumno.Name = "lblidAlumno";
+            this.lblidAlumno.Size = new System.Drawing.Size(63, 16);
+            this.lblidAlumno.TabIndex = 14;
+            this.lblidAlumno.Text = "IdAlumno";
+            // 
+            // txtidAlumno
+            // 
+            this.txtidAlumno.Location = new System.Drawing.Point(9, 40);
+            this.txtidAlumno.Name = "txtidAlumno";
+            this.txtidAlumno.Size = new System.Drawing.Size(221, 22);
+            this.txtidAlumno.TabIndex = 15;
             // 
             // btnBuscar
             // 
@@ -231,17 +264,6 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Presione para cargar la lista de alumnos en el sistema.";
             // 
-            // btnLimpiar
-            // 
-            this.btnLimpiar.Location = new System.Drawing.Point(93, 341);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(122, 26);
-            this.btnLimpiar.TabIndex = 13;
-            this.btnLimpiar.Text = "Limpiar Datos";
-            this.btnLimpiar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
-            // 
             // MenuAdmin1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -287,5 +309,7 @@
         private System.Windows.Forms.Button btnCargarAlumnos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Label lblidAlumno;
+        private System.Windows.Forms.TextBox txtidAlumno;
     }
 }

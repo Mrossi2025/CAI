@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarAlumno.cs" />
+    <Compile Include="ActualizarAlumnoNegocio.cs" />
+    <Compile Include="AgregarAlumnoNegocio.cs" />
     <Compile Include="CargarCarreras.cs" />
     <Compile Include="ActualizarDocenteNegocio.cs" />
     <Compile Include="AgregarDocente.cs" />
+    <Compile Include="EliminarAlumnoNegocio.cs" />
     <Compile Include="EliminarDocenteNegocio.cs" />
     <Compile Include="DesbloquearUsuarioNegocio.cs" />
     <Compile Include="GenerarReporteNegocio.cs" />

@@ -8,9 +8,9 @@ using Persistencia;
 
 namespace Capa_de_Negocios
 {
-    public class AgregarAlumno
+    public class AgregarAlumnoNegocio
     {
-        public string AgregarAlumnoNegocio(Alumnos alumnoNuevo)
+        public string AgregarAlumno(Alumnos alumnoNuevo)
         {
             AgregarAlumnoPersistencia respuesta = new AgregarAlumnoPersistencia();//Instanciamos a AgregarAlumnoPersistencia
             string resultado = respuesta.AgregarAlumno(alumnoNuevo);   // El resultado se almacena, puede ser "OK" o "Error …"
