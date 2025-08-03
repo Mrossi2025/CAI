@@ -7,6 +7,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using TPCAI.Menu_Personal;
 using System.Windows.Forms;
 using Capa_de_Negocios;
 using Datos;
@@ -46,7 +47,7 @@ namespace TPCAI
                             break;
 
                         case "PERSONAL":
-                            new Liquidaciones().Show();
+                            new MenuPersonal(resp.id).Show();
                             break;
 
                         case "ALUMNO":

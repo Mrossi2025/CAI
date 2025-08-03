@@ -106,6 +106,12 @@
     <Compile Include="Menu_Admin\Menu Principal - Administrador.Designer.cs">
       <DependentUpon>Menu Principal - Administrador.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menu_Personal\MenuPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_Personal\MenuPersonal.Designer.cs">
+      <DependentUpon>MenuPersonal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Menu_Admin\ABM Alumnos.resx">
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu_Admin\Menu Principal - Administrador.resx">
       <DependentUpon>Menu Principal - Administrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu_Personal\MenuPersonal.resx">
+      <DependentUpon>MenuPersonal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
