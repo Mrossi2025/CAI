@@ -25,10 +25,9 @@ namespace Persistencia.Menu_AdminPersistencia.AMB_DocentesPersistencia
 
             // Manejo de error o éxito
             if (!resp.IsSuccessStatusCode)
-            {
-                string err = resp.Content.ReadAsStringAsync().Result;
-                return err;
-            }
+
+            { return $"[{(int)resp.StatusCode}] {resp.ReasonPhrase}"; }
+
             else
             {
                 return "OK";

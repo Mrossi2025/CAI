@@ -165,61 +165,30 @@ namespace TPCAI
             }
             if (!long.TryParse(txtidAlumno.Text, out long id))
             { MessageBox.Show("El Id debe ser númerico"); return; }
+            if (txtDni.Text.Length < 7 || txtDni.Text.Length > 8)
+            {MessageBox.Show("El DNI debe tener 7 u 8 dígitos.");return;}
             if (!int.TryParse(txtDni.Text, out int dni))
             { MessageBox.Show("El Dni debe ser númerico"); return; }
-            if (txtDni.Text.Length > 8)
-            {MessageBox.Show("El DNI no puede tener más de 8 caracteres."); return; }
-            if (txtDni.Text.Length < 7)
-            {MessageBox.Show("El DNI debe tener al menos 7 caracteres."); return; }
+           
 
 
-            foreach (var item in clbCarreras.CheckedItems) //Por cada seleccion en la checked list box...
-
+            //Por cada Item checked, como esa lista son los objetos carreraResponse cargados, carrera lo transformo en Carrerarepsonde item, que es cada seleccion.
+            foreach (var item in clbCarreras.CheckedItems)
             {
-                switch (item)                 // ← compara el texto que ve el usuario
-                {
-                    case "Administración":
-                        carrerasSeleccionadas.Add(1);    // id 1
-                        break;
+                var carrera = (CarrerasResponse)item; //casteo o transformo
+                carrerasSeleccionadas.Add(carrera.id); //Agrego el ide a la lista de carrerasSeleccionadas
+            }
 
-                    case "Actuario":
-                        carrerasSeleccionadas.Add(2);    // id 2
-                        break;
 
-                    case "Contador":
-                        carrerasSeleccionadas.Add(3);    // id 3
-                        break;
-
-                    case "Economía":
-                        carrerasSeleccionadas.Add(4);    // id 4
-                        break;
-
-                    case "Sistemas":
-                        carrerasSeleccionadas.Add(4);    // id 5
-                        break;
-
-                    default:
-                        MessageBox.Show($"Carrera no reconocida: {item}");
-                        break;
-
-                }
-
-                Alumnos alumnoAregistrar = new Alumnos();
-
-                alumnoAregistrar.id = id;
-                alumnoAregistrar.nombre = nombre;
-                alumnoAregistrar.apellido = apellido;
-                alumnoAregistrar.dni = DNI;
-                alumnoAregistrar.carrerasIds = carrerasSeleccionadas;
-
-                
                 AgregarAlumnoNegocio nuevo = new AgregarAlumnoNegocio();  
-                string msj = nuevo.AgregarAlumno(alumnoAregistrar);
+                string msj = nuevo.AgregarAlumno(nombre,apellido,DNI,id,carrerasSeleccionadas);
 
-                MessageBox.Show(msj );
+            if (msj == "OK")
+            { MessageBox.Show("Alumno Agregado con exito", msj); }
+            else { MessageBox.Show("Error al agregar el alumno", msj); }
 
-            }   
-        }
+        }   
+        
 
         private void MenuAdmin1_Load(object sender, EventArgs e)
         {

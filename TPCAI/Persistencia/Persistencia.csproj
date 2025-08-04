@@ -49,6 +49,7 @@
     <Compile Include="AgregarCarrerasPersistencia.cs" />
     <Compile Include="ActualizarDocentePersistencia.cs" />
     <Compile Include="AgregarDocentePersistencia.cs" />
+    <Compile Include="CargarCursosPersistencia.cs" />
     <Compile Include="CargarMateriasCarreraPersistencia.cs" />
     <Compile Include="EliminarAlumnoPersistencia.cs" />
     <Compile Include="EliminarDocentePersistencia.cs" />

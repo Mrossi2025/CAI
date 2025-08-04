@@ -46,6 +46,8 @@
     <Compile Include="CargarCarreras.cs" />
     <Compile Include="ActualizarDocenteNegocio.cs" />
     <Compile Include="AgregarDocente.cs" />
+    <Compile Include="CargarCursosNegocio.cs" />
+    <Compile Include="CargarMateriasNegocio.cs" />
     <Compile Include="EliminarAlumnoNegocio.cs" />
     <Compile Include="EliminarDocenteNegocio.cs" />
     <Compile Include="DesbloquearUsuarioNegocio.cs" />

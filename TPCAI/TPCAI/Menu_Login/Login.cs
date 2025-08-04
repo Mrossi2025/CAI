@@ -78,7 +78,8 @@ namespace TPCAI
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            txtUsuario.Text = "adminGrupo2";
+            txtConstraseña.Text = "admin123";
         }
     }
 }
