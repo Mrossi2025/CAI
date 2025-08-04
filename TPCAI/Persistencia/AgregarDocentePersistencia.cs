@@ -10,7 +10,7 @@ using Datos.Menu_Admin.ABM_DocentesClases;
 using Newtonsoft.Json;
 using Persistencia.utils;
 
-namespace Persistencia.Menu_AdminPersistencia.AMB_DocentesPersistencia
+namespace Persistencia
 {
     public class AgregarDocentePersistencia
     {

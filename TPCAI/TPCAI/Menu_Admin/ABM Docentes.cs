@@ -202,7 +202,7 @@ namespace TPCAI
             { MessageBox.Show("El CUIT ingresdo es invalido, por favor verifique que sea numerico"); return; }
 
             if(!string.IsNullOrWhiteSpace(txtIdDocenteNuevo.Text))
-            { MessageBox.Show("El ID Docente no es necesario en la función agregar, por favor borrelo."); }
+            { MessageBox.Show("El ID Docente no es necesario en la función agregar, por favor borrelo."); return; }
 
             string cuitConcatenado = txtCuitAgregarDocente.Text + "-" + txtDniAgregarDocente.Text + "-" + txtCuitAgregarDocente2.Text;
 
@@ -271,7 +271,7 @@ namespace TPCAI
                     {
 
                         listaDocentes = lst.ObtenerListaDocentes();
-                        MessageBox.Show($"Lista Actualizada: hay {listaDocentes.Count} docentes.");
+                        MessageBox.Show($"Docente agregado con exito, Lista Actualizada: hay {listaDocentes.Count} docentes.");
 
 
                     }

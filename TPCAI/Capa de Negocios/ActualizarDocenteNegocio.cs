@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Datos.Menu_Admin.ABM_DocentesClases;
-using Persistencia.Menu_AdminPersistencia.AMB_DocentesPersistencia;
+using Persistencia;
 
 namespace Capa_de_Negocios.Menu_Admin.ABM_Docentes
 {
