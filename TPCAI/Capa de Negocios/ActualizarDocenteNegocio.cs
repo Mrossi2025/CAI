@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Datos.Menu_Admin.ABM_DocentesClases;
+using Datos;
 using Persistencia;
 
-namespace Capa_de_Negocios.Menu_Admin.ABM_Docentes
+namespace Capa_de_Negocios
 {
     public class ActualizarDocenteNegocio
     {

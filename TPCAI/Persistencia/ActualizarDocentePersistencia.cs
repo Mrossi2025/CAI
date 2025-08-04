@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Datos.Menu_Admin.ABM_DocentesClases;
+using Datos;
 using Newtonsoft.Json;
 using Persistencia.utils;
 

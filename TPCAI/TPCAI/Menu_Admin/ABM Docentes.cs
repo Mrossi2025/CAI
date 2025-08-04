@@ -10,9 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_de_Negocios;
-using Capa_de_Negocios.Menu_Admin.ABM_Docentes;
 using Datos;
-using Datos.Menu_Admin.ABM_DocentesClases;
 
 
 namespace TPCAI
@@ -252,7 +250,28 @@ namespace TPCAI
             List<long> lista = new List<long>();
 
             if (clbCursos.CheckedItems == null || clbCursos.CheckedItems.Count == 0)
-            { lista.Add(0); }
+            { lista.Add(0);
+
+                string Respuesta = a.CargarDocente(nombre, apellido, cuitConcatenado, dni, tipo, lista);
+
+                if (Respuesta == "OK")
+                {
+                    ListaDocentes lst = new ListaDocentes();
+
+                    try
+                    {
+
+                        listaDocentes = lst.ObtenerListaDocentes();
+                        MessageBox.Show($"Docente agregado con exito, Lista Actualizada: hay {listaDocentes.Count} docentes.");
+
+
+                    }
+                    catch (Exception ex) { MessageBox.Show("Docente agregado exitosamente, pero ha ocurrido un error actualizando la lista, por favor cargar nuevamente.", ex.ToString()); }
+
+                }
+                else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }
+
+            }
             else
             {
                 foreach (Cursos cursos in clbCursos.CheckedItems)

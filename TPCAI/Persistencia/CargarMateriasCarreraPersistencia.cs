@@ -4,18 +4,18 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Datos.Menu_Admin.ABM_DocentesClases;
+using Datos;
 using Newtonsoft.Json;
 using Persistencia.utils;
 
-namespace Persistencia.Menu_ReporteEgresados
+namespace Persistencia
 {
     public class CargarMateriasCarreraPersistencia
     {
         public List<Materias> cargarMateriasCarrera(long id)
         {
             // Armar la URL con el ID
-            string url = $"tpIntensivo/materias/{(long)id}";
+            string url = $"tpIntensivo/materias/{id}";
 
             // Enviar PUT
             HttpResponseMessage resp = WebHelper.Get(url);

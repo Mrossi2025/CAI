@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Datos;
 using Capa_de_Negocios;
-using Capa_de_Negocios.Menu_Admin.ABM_Docentes;
 
 namespace TPCAI
 {
@@ -173,6 +172,13 @@ namespace TPCAI
             if (!int.TryParse(txtDni.Text, out int dni))
             { MessageBox.Show("El Dni debe ser númerico"); return; }
            
+            if(listaAlumnos.Count == 0)
+            { MessageBox.Show("Debe cargar la lista de alumnos primero."); return; }
+            if(listaAlumnos.Find(a => a.dni == txtDni.Text) != null)
+            { MessageBox.Show("Ya existe un alumno registrado con ese Dni"); return; }
+            if (listaAlumnos.Find(a => a.id == id) != null)
+            { MessageBox.Show("Ya existe un alumno registrado con ese ID"); return; }
+
 
 
             //Por cada Item checked, como esa lista son los objetos carreraResponse cargados, carrera lo transformo en Carrerarepsonde item, que es cada seleccion.

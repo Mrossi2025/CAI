@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Datos.Menu_Admin.ABM_DocentesClases;
-using Persistencia.Menu_ReporteEgresados;
 using Persistencia;
+using Datos;
 
 namespace Capa_de_Negocios
 {
@@ -56,7 +55,7 @@ namespace Capa_de_Negocios
             }
 
 
-            double horasMensualesCurso = 0;
+            
 
             foreach (Cursos c in cursosTotales)
             {

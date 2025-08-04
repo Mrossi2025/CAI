@@ -5,7 +5,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Datos;
-using Datos.Menu_Admin.ABM_DocentesClases;
 using Newtonsoft.Json;
 using Persistencia.utils;
 
@@ -26,16 +25,15 @@ namespace Persistencia
 
             // Manejo de error o éxito
             if (!resp.IsSuccessStatusCode)
-            {
-                string err = resp.Content.ReadAsStringAsync().Result;
-                return err;
-            }
+
+            { return $"[{(int)resp.StatusCode}] {resp.ReasonPhrase}"; }
             else
             {
                 return "OK";
             }
         }
-
-
     }
+
+
+    
 }

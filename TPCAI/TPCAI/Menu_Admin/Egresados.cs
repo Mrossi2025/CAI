@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_de_Negocios.ReportesEgresados;
-using Datos.EgresadosReportes;
+using Capa_de_Negocios;
+using Datos;
 
 namespace TPCAI
 {

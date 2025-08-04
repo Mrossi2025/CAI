@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Datos.Menu_Admin.ABM_DocentesClases;
-using Persistencia.Menu_ReporteEgresados;
+using Datos;
+using Persistencia;
 
 namespace Capa_de_Negocios
 {

@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Datos;
-using Datos.EgresadosReportes;
-using Datos.Menu_Admin.ABM_DocentesClases;
 using Persistencia;
-using Persistencia.Menu_AdminPersistencia.Egresados;
-using Persistencia.Menu_ReporteEgresados;
 
-namespace Capa_de_Negocios.ReportesEgresados
+namespace Capa_de_Negocios
 {
     public class GenerarReporteNegocio
 

@@ -4,18 +4,18 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Datos.Menu_Admin.ABM_DocentesClases;
+using Datos;
 using Newtonsoft.Json;
 using Persistencia.utils;
 
-namespace Persistencia.Menu_AdminPersistencia.AMB_DocentesPersistencia
+namespace Persistencia
 {
     public class EliminarDocentePersistencia
     {
         public string EliminarDocente(long id)
         {
             // Armar la URL con el ID
-            string url = $"tpIntensivo/docentes/{(long)id}";
+            string url = $"tpIntensivo/docentes/{id}";
 
             // Enviar PUT
             HttpResponseMessage resp = WebHelper.Delete(url);

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Persistencia;
-using Persistencia.Menu_AdminPersistencia.AMB_DocentesPersistencia;
+using Datos;
 
 namespace Capa_de_Negocios
 {

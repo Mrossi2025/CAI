@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Datos.Menu_Admin.ABM_DocentesClases
+namespace Datos
 {
     public class Cursos
     {

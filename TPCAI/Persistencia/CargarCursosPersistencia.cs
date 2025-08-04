@@ -5,7 +5,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Datos;
-using Datos.Menu_Admin.ABM_DocentesClases;
 using Newtonsoft.Json;
 using Persistencia.utils;
 

@@ -34,7 +34,6 @@ namespace TPCAI
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
 
-            MessageBox.Show("Sesión cerrada");
             this.Close();
         }
 
