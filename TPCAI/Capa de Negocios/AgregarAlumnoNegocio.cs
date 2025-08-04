@@ -23,9 +23,9 @@ namespace Capa_de_Negocios
 
 
             AgregarAlumnoPersistencia respuesta = new AgregarAlumnoPersistencia();//Instanciamos a AgregarAlumnoPersistencia
-            string resultado = respuesta.AgregarAlumno(alumnoNuevo);   // El resultado se almacena, puede ser "OK" o "Error …"
+            return respuesta.AgregarAlumno(alumnoNuevo); 
 
-            return resultado;
+            
         }
     }
 }

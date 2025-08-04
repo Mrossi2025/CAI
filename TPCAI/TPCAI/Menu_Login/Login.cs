@@ -36,8 +36,8 @@ namespace TPCAI
             {
                 try
                 {
-                    Capa_de_Negocios.Login capaNegocio = new Capa_de_Negocios.Login();//Instancia de la capa de negocio
-                    Datos.LoginResponse resp = capaNegocio.login(txtUsuario.Text, txtConstraseña.Text); //llama al metodo y el metodo pide autenticación, y si es incorrecto manda la exeption que pisamos en la capa de negocios "Credenciales incorrectas"
+                    LoginNegocio l = new LoginNegocio();
+                    LoginResponse resp = l.login(txtUsuario.Text, txtConstraseña.Text); //llama al metodo y el metodo pide autenticación, y si es incorrecto manda la exeption que pisamos en la capa de negocios "Credenciales incorrectas"
 
                     switch (resp.perfilUsuario)              // Según el perfil recibido, abre el menú correspondiente "ADMIN", "PERSONAL", "ALUMNO" y se deberia llevar por parametro el id en caso de personal
                     {
@@ -63,7 +63,9 @@ namespace TPCAI
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message,"Credenciales inválidas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if(ex.Message == "Usuario bloqueado")
+                    MessageBox.Show("Usuario Bloqueado",ex.ToString() ,MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else { MessageBox.Show("Credenciales invalidas", ex.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information); }
                 }
 
             }

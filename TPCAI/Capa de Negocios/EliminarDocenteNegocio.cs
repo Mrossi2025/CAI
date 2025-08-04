@@ -15,9 +15,7 @@ namespace Capa_de_Negocios.Menu_Admin.ABM_Docentes
             public string EliminarDocente(long id)
             {
                 EliminarDocentePersistencia add = new EliminarDocentePersistencia();
-                string msj = add.EliminarDocente(id);
-
-                return msj;
+                return add.EliminarDocente(id);
 
             }
 

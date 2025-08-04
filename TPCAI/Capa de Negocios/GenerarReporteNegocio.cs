@@ -127,8 +127,12 @@ namespace Capa_de_Negocios.ReportesEgresados
                     int materiasAprobadas = 0;
                     int? notas = 0;
 
-                    //Cargamos la lista con las materias del alumno pasando por parametro el dni
-                    MateriaPorAlumno = g.ObtenerMateriasPorAlumno(a.id);
+                    try
+                    {
+                        //Cargamos la lista con las materias del alumno pasando por parametro el dni
+                        MateriaPorAlumno = g.ObtenerMateriasPorAlumno(a.id);
+                    }
+                    catch { Reporte reporteFalla = new Reporte();  return reporteFalla; }
 
                     foreach(MateriaInscriptaDTO m in MateriaPorAlumno)
                     {
@@ -159,8 +163,12 @@ namespace Capa_de_Negocios.ReportesEgresados
                     int materiasAprobadas = 0;
                     int? notas = 0;
 
-                    //Cargamos la lista con las materias del alumno pasando por parametro el dni
-                    MateriaPorAlumno = g.ObtenerMateriasPorAlumno(a.id);
+                    try
+                    {
+                        //Cargamos la lista con las materias del alumno pasando por parametro el dni
+                        MateriaPorAlumno = g.ObtenerMateriasPorAlumno(a.id);
+                    }
+                    catch { Reporte reporteFalla = new Reporte(); return reporteFalla; }
 
                     foreach (MateriaInscriptaDTO m in MateriaPorAlumno)
                     {
@@ -192,8 +200,12 @@ namespace Capa_de_Negocios.ReportesEgresados
                     int materiasAprobadas = 0;
                     int? notas = 0;
 
-                    //Cargamos la lista con las materias del alumno pasando por parametro el dni
-                    MateriaPorAlumno = g.ObtenerMateriasPorAlumno(a.id);
+                    try
+                    {
+                        //Cargamos la lista con las materias del alumno pasando por parametro el dni
+                        MateriaPorAlumno = g.ObtenerMateriasPorAlumno(a.id);
+                    }
+                    catch { Reporte reporteFalla = new Reporte(); return reporteFalla; }
 
                     foreach (MateriaInscriptaDTO m in MateriaPorAlumno)
                     {
@@ -225,8 +237,12 @@ namespace Capa_de_Negocios.ReportesEgresados
                     int materiasAprobadas = 0;
                     int? notas = 0;
 
-                    //Cargamos la lista con las materias del alumno pasando por parametro el dni
-                    MateriaPorAlumno = g.ObtenerMateriasPorAlumno(a.id);
+                    try
+                    {
+                        //Cargamos la lista con las materias del alumno pasando por parametro el dni
+                        MateriaPorAlumno = g.ObtenerMateriasPorAlumno(a.id);
+                    }
+                    catch { Reporte reporteFalla = new Reporte(); return reporteFalla; }
 
                     foreach (MateriaInscriptaDTO m in MateriaPorAlumno)
                     {
@@ -255,8 +271,12 @@ namespace Capa_de_Negocios.ReportesEgresados
                     int materiasAprobadas = 0;
                     int? notas = 0;
 
-                    //Cargamos la lista con las materias del alumno pasando por parametro el dni
-                    MateriaPorAlumno = g.ObtenerMateriasPorAlumno(a.id);
+                    try
+                    {
+                        //Cargamos la lista con las materias del alumno pasando por parametro el dni
+                        MateriaPorAlumno = g.ObtenerMateriasPorAlumno(a.id);
+                    }
+                    catch { Reporte reporteFalla = new Reporte(); return reporteFalla; }
 
                     foreach (MateriaInscriptaDTO m in MateriaPorAlumno)
                     {

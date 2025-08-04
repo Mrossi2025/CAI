@@ -44,13 +44,10 @@ namespace TPCAI
 
         private void btnCargarDocentes_Click(object sender, EventArgs e)
         {
-            ListaDocentes lst = new ListaDocentes();
-
-
 
             try
             {
-
+                ListaDocentes lst = new ListaDocentes();
                 listaDocentes = lst.ObtenerListaDocentes();
                 MessageBox.Show($"Lista cargada: hay {listaDocentes.Count} docentes.");
 
@@ -68,14 +65,14 @@ namespace TPCAI
         {
             try
             {
-                // 1️⃣ Cargar carreras
+                // Cargar carreras
                 CargarCarreras cc = new CargarCarreras();
                 Carreras = cc.cargarCarreras();
 
-                // 2️⃣ Asignar data al ComboBox
+                //Asignar data al ComboBox
                 cmbCarreras.DataSource = Carreras;
-                cmbCarreras.DisplayMember = "nombre"; // exactamente como está en tu clase
-                cmbCarreras.ValueMember = "id";       // exactamente como está en tu clase
+                cmbCarreras.DisplayMember = "nombre"; 
+                cmbCarreras.ValueMember = "id";       
 
                 carrerasCargadas = true; //habilitamos la carga de materias
 
@@ -106,6 +103,8 @@ namespace TPCAI
             
             if (!float.TryParse(txtIdDocente.Text, out IdDocente))
             { MessageBox.Show("El Id debe ser númerico."); }
+            else if (IdDocente < 0)
+            { MessageBox.Show("El ID no puede ser negativo"); return; }
             else
             {
 
@@ -202,6 +201,9 @@ namespace TPCAI
                 !int.TryParse(txtDniAgregarDocente.Text, out int dniNumerico))
             { MessageBox.Show("El CUIT ingresdo es invalido, por favor verifique que sea numerico"); return; }
 
+            if(!string.IsNullOrWhiteSpace(txtIdDocenteNuevo.Text))
+            { MessageBox.Show("El ID Docente no es necesario en la función agregar, por favor borrelo."); }
+
             string cuitConcatenado = txtCuitAgregarDocente.Text + "-" + txtDniAgregarDocente.Text + "-" + txtCuitAgregarDocente2.Text;
 
             if (cuitConcatenado.Length > 13 || cuitConcatenado.Length < 12)
@@ -273,7 +275,7 @@ namespace TPCAI
 
 
                     }
-                    catch (Exception ex) { MessageBox.Show(ex.Message, "Error actualizando la lista docentes, refresque."); }
+                    catch (Exception ex) { MessageBox.Show("Docente agregado exitosamente, pero ha ocurrido un error actualizando la lista, por favor cargar nuevamente.",ex.ToString()); }
 
                 }
                 else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }
@@ -295,6 +297,7 @@ namespace TPCAI
 
         private void btnLimpiar2_Click(object sender, EventArgs e)
         {
+            txtIdDocenteNuevo.Clear();
             txtNombreAgregardocente.Clear();
             txtApellidoAgregarDocente.Clear();
             txtCuitAgregarDocente.Clear();
@@ -394,6 +397,8 @@ namespace TPCAI
                 
                 if (!long.TryParse(txtIdDocenteNuevo.Text, out long id))
                 { MessageBox.Show("Debe ingresar un numero de curso válido"); return; } //Valido que sea numerico el id
+                if(id < 0)
+                { MessageBox.Show("El ID docente no puede ser un número negativo."); return; }
                 if (!int.TryParse(txtCuitAgregarDocente.Text, out int CuitParte1) ||
                     !int.TryParse(txtCuitAgregarDocente2.Text, out int CuitParte2) ||
                     !int.TryParse(txtDniAgregarDocente.Text, out int dniNumerico))
@@ -508,6 +513,8 @@ namespace TPCAI
             { MessageBox.Show("Debe ingresar un Id a Eliminar"); txtIdDocente.BackColor = Color.LightBlue; return; }
             if (!long.TryParse(txtIdDocente.Text, out IdDocente))
             { MessageBox.Show("El id ingresado debe ser númerico."); return; }
+            if (IdDocente < 0)
+            { MessageBox.Show("El ID docente no puede ser un número negativo."); return; }
             if (listaDocentes.Count == 0)            
             { MessageBox.Show("Debe cargar la lista de docentes antes de eliminar."); return; }
             if(listaDocentes.Find(ab => ab.id == IdDocente) ==null)
@@ -531,7 +538,15 @@ namespace TPCAI
             string Respuesta = a.EliminarDocente(IdDocente);
             if (Respuesta == "OK")
             {
-                MessageBox.Show("Docente Eliminado con exito. Actualice la lista para confirmarlo.", Respuesta);
+                try
+                {
+                    ListaDocentes lst = new ListaDocentes();
+                    listaDocentes = lst.ObtenerListaDocentes();
+                    MessageBox.Show($"Docente eliminado exitosamente, actualmente hay {listaDocentes.Count} docentes registrados.");
+
+
+                }
+                catch (Exception ex) { MessageBox.Show("Docente eliminado exitosamente, pero ha ocurrido un error actualizando la lista docentes. (Carguela Nuevamente)",ex.ToString()); }
             }
             else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }
         }

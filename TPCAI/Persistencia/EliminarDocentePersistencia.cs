@@ -21,14 +21,13 @@ namespace Persistencia.Menu_AdminPersistencia.AMB_DocentesPersistencia
             HttpResponseMessage resp = WebHelper.Delete(url);
 
             // Manejo de error o éxito
-            if (!resp.IsSuccessStatusCode)
-            {
-                string err = resp.Content.ReadAsStringAsync().Result;
-                return err;
-            }
-            else
+            if (resp.IsSuccessStatusCode)          // 200–299
             {
                 return "OK";
+            }
+            else                                   // cualquier 4xx / 5xx
+            {
+                return $"Error {(int)resp.StatusCode} – {resp.ReasonPhrase}";
             }
         }
 

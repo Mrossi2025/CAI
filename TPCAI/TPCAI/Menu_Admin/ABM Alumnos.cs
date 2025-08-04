@@ -56,6 +56,8 @@ namespace TPCAI
             { MessageBox.Show("El campo idAlumno no puede estar vacío ingrese uno..."); return; }
             if (!long.TryParse(txtidAlumno.Text, out id))
             { MessageBox.Show("El campo idAlumno debe ser númerico"); return; }
+            if (id < 0)
+            { MessageBox.Show("El ID no puede ser negativo"); return; }
             if (listaAlumnos.Count == 0)
             { MessageBox.Show("Debe cargar la lista de alumnos"); return; }
 
@@ -116,15 +118,14 @@ namespace TPCAI
 
                 listaAlumnos = listaAllamar.TraerAlumnos();
 
-                int cantidad = listaAlumnos.Count;   // si es null → 0
-                MessageBox.Show($"Se han cargado con exito {cantidad} alumnos", "Exito",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                
 
                 if (listaAlumnos == null || listaAlumnos.Count == 0)
                 {
-                    MessageBox.Show("La lista de alumnos está vacía.");
+                    MessageBox.Show("La lista de alumnos se ha cargado con exito pero está vacía.");
                     return;
                 }
-
+                MessageBox.Show($"Se han cargado con exito {listaAlumnos.Count} alumnos", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message, "Error al traer alumnos"); }
@@ -165,6 +166,8 @@ namespace TPCAI
             }
             if (!long.TryParse(txtidAlumno.Text, out long id))
             { MessageBox.Show("El Id debe ser númerico"); return; }
+            if (id < 0)
+            { MessageBox.Show("El ID no puede ser negativo"); return; }
             if (txtDni.Text.Length < 7 || txtDni.Text.Length > 8)
             {MessageBox.Show("El DNI debe tener 7 u 8 dígitos.");return;}
             if (!int.TryParse(txtDni.Text, out int dni))
@@ -184,7 +187,18 @@ namespace TPCAI
                 string msj = nuevo.AgregarAlumno(nombre,apellido,DNI,id,carrerasSeleccionadas);
 
             if (msj == "OK")
-            { MessageBox.Show("Alumno Agregado con exito", msj); }
+            {
+                try
+                {
+                    ListaAlumnos listaAllamar = new ListaAlumnos(); //Instancio la clase de Negocio que contiene el metodo a llamar
+
+                    listaAlumnos = listaAllamar.TraerAlumnos();
+
+                    MessageBox.Show($"Alumno nuevo añadido con exito. \n Lista actualizada: Hay {listaAlumnos.Count} alumnos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex) { MessageBox.Show("Alumno agregado con exito, pero ha ocurrido un error actualizando la lista de alumnos. \n (Recargue la lista nuevamente)", ex.ToString()); }
+            }
             else { MessageBox.Show("Error al agregar el alumno", msj); }
 
         }   
@@ -198,10 +212,9 @@ namespace TPCAI
                 Carreras = cc.cargarCarreras();
 
                 clbCarreras.Items.Clear();
-                foreach (CarrerasResponse carrera in Carreras)
-                    clbCarreras.Items.Add(carrera);      // ← guarda el objeto
-
-                clbCarreras.DisplayMember = "nombre";    // el texto visible será carrera.nombre
+                clbCarreras.DataSource = Carreras;
+                clbCarreras.DisplayMember = "nombre";// el texto visible será carrera.nombre
+                clbCarreras.ValueMember = "id";
 
             }
 
@@ -231,6 +244,8 @@ namespace TPCAI
             { MessageBox.Show("Debe ingresar un Id a Eliminar"); txtidAlumno.BackColor = Color.LightBlue; return; }
             if (!long.TryParse(txtidAlumno.Text, out IdAlumno))
             { MessageBox.Show("El id ingresado debe ser númerico."); return; }
+            if (IdAlumno < 0)
+            { MessageBox.Show("El ID no puede ser negativo"); return; }
             if (listaAlumnos.Count == 0)
             { MessageBox.Show("Debe cargar la lista de docentes antes de eliminar."); return; }
             if (listaAlumnos.Find(ab => ab.id == IdAlumno) == null)
@@ -255,7 +270,16 @@ namespace TPCAI
             string Respuesta = a.EliminarAlumno(IdAlumno);
             if (Respuesta == "OK")
             {
-                MessageBox.Show("Alumno Eliminado con exito. Actualice la lista para confirmarlo.", Respuesta);
+                try
+                {
+                    ListaAlumnos listaAllamar = new ListaAlumnos(); //Instancio la clase de Negocio que contiene el metodo a llamar
+
+                    listaAlumnos = listaAllamar.TraerAlumnos();
+
+                    MessageBox.Show($"Alumno eliminado con exito. \n Lista actualizada: Hay {listaAlumnos.Count} alumnos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex) { MessageBox.Show("Alumno eliminado con exito, pero ha ocurrido un error actualizando la lista de alumnos. \n (Recargue la lista nuevamente)", ex.ToString()); }
             }
             else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }
         }
@@ -304,6 +328,8 @@ namespace TPCAI
             
             if (!long.TryParse(txtidAlumno.Text, out long id))
             { MessageBox.Show("Debe ingresar un numero de curso válido"); return; } //Valido que sea numerico el id
+            if (id < 0)
+            { MessageBox.Show("El ID no puede ser negativo"); return; }
             if (!int.TryParse(txtDni.Text, out int dni))
             { MessageBox.Show("El dni debe ser númerico"); return; }
             if (txtDni.Text.Length > 8)
@@ -333,7 +359,16 @@ namespace TPCAI
 
             if (Respuesta == "OK")
             {
-                MessageBox.Show("Alumno Actualizado con exito. Actualice la lista para buscarlo.", Respuesta);
+                try
+                {
+                    ListaAlumnos listaAllamar = new ListaAlumnos(); //Instancio la clase de Negocio que contiene el metodo a llamar
+
+                    listaAlumnos = listaAllamar.TraerAlumnos();
+
+                    MessageBox.Show($"Alumno actualizado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                catch (Exception ex) { MessageBox.Show("Alumno actualizado con exito, pero ha ocurrido un error actualizando la lista de alumnos. \n (Recargue la lista nuevamente)", ex.ToString()); }
             }
             else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }
 

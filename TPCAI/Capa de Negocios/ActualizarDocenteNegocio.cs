@@ -16,9 +16,9 @@ namespace Capa_de_Negocios.Menu_Admin.ABM_Docentes
             { d.nombre = nombre; d.apellido = apellido; d.cuit = cuit; d.dni = dni; d.tipo = tipo; d.cursos = curso; }
 
             ActualizarDocentePersistencia add = new ActualizarDocentePersistencia();
-            string msj = add.ActualizarDocente(id,d);
+            
 
-            return msj;
+            return add.ActualizarDocente(id, d);
 
         }
 

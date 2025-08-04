@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 
 namespace Capa_de_Negocios
 {
-    public class Login
+    public class LoginNegocio
     {
         public LoginResponse login(string username, string password)
         {
@@ -18,10 +18,7 @@ namespace Capa_de_Negocios
             {
 
                 LoginPersistencia loginPersistencia = new LoginPersistencia();
-                LoginResponse Respuesta = loginPersistencia.login(username, password);
-
-
-                return Respuesta;
+                return loginPersistencia.login(username, password);
             }
             //Si pongo entre comillas adelante me reemplaza el mensaje
             //catch (Exception ex) { throw new Exception("Credenciales inválidas", ex);}

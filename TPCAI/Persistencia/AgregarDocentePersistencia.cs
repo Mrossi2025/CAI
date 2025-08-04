@@ -24,12 +24,14 @@ namespace Persistencia.Menu_AdminPersistencia.AMB_DocentesPersistencia
             HttpResponseMessage resp = WebHelper.Post("tpIntensivo/docentes", json);
 
 
-            if (!resp.IsSuccessStatusCode)
+            // Éxito  (códigos 2xx)
+            if (resp.IsSuccessStatusCode)
+            { return "OK"; }
+            else
             {
-                string err = resp.Content.ReadAsStringAsync().Result;
-                return err;
+                // mensaje con el código y la razón
+                return $"Error {(int)resp.StatusCode} – {resp.ReasonPhrase}";
             }
-            else { return "OK"; }
         }
 
 

@@ -14,21 +14,12 @@ namespace Capa_de_Negocios
         {
             
 
-            if(idUsuario<=0)
-            {
-                return "Id Usuario inválido";
-
-            }
-
             DesbloquearUsuarioRequest DU = new DesbloquearUsuarioRequest();
             { DU.idUsuario = idUsuario; }
             DesbloquearUsuarioPersistencia req = new DesbloquearUsuarioPersistencia();
 
-            string msj = req.DesbloquearUsuario(DU);
+            return req.DesbloquearUsuario(DU);
 
-            if (msj == "OK")
-            { return "OK"; }
-            else { return "Error"; }
         }
 
 

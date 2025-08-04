@@ -13,9 +13,7 @@ namespace Capa_de_Negocios
         public string EliminarAlumno(long id)
         {
             EliminarAlumnoPersistencia add = new EliminarAlumnoPersistencia();
-            string msj = add.EliminarAlumno(id);
-
-            return msj;
+            return add.EliminarAlumno(id);
 
         }
     }
