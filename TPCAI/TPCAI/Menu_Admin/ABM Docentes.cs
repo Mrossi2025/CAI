@@ -212,6 +212,9 @@ namespace TPCAI
             if (txtApellidoAgregarDocente.Text.Any(char.IsDigit))
             { Console.WriteLine("El Apellido no puede contener números."); return; }
 
+            if(listaDocentes.Count == 0)
+            { MessageBox.Show("Debe cargar la lista de docentes primero."); return; }
+
             if (clbCursos.CheckedItems == null || clbCursos.CheckedItems.Count == 0)
             {
                 DialogResult result = MessageBox.Show(
@@ -262,7 +265,12 @@ namespace TPCAI
                     {
 
                         listaDocentes = lst.ObtenerListaDocentes();
-                        MessageBox.Show($"Docente agregado con exito, Lista Actualizada: hay {listaDocentes.Count} docentes.");
+                        
+
+                        Docente docenteAgregado = listaDocentes.Find(b => b.dni == txtDniAgregarDocente.Text);
+
+                        MessageBox.Show($"Docente añadido con exito (id: {docenteAgregado.id}.) \n Lista actualizada: Hay {listaDocentes.Count} alumnos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtIdDocenteNuevo.Text = docenteAgregado.id.ToString();
 
 
                     }
@@ -290,7 +298,10 @@ namespace TPCAI
                     {
 
                         listaDocentes = lst.ObtenerListaDocentes();
-                        MessageBox.Show($"Docente agregado con exito, Lista Actualizada: hay {listaDocentes.Count} docentes.");
+                        Docente docenteAgregado = listaDocentes.Find(b => b.dni == txtDniAgregarDocente.Text);
+
+                        MessageBox.Show($"Docente añadido con exito (id: {docenteAgregado.id}.) \n Lista actualizada: Hay {listaDocentes.Count} docentes.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtIdDocenteNuevo.Text = docenteAgregado.id.ToString();
 
 
                     }
