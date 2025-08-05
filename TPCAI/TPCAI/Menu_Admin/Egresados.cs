@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_de_Negocios.ReportesEgresados;
-using Datos.EgresadosReportes;
+using Capa_de_Negocios;
+using Datos;
 
 namespace TPCAI
 {
@@ -31,68 +31,73 @@ namespace TPCAI
 
         private void btnReporte_Click(object sender, EventArgs e)
         {
-            Reporte reporte = new Reporte();
+            List<AlumnosRecibidos> reporte = new List<AlumnosRecibidos>();
             GenerarReporteNegocio grn = new GenerarReporteNegocio();
             try
             {
                 reporte = grn.Reportenuevo();
 
-                List<ReporteFila> tabla = new List<ReporteFila>
-{
-                    new ReporteFila
-                    {
-                        Carrera = "Administración",
-                        Recibidos = reporte.RecibidosAdmin,
-                        Cum = reporte.AdminCum,
-                        Magna = reporte.AdminMagna,
-                        Summa = reporte.AdminSumma,
-                        SinTituloHonorifico = reporte.AdminSinTitulo
-                    },
-                    new ReporteFila
-                    {
-                        Carrera = "Actuario",
-                        Recibidos = reporte.RecibidosActuario,
-                        Cum = reporte.ActuarioCum,
-                        Magna = reporte.ActuarioMagna,
-                        Summa = reporte.ActuarioSumma,
-                        SinTituloHonorifico = reporte.ActuarioSinTitulo
-                    },
-                    new ReporteFila
-                    {
-                        Carrera = "Contador",
-                        Recibidos = reporte.RecibidosContador,
-                        Cum = reporte.ContadorCum,
-                        Magna = reporte.ContadorMagna,
-                        Summa = reporte.ContadorSumma,
-                        SinTituloHonorifico = reporte.ContadorSinTitulo
-                     },
-                    new ReporteFila
-                    {
-                        Carrera = "Economía",
-                        Recibidos = reporte.RecibidosEconomia,
-                        Cum = reporte.EconomiaCum,
-                        Magna = reporte.EconomiaMagna,
-                        Summa = reporte.EconomiaSumma,
-                        SinTituloHonorifico = reporte.EconomiaSinTitulo
-                    },
-                    new ReporteFila
-                    {
-                        Carrera = "Sistemas",
-                        Recibidos = reporte.RecibidosSistemas,
-                        Cum = reporte.SistemasCum,
-                        Magna = reporte.SistemasMagna,
-                        Summa = reporte.SistemasSumma,
-                        SinTituloHonorifico = reporte.SistemasSinTitulo
-                    }
 
-
-                };
-
-                dgvReporte.DataSource = tabla;
+                dgvReporte.DataSource = reporte; ;
                 MessageBox.Show("Reporte generado con exito.");
 
             }
             catch (Exception ex) {MessageBox.Show(ex.Message); }
+
+
+            // Lista de carreras fijas
+            string[] carreras = { "Administración", "Actuario", "Contador", "Economía", "Sistemas" };
+
+            // Lista de títulos honoríficos
+            string[] titulos = { "Summa Cum Laude", "Magna Cum Laude", "Cum Laude", "Sin título honorífico" };
+
+            // Crear DataTable para mostrar en el DataGridView
+            DataTable tablaResumen = new DataTable();
+            tablaResumen.Columns.Add("Carrera");
+            tablaResumen.Columns.Add("Total", typeof(int));
+            tablaResumen.Columns.Add("Summa Cum Laude", typeof(int));
+            tablaResumen.Columns.Add("Magna Cum Laude", typeof(int));
+            tablaResumen.Columns.Add("Cum Laude", typeof(int));
+            tablaResumen.Columns.Add("Sin título honorífico", typeof(int));
+
+            // Recorrer cada carrera y contar
+            foreach (string carrera in carreras)
+            {
+                int total = 0;
+                int sumaSumma = 0;
+                int sumaMagna = 0;
+                int sumaCum = 0;
+                int sumaSin = 0;
+
+                foreach (var alumno in reporte)
+                {
+                    if (alumno.carrera == carrera)
+                    {
+                        total++;
+
+                        if (alumno.titulo == "Summa Cum Laude")
+                            sumaSumma++;
+                        else if (alumno.titulo == "Magna Cum Laude")
+                            sumaMagna++;
+                        else if (alumno.titulo == "Cum Laude")
+                            sumaCum++;
+                        else if (alumno.titulo == "Sin título honorífico")
+                            sumaSin++;
+                    }
+                }
+
+                // Agregar fila al DataTable
+                tablaResumen.Rows.Add(carrera, total, sumaSumma, sumaMagna, sumaCum, sumaSin);
+            }
+
+            // Asignar al DataGridView
+            dgvReporteGeneral.DataSource = tablaResumen;
+
+
+
+
+
+
 
 
         }
@@ -102,5 +107,7 @@ namespace TPCAI
             this.Close();
             MenuAdmin2.Show();
         }
+
+        
     }
 }

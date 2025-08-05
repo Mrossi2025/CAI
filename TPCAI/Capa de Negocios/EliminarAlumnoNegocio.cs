@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Persistencia;
-using Persistencia.Menu_AdminPersistencia.AMB_DocentesPersistencia;
+using Datos;
 
 namespace Capa_de_Negocios
 {
@@ -13,9 +13,7 @@ namespace Capa_de_Negocios
         public string EliminarAlumno(long id)
         {
             EliminarAlumnoPersistencia add = new EliminarAlumnoPersistencia();
-            string msj = add.EliminarAlumno(id);
-
-            return msj;
+            return add.EliminarAlumno(id);
 
         }
     }

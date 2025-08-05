@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Datos.Menu_PersonalClases;
-using Capa_de_Negocios;
+using Datos;
+using Persistencia;
 
-namespace Capa_de_Negocios.Menu_Personal
+namespace Capa_de_Negocios
 {
     public class LiquidarSueldoNegocio
     {

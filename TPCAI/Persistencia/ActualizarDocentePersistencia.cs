@@ -4,11 +4,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Datos.Menu_Admin.ABM_DocentesClases;
+using Datos;
 using Newtonsoft.Json;
 using Persistencia.utils;
 
-namespace Persistencia.Menu_AdminPersistencia.AMB_DocentesPersistencia
+namespace Persistencia
 {
     public class ActualizarDocentePersistencia
     {
@@ -18,17 +18,15 @@ namespace Persistencia.Menu_AdminPersistencia.AMB_DocentesPersistencia
             string json = JsonConvert.SerializeObject(docente);
 
             // Armar la URL con el ID
-            string url = $"tpIntensivo/docentes/{(long)id}";
+            string url = $"tpIntensivo/docentes/{id}";
 
             // Enviar PUT
             HttpResponseMessage resp = WebHelper.Put(url, json);
 
             // Manejo de error o éxito
             if (!resp.IsSuccessStatusCode)
-            {
-                string err = resp.Content.ReadAsStringAsync().Result;
-                return err;
-            }
+
+            { return $"[{(int)resp.StatusCode}] {resp.ReasonPhrase}"; }
             else
             {
                 return "OK";

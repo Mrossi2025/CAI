@@ -34,7 +34,6 @@ namespace TPCAI
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
 
-            MessageBox.Show("Sesión cerrada");
             this.Close();
         }
 
@@ -56,13 +55,6 @@ namespace TPCAI
         {
             ABM_Docentes ABMDocentes = new ABM_Docentes(this);
             ABMDocentes.Show();
-            this.Hide();
-        }
-
-        private void btnLiquidaciones_Click(object sender, EventArgs e)
-        {
-            Liquidaciones Liquidaciones = new Liquidaciones();
-            Liquidaciones.Show();
             this.Hide();
         }
 

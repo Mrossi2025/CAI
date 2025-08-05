@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Datos.Menu_PersonalClases
+namespace Datos
 {
     public class LiquidacionSueldo
     {

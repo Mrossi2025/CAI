@@ -10,12 +10,13 @@ using Persistencia.utils;
 
 namespace Persistencia
 {
-    public class CargarMateriasCarreraPersistencia
+    public class CargarCursosPersistencia
     {
-        public List<Materias> cargarMateriasCarrera(long id)
+        public List<Cursos> CargarCursos(long idCarrera)
+
         {
             // Armar la URL con el ID
-            string url = $"tpIntensivo/materias/{id}";
+            string url = $"tpIntensivo/cursos/{(long)idCarrera}";
 
             // Enviar PUT
             HttpResponseMessage resp = WebHelper.Get(url);
@@ -28,14 +29,16 @@ namespace Persistencia
             string json = resp.Content.ReadAsStringAsync().Result;
 
             // Deserializar a lista de Materias
-            List<Materias> materias = JsonConvert.DeserializeObject<List<Materias>>(json);
+            List<Cursos> cursos = JsonConvert.DeserializeObject<List<Cursos>>(json);
 
             // Si la API devuelve null, devolvemos una lista vacía
-            return materias ?? new List<Materias>();
+            return cursos ?? new List<Cursos>();
+
 
 
 
         }
+
 
     }
 }

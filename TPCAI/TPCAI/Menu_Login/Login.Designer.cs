@@ -44,22 +44,22 @@
             this.grpSystemLogin.Controls.Add(this.txtUsuario);
             this.grpSystemLogin.Controls.Add(this.lblContraseña);
             this.grpSystemLogin.Controls.Add(this.lblUsuario);
-            this.grpSystemLogin.Location = new System.Drawing.Point(9, 18);
-            this.grpSystemLogin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpSystemLogin.Location = new System.Drawing.Point(12, 22);
+            this.grpSystemLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grpSystemLogin.Name = "grpSystemLogin";
-            this.grpSystemLogin.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpSystemLogin.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grpSystemLogin.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grpSystemLogin.Size = new System.Drawing.Size(171, 232);
+            this.grpSystemLogin.Size = new System.Drawing.Size(228, 286);
             this.grpSystemLogin.TabIndex = 0;
             this.grpSystemLogin.TabStop = false;
             this.grpSystemLogin.Text = "System Login";
             // 
             // btnIniciarSesion
             // 
-            this.btnIniciarSesion.Location = new System.Drawing.Point(12, 124);
-            this.btnIniciarSesion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(16, 153);
+            this.btnIniciarSesion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
-            this.btnIniciarSesion.Size = new System.Drawing.Size(84, 19);
+            this.btnIniciarSesion.Size = new System.Drawing.Size(112, 23);
             this.btnIniciarSesion.TabIndex = 4;
             this.btnIniciarSesion.Text = "Iniciar Sesión";
             this.btnIniciarSesion.UseVisualStyleBackColor = true;
@@ -67,47 +67,45 @@
             // 
             // txtConstraseña
             // 
-            this.txtConstraseña.Location = new System.Drawing.Point(4, 92);
-            this.txtConstraseña.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtConstraseña.Location = new System.Drawing.Point(5, 113);
+            this.txtConstraseña.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtConstraseña.Name = "txtConstraseña";
-            this.txtConstraseña.Size = new System.Drawing.Size(102, 20);
+            this.txtConstraseña.Size = new System.Drawing.Size(135, 22);
             this.txtConstraseña.TabIndex = 3;
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(4, 47);
-            this.txtUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsuario.Location = new System.Drawing.Point(5, 58);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(102, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(135, 22);
             this.txtUsuario.TabIndex = 2;
             // 
             // lblContraseña
             // 
             this.lblContraseña.AutoSize = true;
-            this.lblContraseña.Location = new System.Drawing.Point(2, 76);
-            this.lblContraseña.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblContraseña.Location = new System.Drawing.Point(3, 94);
             this.lblContraseña.Name = "lblContraseña";
-            this.lblContraseña.Size = new System.Drawing.Size(61, 13);
+            this.lblContraseña.Size = new System.Drawing.Size(76, 16);
             this.lblContraseña.TabIndex = 1;
             this.lblContraseña.Text = "Contraseña";
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(3, 32);
-            this.lblUsuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsuario.Location = new System.Drawing.Point(4, 39);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(43, 13);
+            this.lblUsuario.Size = new System.Drawing.Size(54, 16);
             this.lblUsuario.TabIndex = 0;
             this.lblUsuario.Text = "Usuario";
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(250, 366);
+            this.ClientSize = new System.Drawing.Size(333, 450);
             this.Controls.Add(this.grpSystemLogin);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Login";
             this.Text = "VentanaLogin";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VentanaLogin_FormClosed);
