@@ -47,21 +47,19 @@ namespace TPCAI.Menu_Personal
             this.Hide();
         }
 
-        private bool _cerrandoSesion = false;
+        
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            _cerrandoSesion = true;
-            Login loginForm = new Login();
-            loginForm.Show();
+           
+            
             this.Close();
         }
 
         private void MenuPersonal_FormCLosed(object sender, FormClosedEventArgs e) 
         {
-            if (!_cerrandoSesion)
-            {
-                Application.Exit();
-            }
+            Login loginForm = new Login();
+            loginForm.Show();
+            MessageBox.Show("Cerrando Sesión");
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Capa_de_Negocios;
+using Datos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Capa_de_Negocios;
-using Datos;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace TPCAI
 {
@@ -33,6 +34,8 @@ namespace TPCAI
         private void Liquidaciones_Load(object sender, EventArgs e)
         {
             CargarDatosDocentePorId();
+            btnLiquidar.Enabled = false;
+            txtHoras.Enabled = false;
         }
         
         private Docente _docente;
@@ -102,21 +105,80 @@ namespace TPCAI
             }
         }
 
-        private bool _cerrandoDesdeBotonVolver = false;
+        
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            _cerrandoDesdeBotonVolver = true;
-            _formAnterior.Show();
+         
             this.Close();
         }
 
         private void Liquidaciones_FormCLosed(object sender, FormClosedEventArgs e)
         {
-            if (!_cerrandoDesdeBotonVolver)
+            _formAnterior.Show();
+            
+        }
+
+        private void chkManual_CheckedChanged(object sender, EventArgs e)
+        {
+            bool habilitar = chkManual.Checked;
+
+            btnLiquidar.Enabled = habilitar;
+            txtHoras.Enabled = habilitar;
+        }
+
+        private void btnLiquidar2_Click(object sender, EventArgs e)
+        {
+            try
             {
-                Application.Exit();
+                if (_docente == null)
+                {
+                    MessageBox.Show("No se encontró el docente.");
+                    return;
+                }
+                if(string.IsNullOrWhiteSpace(txtHorasSistema.Text))
+                {
+                    MessageBox.Show("Debe cargar primero las horas.");
+                    return;
+                }
+
+                //esto no hace falta porque viene por sistema. Pero lo dejo
+                if (!int.TryParse(txtHorasSistema.Text, out int horas) || horas <= 0)
+                {
+                    MessageBox.Show("Ingrese una cantidad válida de horas.");
+                    return;
+                }
+                // La consigna no establece un tope, pero esto ayuda a prevenir errores de carga excesiva
+                if (horas > 240)
+                {
+                    MessageBox.Show("No se pueden liquidar más de 240 horas. Por favor solicite que se verifiquen los datos.");
+                    return;
+                }
+
+                var negocio = new LiquidarSueldoNegocio();
+                decimal sueldo = negocio.CalcularSueldo(_docente, horas);
+
+                MessageBox.Show($"Sueldo a liquidar: ${sueldo:N2}", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        private void btnCargarHoras_Click(object sender, EventArgs e)
+        {
+            HorasDocenteNegocio hdn = new HorasDocenteNegocio();
+
+            try
+            {
+                double horas = hdn.HorasDocente(personalId);
+
+                txtHorasSistema.Text = horas.ToString();
+
+            }
+            catch (Exception ex) { MessageBox.Show($"Error: {ex.Message}", "Error cargando las horas"); }
+
+
+        }
     }
 }
