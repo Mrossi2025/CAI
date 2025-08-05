@@ -46,13 +46,16 @@
     <Compile Include="CargarCarreras.cs" />
     <Compile Include="ActualizarDocenteNegocio.cs" />
     <Compile Include="AgregarDocente.cs" />
+    <Compile Include="CargarCursosNegocio.cs" />
+    <Compile Include="CargarMateriasNegocio.cs" />
     <Compile Include="EliminarAlumnoNegocio.cs" />
     <Compile Include="EliminarDocenteNegocio.cs" />
     <Compile Include="DesbloquearUsuarioNegocio.cs" />
     <Compile Include="GenerarReporteNegocio.cs" />
+    <Compile Include="HorasDocenteNegocio.cs" />
     <Compile Include="ListaAlumnos.cs" />
     <Compile Include="ListaDocentes.cs" />
-    <Compile Include="Login.cs" />
+    <Compile Include="LoginNegocio.cs" />
     <Compile Include="LiquidarSueldoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

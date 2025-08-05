@@ -34,7 +34,6 @@ namespace TPCAI
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
 
-            MessageBox.Show("Sesión cerrada");
             this.Close();
         }
 
@@ -59,14 +58,7 @@ namespace TPCAI
             this.Hide();
         }
 
-        /* NO SE DEBERÍA LLAMAR DESDE ADMIN ¿?
-        private void btnLiquidaciones_Click(object sender, EventArgs e)
-        {
-            Liquidaciones Liquidaciones = new Liquidaciones();
-            Liquidaciones.Show();
-            this.Hide();
-        }
-        */
+
         private void btnEgresados_Click(object sender, EventArgs e)
         {
             Menu_Egresados menuEgresados = new Menu_Egresados(this);    

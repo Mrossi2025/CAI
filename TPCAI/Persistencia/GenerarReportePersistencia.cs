@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Persistencia.utils;
 using Datos;
-using Datos.EgresadosReportes;
 
-namespace Persistencia.Menu_AdminPersistencia.Egresados
+
+namespace Persistencia
 {
     public class GenerarReportePersistencia
     {

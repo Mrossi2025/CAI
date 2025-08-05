@@ -10,9 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_de_Negocios;
-using Capa_de_Negocios.Menu_Admin.ABM_Docentes;
 using Datos;
-using Datos.Menu_Admin.ABM_DocentesClases;
 
 
 namespace TPCAI
@@ -23,7 +21,7 @@ namespace TPCAI
 
         public List<Docente> listaDocentes = new List<Docente>();
         List<CarrerasResponse> Carreras = new List<CarrerasResponse>();
-
+        
 
         public ABM_Docentes(MenuAdmin menuAdmin2)
         {
@@ -44,13 +42,10 @@ namespace TPCAI
 
         private void btnCargarDocentes_Click(object sender, EventArgs e)
         {
-            ListaDocentes lst = new ListaDocentes();
-
-
 
             try
             {
-
+                ListaDocentes lst = new ListaDocentes();
                 listaDocentes = lst.ObtenerListaDocentes();
                 MessageBox.Show($"Lista cargada: hay {listaDocentes.Count} docentes.");
 
@@ -62,21 +57,38 @@ namespace TPCAI
 
         }
 
+        private bool carrerasCargadas = false;
+
         private void ABM_Docentes_Load(object sender, EventArgs e)
         {
             try
             {
+                // Cargar carreras
                 CargarCarreras cc = new CargarCarreras();
                 Carreras = cc.cargarCarreras();
 
+                //Asignar data al ComboBox
+                cmbCarreras.DataSource = Carreras;
+                cmbCarreras.DisplayMember = "nombre"; 
+                cmbCarreras.ValueMember = "id";       
+
+                carrerasCargadas = true; //habilitamos la carga de materias
+
+                cmbCarreras.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar las carreras", ex.ToString());
             }
 
-            catch (Exception ex) { MessageBox.Show("Error al cargar las carreras", ex.ToString()); }
 
-
-
-
-
+            txtNombre.ReadOnly = true;
+            txtApellido.ReadOnly = true;
+            txtCUIT.ReadOnly = true;
+            txtDni.ReadOnly = true;
+            txtCUIT2.ReadOnly = true;
+            txtTipoDocente.ReadOnly = true;
+            txtAntiguedad.ReadOnly = true;  
 
 
         }
@@ -89,6 +101,8 @@ namespace TPCAI
             
             if (!float.TryParse(txtIdDocente.Text, out IdDocente))
             { MessageBox.Show("El Id debe ser númerico."); }
+            else if (IdDocente < 0)
+            { MessageBox.Show("El ID no puede ser negativo"); return; }
             else
             {
 
@@ -110,12 +124,23 @@ namespace TPCAI
 
                     txtNombre.Text = Busqueda.nombre;
                     txtApellido.Text = Busqueda.apellido;
-                    string[] partes = Busqueda.cuit.Split('-'); //Separo el dato del cuit en 3 
-                    txtCUIT.Text = partes[0];
-                    txtCUIT2.Text = partes[2];
+                    if (!string.IsNullOrEmpty(Busqueda.cuit) && Busqueda.cuit.Count(c => c == '-') == 2) //Validamos el formato del CUIT.
+                    {
+                        string[] partes = Busqueda.cuit.Split('-');
+                        txtCUIT.Text = partes.Length > 0 ? partes[0] : "";
+                        txtCUIT2.Text = partes.Length > 1 ? partes[2] : ""; //Va un 2 porque el cuit lo separa en 3 partes, el 1 es el DNI.
+                        
+                    }
+                    else
+                    {
+                        // CUIT vacío o con formato inválido → lo dejamos en blanco
+                        txtCUIT.Text = "";
+                        txtCUIT2.Text = "";
+                        
+                    }
                     txtDni.Text = Busqueda.dni;
-                    //  txtAntiguedad.Text = Busqueda.antiguedad.ToString(); (No es necesaria esta info aca)
-                    cmbCargo.SelectedItem = Busqueda.tipo;
+                    txtAntiguedad.Text = Busqueda.antiguedad.ToString(); //(No es necesaria esta info aca)
+                    txtTipoDocente.Text = Busqueda.tipo;
 
                     MessageBox.Show("Docente encontrado.");
                 }
@@ -160,11 +185,6 @@ namespace TPCAI
                 cmbCargoDocenteNuevo.BackColor = Color.LightBlue;
                 hayCamposIncompletos = true;
             }
-            if (string.IsNullOrWhiteSpace(txtCursoAgregarDocente.Text))
-            {
-                txtCursoAgregarDocente.BackColor = Color.LightBlue;
-                hayCamposIncompletos = true;
-            }
 
             if (hayCamposIncompletos)
             {
@@ -179,6 +199,9 @@ namespace TPCAI
                 !int.TryParse(txtDniAgregarDocente.Text, out int dniNumerico))
             { MessageBox.Show("El CUIT ingresdo es invalido, por favor verifique que sea numerico"); return; }
 
+            if(!string.IsNullOrWhiteSpace(txtIdDocenteNuevo.Text))
+            { MessageBox.Show("El ID Docente no es necesario en la función agregar, por favor borrelo."); return; }
+
             string cuitConcatenado = txtCuitAgregarDocente.Text + "-" + txtDniAgregarDocente.Text + "-" + txtCuitAgregarDocente2.Text;
 
             if (cuitConcatenado.Length > 13 || cuitConcatenado.Length < 12)
@@ -188,8 +211,21 @@ namespace TPCAI
             {Console.WriteLine("El Nombre no puede contener números."); return;}
             if (txtApellidoAgregarDocente.Text.Any(char.IsDigit))
             { Console.WriteLine("El Apellido no puede contener números."); return; }
-            if (!long.TryParse(txtCursoAgregarDocente.Text, out long curso))
-            { MessageBox.Show("Debe ingresar un numero de curso válido"); return; }
+
+            if (clbCursos.CheckedItems == null || clbCursos.CheckedItems.Count == 0)
+            {
+                DialogResult result = MessageBox.Show(
+                    "No ha seleccionado ningún curso.\n¿Desea continuar de todas formas sin asignar cursos?",
+                    "Confirmación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.No)
+                {
+                    return; // Sale del método y no continúa
+                }
+            }
 
 
             string apellido = txtApellidoAgregarDocente.Text;
@@ -212,18 +248,58 @@ namespace TPCAI
 
             AgregarDocente a = new AgregarDocente();
             List<long> lista = new List<long>();
-            lista.Add(curso);
+
+            if (clbCursos.CheckedItems == null || clbCursos.CheckedItems.Count == 0)
+            { lista.Add(0);
+
+                string Respuesta = a.CargarDocente(nombre, apellido, cuitConcatenado, dni, tipo, lista);
+
+                if (Respuesta == "OK")
+                {
+                    ListaDocentes lst = new ListaDocentes();
+
+                    try
+                    {
+
+                        listaDocentes = lst.ObtenerListaDocentes();
+                        MessageBox.Show($"Docente agregado con exito, Lista Actualizada: hay {listaDocentes.Count} docentes.");
 
 
-            string Respuesta = a.CargarDocente(nombre, apellido, cuitConcatenado, dni, tipo, lista);
+                    }
+                    catch (Exception ex) { MessageBox.Show("Docente agregado exitosamente, pero ha ocurrido un error actualizando la lista, por favor cargar nuevamente.", ex.ToString()); }
 
-            if (Respuesta == "OK")
-            {
-                MessageBox.Show("Docente Agregado con exito. Actualice la lista para buscarlo.", Respuesta);
+                }
+                else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }
+
             }
-            else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }
+            else
+            {
+                foreach (Cursos cursos in clbCursos.CheckedItems)
+                {
+                    lista.Add(cursos.id);
+                }
 
 
+                string Respuesta = a.CargarDocente(nombre, apellido, cuitConcatenado, dni, tipo, lista);
+
+                if (Respuesta == "OK")
+                {
+                    ListaDocentes lst = new ListaDocentes();
+
+                    try
+                    {
+
+                        listaDocentes = lst.ObtenerListaDocentes();
+                        MessageBox.Show($"Docente agregado con exito, Lista Actualizada: hay {listaDocentes.Count} docentes.");
+
+
+                    }
+                    catch (Exception ex) { MessageBox.Show("Docente agregado exitosamente, pero ha ocurrido un error actualizando la lista, por favor cargar nuevamente.",ex.ToString()); }
+
+                }
+                else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }
+
+            }
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -233,21 +309,22 @@ namespace TPCAI
             txtCUIT.Clear();
             txtCUIT2.Clear();
             txtDni.Clear();
-            //txtAntiguedad.Clear();
-            cmbCargo.SelectedIndex = -1;
-            txtCurso.Clear();
+            txtAntiguedad.Clear();
+            txtTipoDocente.Clear();
 
         }
 
         private void btnLimpiar2_Click(object sender, EventArgs e)
         {
+            txtIdDocenteNuevo.Clear();
             txtNombreAgregardocente.Clear();
             txtApellidoAgregarDocente.Clear();
             txtCuitAgregarDocente.Clear();
             txtDniAgregarDocente.Clear();
             txtCuitAgregarDocente2.Clear();
             cmbCargoDocenteNuevo.SelectedIndex = -1;
-            txtCursoAgregarDocente.Clear();
+            cmbMaterias.DataSource = null;
+            cmbCarreras.SelectedIndex = -1;
         }
 
 
@@ -279,63 +356,55 @@ namespace TPCAI
             cmbCargoDocenteNuevo.BackColor = Color.White;
         }
 
-        private void txtCursoAgregarDocente_Enter(object sender, EventArgs e)
-        {
-            txtCursoAgregarDocente.BackColor = Color.White;
-        }
+        
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
             bool hayIncompletos = false;
 
-            if (string.IsNullOrWhiteSpace(txtIdDocente.Text))
+            if (string.IsNullOrWhiteSpace(txtIdDocenteNuevo.Text))
             {
                 txtIdDocente.BackColor = Color.LightBlue;
                 hayIncompletos = true;
             }
 
 
-            if (string.IsNullOrWhiteSpace(txtNombre.Text))
+            if (string.IsNullOrWhiteSpace(txtNombreAgregardocente.Text))
             {
                 txtNombre.BackColor = Color.LightBlue;
                 hayIncompletos = true;
             }
 
-            if (string.IsNullOrWhiteSpace(txtApellido.Text))
+            if (string.IsNullOrWhiteSpace(txtApellidoAgregarDocente.Text))
             {
                 txtApellido.BackColor = Color.LightBlue;
                 hayIncompletos = true;
             }
 
-            if (string.IsNullOrWhiteSpace(txtCUIT.Text))
+            if (string.IsNullOrWhiteSpace(txtCuitAgregarDocente.Text))
             {
                 txtCUIT.BackColor = Color.LightBlue;
                 hayIncompletos = true;
             }
 
-            if (string.IsNullOrWhiteSpace(txtCUIT2.Text))
+            if (string.IsNullOrWhiteSpace(txtCuitAgregarDocente2.Text))
             {
                 txtCUIT2.BackColor = Color.LightBlue;
                 hayIncompletos = true;
             }
 
-            if (string.IsNullOrWhiteSpace(txtDni.Text))
+            if (string.IsNullOrWhiteSpace(txtDniAgregarDocente.Text))
             {
                 txtDni.BackColor = Color.LightBlue;
                 hayIncompletos = true;
             }
 
-            if (cmbCargo.SelectedItem == null)
+            if (cmbCargoDocenteNuevo.SelectedItem == null)
             {
-                cmbCargo.BackColor = Color.LightBlue;
+                cmbCargoDocenteNuevo.BackColor = Color.LightBlue;
                 hayIncompletos = true;
             }
 
-            if (string.IsNullOrWhiteSpace(txtCurso.Text))
-            {
-                txtCurso.BackColor = Color.LightBlue;
-                hayIncompletos = true;
-            }
 
                 if (hayIncompletos)
                 {
@@ -344,83 +413,111 @@ namespace TPCAI
                 }
 
 
-                if (!long.TryParse(txtCurso.Text, out long curso))
-                { MessageBox.Show("Debe ingresar un numero de curso válido"); return; } //Valido que sea numerico el curso
-                if (!long.TryParse(txtIdDocente.Text, out long id))
+                
+                if (!long.TryParse(txtIdDocenteNuevo.Text, out long id))
                 { MessageBox.Show("Debe ingresar un numero de curso válido"); return; } //Valido que sea numerico el id
-                if (!int.TryParse(txtCUIT.Text, out int CuitParte1) ||
-                    !int.TryParse(txtCUIT2.Text, out int CuitParte2) ||
-                    !int.TryParse(txtDni.Text, out int dniNumerico))
+                if(id < 0)
+                { MessageBox.Show("El ID docente no puede ser un número negativo."); return; }
+                if (!int.TryParse(txtCuitAgregarDocente.Text, out int CuitParte1) ||
+                    !int.TryParse(txtCuitAgregarDocente2.Text, out int CuitParte2) ||
+                    !int.TryParse(txtDniAgregarDocente.Text, out int dniNumerico))
                 { MessageBox.Show("El CUIT ingresdo es invalido, por favor verifique que sea numerico"); return; }
 
-                string cuitConcatenado = txtCUIT.Text + "-" + txtDni.Text + "-" + txtCUIT2.Text;
-
-                if (cuitConcatenado.Length > 13 || cuitConcatenado.Length < 12)
+                string cuitConcatenado = txtCuitAgregarDocente.Text + "-" + txtDniAgregarDocente.Text + "-" + txtCuitAgregarDocente2.Text;
+                                            //va +2 por los - que concateno
+                if (cuitConcatenado.Length > 11+2 || cuitConcatenado.Length < 10+2)
                 { MessageBox.Show("El CUIT ingresdo es invalido, por favor verifique la longitud"); return; }
                 if (txtNombreAgregardocente.Text.Any(char.IsDigit))
                 { Console.WriteLine("El Nombre no puede contener números."); return; }
                 if (txtApellidoAgregarDocente.Text.Any(char.IsDigit))
                 { Console.WriteLine("El Apellido no puede contener números."); return; }
 
+            if (clbCursos.CheckedItems == null || clbCursos.CheckedItems.Count == 0)
+            {
+                DialogResult result = MessageBox.Show(
+                    "No ha seleccionado ningún curso.\n¿Desea continuar de todas formas sin asignar cursos?",
+                    "Confirmación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.No)
+                {
+                    return; // Sale del método y no continúa
+                }
+            }
+
+
                 string nombre = txtNombre.Text;
                 string apellido = txtApellido.Text;
                 string dni = txtDni.Text;
-                string tipo = cmbCargo.SelectedItem.ToString();
+                string tipo = cmbCargoDocenteNuevo.SelectedItem.ToString();
                 
 
 
-            ActualizarDocenteNegocio a = new ActualizarDocenteNegocio();
+                ActualizarDocenteNegocio a = new ActualizarDocenteNegocio();
                 List<long> listaCursos = new List<long>();
-                listaCursos.Add(curso);
+
+            if (clbCursos.CheckedItems == null || clbCursos.CheckedItems.Count == 0)
+            {   
+                listaCursos.Add(0);
+
 
 
                 string Respuesta = a.ActualizarDocente(nombre, apellido, cuitConcatenado, dni, tipo, listaCursos, id);
 
                 if (Respuesta == "OK")
                 {
-                    MessageBox.Show("Docente Actualizado con exito. Actualice la lista para buscarlo.", Respuesta);
+                    ListaDocentes lst = new ListaDocentes();
+
+                    try
+                    {
+
+                        listaDocentes = lst.ObtenerListaDocentes();
+                        MessageBox.Show($"Docente Actualizado: hay {listaDocentes.Count} docentes.");
+
+
+                    }
+                    catch (Exception ex) { MessageBox.Show("Error actualizando la lista docentes, refresque la lista.",ex.ToString()); }
                 }
-                else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }   
+                else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }
+
+            }
+            else
+            {
+                foreach (Cursos cursos in clbCursos.CheckedItems)
+                {
+                    listaCursos.Add(cursos.id);
+                }
+
+
+                string Respuesta = a.ActualizarDocente(nombre, apellido, cuitConcatenado, dni, tipo, listaCursos, id);
+
+                if (Respuesta == "OK")
+                {
+                    ListaDocentes lst = new ListaDocentes();
+
+                    try
+                    {
+
+                        listaDocentes = lst.ObtenerListaDocentes();
+                        MessageBox.Show($"Docente Actualizado: hay {listaDocentes.Count} docentes.");
+
+
+                    }
+                    catch (Exception ex) { MessageBox.Show("Error actualizando la lista docentes, refresque la lista.",ex.ToString()); }
+                }
+                else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }
 
 
 
-
+            }
             
 
 
         }
 
-        private void txtCurso_Enter(object sender, EventArgs e)
-        {
-            txtCurso.BackColor = Color.White;
-        }
-
-        private void cmbCargo_Enter(object sender, EventArgs e)
-        {
-            cmbCargo.BackColor = Color.White;
-        }
-
-        private void txtDni_Enter(object sender, EventArgs e)
-        {
-            txtDni.BackColor = Color.White;
-        }
-
-        private void txtCUIT_Enter(object sender, EventArgs e)
-        {
-            txtCUIT.BackColor = Color.White;
-        }
         
-
-
-        private void txtApellido_Enter(object sender, EventArgs e)
-        {
-            txtApellido.BackColor = Color.White;
-        }
-
-        private void txtNombre_Enter(object sender, EventArgs e)
-        {
-            txtNombre.BackColor = Color.White;
-        }
 
         private void txtIdDocente_Enter(object sender, EventArgs e)
         {
@@ -435,6 +532,8 @@ namespace TPCAI
             { MessageBox.Show("Debe ingresar un Id a Eliminar"); txtIdDocente.BackColor = Color.LightBlue; return; }
             if (!long.TryParse(txtIdDocente.Text, out IdDocente))
             { MessageBox.Show("El id ingresado debe ser númerico."); return; }
+            if (IdDocente < 0)
+            { MessageBox.Show("El ID docente no puede ser un número negativo."); return; }
             if (listaDocentes.Count == 0)            
             { MessageBox.Show("Debe cargar la lista de docentes antes de eliminar."); return; }
             if(listaDocentes.Find(ab => ab.id == IdDocente) ==null)
@@ -445,8 +544,7 @@ namespace TPCAI
                 "¿Estás seguro que querés continuar?",
                 "Confirmación",
                 MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-);
+                MessageBoxIcon.Question);
 
             if (respuesta != DialogResult.Yes)
             {
@@ -459,7 +557,15 @@ namespace TPCAI
             string Respuesta = a.EliminarDocente(IdDocente);
             if (Respuesta == "OK")
             {
-                MessageBox.Show("Docente Eliminado con exito. Actualice la lista para confirmarlo.", Respuesta);
+                try
+                {
+                    ListaDocentes lst = new ListaDocentes();
+                    listaDocentes = lst.ObtenerListaDocentes();
+                    MessageBox.Show($"Docente eliminado exitosamente, actualmente hay {listaDocentes.Count} docentes registrados.");
+
+
+                }
+                catch (Exception ex) { MessageBox.Show("Docente eliminado exitosamente, pero ha ocurrido un error actualizando la lista docentes. (Carguela Nuevamente)",ex.ToString()); }
             }
             else { MessageBox.Show("Ha ocurrido un error, intente nuevamente.", Respuesta); }
         }
@@ -479,5 +585,115 @@ namespace TPCAI
         {
             txtCUIT2.BackColor = Color.White;
         }
+
+        private bool materiasCargadas = false;
+        private void cmbCarreras_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // 1️ Evitar que corra durante la carga inicial
+            if (!carrerasCargadas) return;
+
+            // 2️ Verificar que el SelectedValue no sea null
+            if (cmbCarreras.SelectedValue == null)
+                return;
+
+            // 3️ Obtener carreraId de forma segura
+            if (!long.TryParse(cmbCarreras.SelectedValue.ToString(), out long carreraId))
+                return;
+
+            try
+            {
+                // 4️ Llamar a negocio y cargar materias
+                CargarMateriasNegocio cmn = new CargarMateriasNegocio();
+                List<Materias> materias = cmn.CargarMaterias(carreraId);
+
+                cmbMaterias.DataSource = materias;
+                cmbMaterias.DisplayMember = "nombre";
+                cmbMaterias.ValueMember = "id";
+                materiasCargadas = true; //habilitamos la carga de cursos
+                cmbMaterias.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cargando las materias de la carrera seleccionada", ex.ToString());
+            }
+        }
+
+
+        private void cmbMaterias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //  Evitar que corra durante la carga inicial de materias
+            if (!materiasCargadas) return;
+
+            //  Verificar que el SelectedValue no sea null
+            if (cmbMaterias.SelectedValue == null)
+                return;
+
+            //  Obtener materiaId de forma segura
+            if (!long.TryParse(cmbMaterias.SelectedValue.ToString(), out long materiaId))
+                return;
+
+            try
+            {
+                // Cargar cursos desde negocio
+                CargarCursosNegocio ccn = new CargarCursosNegocio();
+                List<Cursos> cursos = ccn.CargarCursos(materiaId);
+
+                // Enlazar cursos al checklist
+                clbCursos.DataSource = cursos;
+                clbCursos.DisplayMember = "profesorNombre"; // Ponemos el nombre del titular del curso
+                clbCursos.ValueMember = "id";
+
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cargando los cursos de la materia seleccionada", ex.ToString());
+            }
+        }
+
+        private void cmbMaterias_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(cmbMaterias.Text))
+            {
+                clbCursos.DataSource = null; // Limpia la lista de cursos
+            }
+        }
+
+        private void clbCursos_Enter(object sender, EventArgs e)
+        {
+            clbCursos.BackColor = Color.White;
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            if(string.IsNullOrWhiteSpace(txtNombre.Text) ||
+               string.IsNullOrWhiteSpace(txtApellido.Text) ||
+               string.IsNullOrWhiteSpace(txtAntiguedad.Text))
+            {
+                MessageBox.Show("Debe buscar un docente primero, ingrese su id y presione buscar."); return;
+            }
+
+            txtIdDocenteNuevo.Text = txtIdDocente.Text;
+            txtNombreAgregardocente.Text = txtNombre.Text;
+            txtApellidoAgregarDocente.Text = txtApellido.Text;
+            txtIdDocenteNuevo.Text = txtIdDocente.Text;
+            txtCuitAgregarDocente.Text = txtCUIT.Text;
+            txtDniAgregarDocente.Text = txtDni.Text;
+            txtCuitAgregarDocente2.Text = txtCUIT2.Text;
+
+            if (txtTipoDocente.Text == "PROFESOR")
+            { cmbCargoDocenteNuevo.SelectedIndex = 0; }
+            else if (txtTipoDocente.Text == "AYUDANTE")
+            { cmbCargoDocenteNuevo.SelectedIndex = 1; }
+            else if (txtTipoDocente.Text == "AYUDANTE_AD_HONOREM")
+            { cmbCargoDocenteNuevo.SelectedIndex = 2; }
+
+            MessageBox.Show("Datos pasados correctamente al menú para modificar");
+
+
+
+
+        }
     }
+    
 }

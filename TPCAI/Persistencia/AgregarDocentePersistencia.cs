@@ -6,11 +6,10 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Datos;
-using Datos.Menu_Admin.ABM_DocentesClases;
 using Newtonsoft.Json;
 using Persistencia.utils;
 
-namespace Persistencia.Menu_AdminPersistencia.AMB_DocentesPersistencia
+namespace Persistencia
 {
     public class AgregarDocentePersistencia
     {
@@ -24,12 +23,14 @@ namespace Persistencia.Menu_AdminPersistencia.AMB_DocentesPersistencia
             HttpResponseMessage resp = WebHelper.Post("tpIntensivo/docentes", json);
 
 
-            if (!resp.IsSuccessStatusCode)
+            // Éxito  (códigos 2xx)
+            if (resp.IsSuccessStatusCode)
+            { return "OK"; }
+            else
             {
-                string err = resp.Content.ReadAsStringAsync().Result;
-                return err;
+                // mensaje con el código y la razón
+                return $"Error {(int)resp.StatusCode} – {resp.ReasonPhrase}";
             }
-            else { return "OK"; }
         }
 
 

@@ -8,8 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_de_Negocios;
-using Capa_de_Negocios.Menu_Personal;
-using Datos.Menu_Admin.ABM_DocentesClases;
+using Datos;
 
 namespace TPCAI
 {
