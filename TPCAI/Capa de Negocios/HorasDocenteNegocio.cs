@@ -16,7 +16,7 @@ namespace Capa_de_Negocios
         public double HorasDocente(long id)
         {
 
-            
+             
         
             //Precargamos las materias necesarias
             List<Materias> Administracion = CMP.cargarMateriasCarrera(1);
