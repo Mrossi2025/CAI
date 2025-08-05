@@ -14,67 +14,58 @@ namespace TPCAI
 {
     public partial class Liquidaciones : Form
     {
-        public Liquidaciones()
+        private int personalId;
+        private Form _formAnterior;
+        public Liquidaciones(int id, Form formAnterior)
         {
             InitializeComponent();
+            personalId = id;
+            _formAnterior = formAnterior;
+
+            // Bloquear campos de datos
+            txtNombre.ReadOnly = true;
+            txtApellido.ReadOnly = true;
+            txtDNI.ReadOnly = true;
+            txtAntiguedad.ReadOnly = true;
+            rbtnProfesor.Enabled = false;
+            rbtnAyudante.Enabled = false;            
         }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Liquidaciones_Load(object sender, EventArgs e)
         {
-            CargarDocentesValidos();
-            cmbDocentes.SelectedIndexChanged += cmbDocentes_SelectedIndexChanged; //dispara automáticamente el sistema
+            CargarDatosDocentePorId();
         }
-
-        private void CargarDocentesValidos()
+        
+        private Docente _docente;
+        private void CargarDatosDocentePorId()
         {
             try
             {
-                // 1) Crear instancia de la capa de negocios
                 ListaDocentes negocio = new ListaDocentes();
-
-                // 2) Obtener la lista de docentes
                 var docentes = negocio.ObtenerListaDocentes();
 
-                // 3) Filtrar solo PROFESORES y AYUDANTES (excluye AYUDANTE AD HONOREM)
-                var docentesValidos = docentes
-                    .Where(d => d.tipo.ToUpper() == "PROFESOR" || d.tipo.ToUpper() == "AYUDANTE")
-                    .ToList();
+                _docente = docentes.FirstOrDefault(d => d.id == personalId);
 
-                // 4) Cargar el ComboBox 
-                cmbDocentes.DataSource = docentesValidos;
-                cmbDocentes.DisplayMember = "DocenteCompleto";
-                cmbDocentes.ValueMember = "id"; // ID del docente
+                if (_docente == null)
+                {
+                    MessageBox.Show("No se encontró al personal.");
+                    return;
+                }
+
+                txtNombre.Text = _docente.nombre;
+                txtApellido.Text = _docente.apellido;
+                txtDNI.Text = _docente.dni;
+                txtAntiguedad.Text = _docente.antiguedad.ToString();
+
+                if (_docente.tipo.ToUpper() == "PROFESOR")
+                    rbtnProfesor.Checked = true;
+                else if (_docente.tipo.ToUpper() == "AYUDANTE")
+                    rbtnAyudante.Checked = true;
+                else
+                    MessageBox.Show("Este perfil no corresponde a un cargo liquidable.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar docentes: {ex.Message}");
-            }
-        }
-
-        //Completa los datos según profesor elegido
-        private void cmbDocentes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbDocentes.SelectedItem is Docente docente)
-            {
-                txtNombre.Text = docente.nombre;
-                txtApellido.Text = docente.apellido;
-                txtDNI.Text = docente.dni;
-                txtAntiguedad.Text = docente.antiguedad.ToString();
-
-                if (docente.tipo.ToUpper() == "PROFESOR")
-                    rbtnProfesor.Checked = true;
-                else if (docente.tipo.ToUpper() == "AYUDANTE")
-                    rbtnAyudante.Checked = true;
+                MessageBox.Show($"Error al cargar los datos: {ex.Message}");
             }
         }
 
@@ -82,39 +73,50 @@ namespace TPCAI
         {
             try
             {
-                // 1) Validar selección de docente
-                if (cmbDocentes.SelectedItem == null)
+                if (_docente == null)
                 {
-                    MessageBox.Show("Por favor, seleccione un docente.");
+                    MessageBox.Show("No se encontró el docente.");
                     return;
                 }
 
-                // 2) Validar horas ingresadas
                 if (!int.TryParse(txtHoras.Text, out int horas) || horas <= 0)
                 {
                     MessageBox.Show("Ingrese una cantidad válida de horas.");
                     return;
                 }
+                // La consigna no establece un tope, pero esto ayuda a prevenir errores de carga excesiva
+                if (horas > 240)
+                {
+                    MessageBox.Show("No se pueden liquidar más de 240 horas. Verifique los datos.");
+                    return;
+                }
 
-                // 3) Obtener docente seleccionado
-                Docente docenteSeleccionado = (Docente)cmbDocentes.SelectedItem;
-
-                // 4) Llamar a capa de negocio para calcular sueldo
                 var negocio = new LiquidarSueldoNegocio();
-                decimal sueldo = negocio.CalcularSueldo(docenteSeleccionado, horas);
+                decimal sueldo = negocio.CalcularSueldo(_docente, horas);
 
-                // 5) Mostrar resultado
                 MessageBox.Show($"Sueldo a liquidar: ${sueldo:N2}", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al calcular sueldo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        private bool _cerrandoDesdeBotonVolver = false;
         private void btnVolver_Click(object sender, EventArgs e)
         {
+            _cerrandoDesdeBotonVolver = true;
+            _formAnterior.Show();
             this.Close();
         }
+
+        private void Liquidaciones_FormCLosed(object sender, FormClosedEventArgs e)
+        {
+            if (!_cerrandoDesdeBotonVolver)
+            {
+                Application.Exit();
+            }
+        }
+
     }
 }
