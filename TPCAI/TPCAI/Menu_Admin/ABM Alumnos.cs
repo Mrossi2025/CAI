@@ -260,8 +260,7 @@ namespace TPCAI
             "¿Estás seguro que querés continuar?",
             "Confirmación",
             MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question
-);
+            MessageBoxIcon.Question);
 
             if (respuesta != DialogResult.Yes)
             {
@@ -345,6 +344,26 @@ namespace TPCAI
             string apellido = txtApellido.Text;
             string dnitexto = txtDni.Text;
             List<long> carrerasSeleccionadas = new List<long>();
+
+            if (listaAlumnos.Count == 0)
+            { MessageBox.Show("Debe cargar la lista de alumnos primero."); return; }
+            
+            if (listaAlumnos.Find(b => b.id == id) == null)
+            { MessageBox.Show("No existe un alumno registrado con ese ID"); return; }
+
+
+            DialogResult respuesta = MessageBox.Show(
+            $"¿Estás seguro que querés modificar el alumno con el id {id}? (Presione No para verificar nuevamente los datos)",
+            "Confirmación",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if (respuesta != DialogResult.Yes)
+            {
+                // Si presionó "No", se cancela
+                return;
+            }
+
 
 
             //Por cada Item checked, como esa lista son los objetos carreraResponse cargados, carrera lo transformo en Carrerarepsonde item, que es cada seleccion.
