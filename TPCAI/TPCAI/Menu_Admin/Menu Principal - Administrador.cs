@@ -46,7 +46,7 @@ namespace TPCAI
 
         private void btnAbmAlumnos_Click(object sender, EventArgs e)
         {
-            MenuAdmin1 ABMAlumnos = new MenuAdmin1(this);
+            ABM_Alumnos ABMAlumnos = new ABM_Alumnos(this);
             ABMAlumnos.Show();
             this.Hide();
         }

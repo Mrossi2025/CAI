@@ -1,6 +1,6 @@
 ﻿namespace TPCAI
 {
-    partial class MenuAdmin1
+    partial class ABM_Alumnos
     {
         /// <summary>
         /// Required designer variable.
@@ -265,7 +265,7 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Presione para cargar la lista de alumnos en el sistema.";
             // 
-            // MenuAdmin1
+            // ABM_Alumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -275,7 +275,7 @@
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.grpBuscarAlumno);
             this.Controls.Add(this.grpDatosAlumno);
-            this.Name = "MenuAdmin1";
+            this.Name = "ABM_Alumnos";
             this.Text = "ABM Alumnos";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuAdmin1_FormClosed);
             this.Load += new System.EventHandler(this.MenuAdmin1_Load);

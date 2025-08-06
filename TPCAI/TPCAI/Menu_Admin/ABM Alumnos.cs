@@ -14,7 +14,7 @@ namespace TPCAI
 {
     
 
-    public partial class MenuAdmin1 : Form
+    public partial class ABM_Alumnos : Form
     {
 
         List<Alumnos> listaAlumnos = new List<Alumnos>(); //Declaro la lista donde se van a guardar
@@ -24,12 +24,12 @@ namespace TPCAI
         private MenuAdmin menuAdmin;
         
 
-        public MenuAdmin1()
+        public ABM_Alumnos()
         {
             InitializeComponent();
         }
 
-        public MenuAdmin1(MenuAdmin Volver)
+        public ABM_Alumnos(MenuAdmin Volver)
         {
             InitializeComponent();
             menuAdmin = Volver;
