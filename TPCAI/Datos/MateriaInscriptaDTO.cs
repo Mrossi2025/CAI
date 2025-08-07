@@ -13,6 +13,5 @@ namespace Datos.EgresadosReportes
         public string nombre {  get; set; }
         public string condicion { get; set; }
         public int? nota { get; set; }
-
     }
 }

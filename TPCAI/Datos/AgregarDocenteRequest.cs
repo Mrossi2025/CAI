@@ -14,7 +14,5 @@ namespace Datos.Menu_Admin.ABM_DocentesClases
         public string dni { get; set; } 
         public string tipo { get; set; }
         public List<long> cursos { get; set; }
-
-
     }
 }

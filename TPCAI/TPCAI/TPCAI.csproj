@@ -169,6 +169,10 @@
       <Project>{f1ee3ea5-7a23-4a51-b2f9-63e74aa10b83}</Project>
       <Name>Datos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
+      <Project>{201023A7-421D-4D3C-83A1-DDAA5FA4ECE8}</Project>
+      <Name>Persistencia</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

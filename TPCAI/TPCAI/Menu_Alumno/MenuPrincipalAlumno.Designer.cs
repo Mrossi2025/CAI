@@ -1,6 +1,6 @@
 ﻿namespace TPCAI
 {
-    partial class Menu_principal___Alumno
+    partial class MenuPrincipalAlumno
     {
         /// <summary>
         /// Required designer variable.
@@ -40,12 +40,13 @@
             // btnInscribirte
             // 
             this.btnInscribirte.Location = new System.Drawing.Point(32, 92);
-            this.btnInscribirte.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnInscribirte.Margin = new System.Windows.Forms.Padding(2);
             this.btnInscribirte.Name = "btnInscribirte";
             this.btnInscribirte.Size = new System.Drawing.Size(136, 55);
             this.btnInscribirte.TabIndex = 1;
             this.btnInscribirte.Text = "Inscripciónes";
             this.btnInscribirte.UseVisualStyleBackColor = true;
+            this.btnInscribirte.Click += new System.EventHandler(this.btnInscribirte_Click);
             // 
             // grpMenuAlumnos
             // 
@@ -54,9 +55,9 @@
             this.grpMenuAlumnos.Controls.Add(this.lblSeleccione);
             this.grpMenuAlumnos.Controls.Add(this.btnInscribirte);
             this.grpMenuAlumnos.Location = new System.Drawing.Point(9, 58);
-            this.grpMenuAlumnos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpMenuAlumnos.Margin = new System.Windows.Forms.Padding(2);
             this.grpMenuAlumnos.Name = "grpMenuAlumnos";
-            this.grpMenuAlumnos.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpMenuAlumnos.Padding = new System.Windows.Forms.Padding(2);
             this.grpMenuAlumnos.Size = new System.Drawing.Size(473, 233);
             this.grpMenuAlumnos.TabIndex = 2;
             this.grpMenuAlumnos.TabStop = false;
@@ -66,7 +67,7 @@
             // btnCerrarSesion
             // 
             this.btnCerrarSesion.Location = new System.Drawing.Point(312, 92);
-            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCerrarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(136, 55);
             this.btnCerrarSesion.TabIndex = 6;
@@ -76,7 +77,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(172, 91);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(136, 55);
             this.button2.TabIndex = 4;
@@ -110,10 +111,10 @@
             this.ClientSize = new System.Drawing.Size(515, 366);
             this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.grpMenuAlumnos);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Menu_principal___Alumno";
             this.Text = "Menu_principal___Alumno";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menu_principal___Alumno_FormClosed_1);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MenuPrincipalAlumno_FormClosed);
             this.grpMenuAlumnos.ResumeLayout(false);
             this.grpMenuAlumnos.PerformLayout();
             this.ResumeLayout(false);
