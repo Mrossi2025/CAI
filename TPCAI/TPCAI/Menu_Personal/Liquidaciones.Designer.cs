@@ -28,57 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpBDatos = new System.Windows.Forms.GroupBox();
             this.txtAntiguedad = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblAntiguedad = new System.Windows.Forms.Label();
             this.rbtnAyudante = new System.Windows.Forms.RadioButton();
             this.rbtnProfesor = new System.Windows.Forms.RadioButton();
             this.txtDNI = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblDNI = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblApellido = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblIngresarHoras = new System.Windows.Forms.Label();
             this.txtHoras = new System.Windows.Forms.TextBox();
             this.btnLiquidar = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.cmbDocentes = new System.Windows.Forms.ComboBox();
-            this.groupBox1.SuspendLayout();
+            this.grp2 = new System.Windows.Forms.GroupBox();
+            this.chkManual = new System.Windows.Forms.CheckBox();
+            this.btnCargarHoras = new System.Windows.Forms.Button();
+            this.txtHorasSistema = new System.Windows.Forms.TextBox();
+            this.btnLiquidar2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.grpBDatos.SuspendLayout();
+            this.grp2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // grpBDatos
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 32);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Personal a Liquidar";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txtAntiguedad);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.rbtnAyudante);
-            this.groupBox1.Controls.Add(this.rbtnProfesor);
-            this.groupBox1.Controls.Add(this.txtDNI);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtApellido);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtNombre);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(22, 61);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(262, 224);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Datos Docente/Ayudante";
+            this.grpBDatos.Controls.Add(this.txtAntiguedad);
+            this.grpBDatos.Controls.Add(this.lblAntiguedad);
+            this.grpBDatos.Controls.Add(this.rbtnAyudante);
+            this.grpBDatos.Controls.Add(this.rbtnProfesor);
+            this.grpBDatos.Controls.Add(this.txtDNI);
+            this.grpBDatos.Controls.Add(this.lblDNI);
+            this.grpBDatos.Controls.Add(this.txtApellido);
+            this.grpBDatos.Controls.Add(this.lblApellido);
+            this.grpBDatos.Controls.Add(this.txtNombre);
+            this.grpBDatos.Controls.Add(this.lblNombre);
+            this.grpBDatos.Location = new System.Drawing.Point(28, 40);
+            this.grpBDatos.Margin = new System.Windows.Forms.Padding(2);
+            this.grpBDatos.Name = "grpBDatos";
+            this.grpBDatos.Padding = new System.Windows.Forms.Padding(2);
+            this.grpBDatos.Size = new System.Drawing.Size(262, 256);
+            this.grpBDatos.TabIndex = 2;
+            this.grpBDatos.TabStop = false;
+            this.grpBDatos.Text = "Datos Docente/Ayudante";
             // 
             // txtAntiguedad
             // 
@@ -88,15 +82,15 @@
             this.txtAntiguedad.Size = new System.Drawing.Size(108, 20);
             this.txtAntiguedad.TabIndex = 9;
             // 
-            // label5
+            // lblAntiguedad
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 171);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Antiguedad";
+            this.lblAntiguedad.AutoSize = true;
+            this.lblAntiguedad.Location = new System.Drawing.Point(10, 171);
+            this.lblAntiguedad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblAntiguedad.Name = "lblAntiguedad";
+            this.lblAntiguedad.Size = new System.Drawing.Size(61, 13);
+            this.lblAntiguedad.TabIndex = 8;
+            this.lblAntiguedad.Text = "Antiguedad";
             // 
             // rbtnAyudante
             // 
@@ -130,15 +124,15 @@
             this.txtDNI.Size = new System.Drawing.Size(108, 20);
             this.txtDNI.TabIndex = 5;
             // 
-            // label4
+            // lblDNI
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 105);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "DNI";
+            this.lblDNI.AutoSize = true;
+            this.lblDNI.Location = new System.Drawing.Point(10, 105);
+            this.lblDNI.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDNI.Name = "lblDNI";
+            this.lblDNI.Size = new System.Drawing.Size(26, 13);
+            this.lblDNI.TabIndex = 4;
+            this.lblDNI.Text = "DNI";
             // 
             // txtApellido
             // 
@@ -148,15 +142,15 @@
             this.txtApellido.Size = new System.Drawing.Size(108, 20);
             this.txtApellido.TabIndex = 3;
             // 
-            // label3
+            // lblApellido
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 68);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Apellido";
+            this.lblApellido.AutoSize = true;
+            this.lblApellido.Location = new System.Drawing.Point(10, 68);
+            this.lblApellido.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblApellido.Name = "lblApellido";
+            this.lblApellido.Size = new System.Drawing.Size(44, 13);
+            this.lblApellido.TabIndex = 2;
+            this.lblApellido.Text = "Apellido";
             // 
             // txtNombre
             // 
@@ -166,30 +160,29 @@
             this.txtNombre.Size = new System.Drawing.Size(108, 20);
             this.txtNombre.TabIndex = 1;
             // 
-            // label2
+            // lblNombre
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 32);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Nombre";
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(10, 32);
+            this.lblNombre.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(44, 13);
+            this.lblNombre.TabIndex = 0;
+            this.lblNombre.Text = "Nombre";
             // 
-            // label6
+            // lblIngresarHoras
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(29, 297);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(128, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Ingresar Horas a Liquidar:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.lblIngresarHoras.AutoSize = true;
+            this.lblIngresarHoras.Location = new System.Drawing.Point(11, 182);
+            this.lblIngresarHoras.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblIngresarHoras.Name = "lblIngresarHoras";
+            this.lblIngresarHoras.Size = new System.Drawing.Size(128, 13);
+            this.lblIngresarHoras.TabIndex = 3;
+            this.lblIngresarHoras.Text = "Ingresar Horas a Liquidar:";
             // 
             // txtHoras
             // 
-            this.txtHoras.Location = new System.Drawing.Point(156, 292);
+            this.txtHoras.Location = new System.Drawing.Point(143, 175);
             this.txtHoras.Margin = new System.Windows.Forms.Padding(2);
             this.txtHoras.Name = "txtHoras";
             this.txtHoras.Size = new System.Drawing.Size(130, 20);
@@ -197,7 +190,7 @@
             // 
             // btnLiquidar
             // 
-            this.btnLiquidar.Location = new System.Drawing.Point(81, 322);
+            this.btnLiquidar.Location = new System.Drawing.Point(70, 207);
             this.btnLiquidar.Margin = new System.Windows.Forms.Padding(2);
             this.btnLiquidar.Name = "btnLiquidar";
             this.btnLiquidar.Size = new System.Drawing.Size(126, 22);
@@ -208,64 +201,122 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(487, 292);
+            this.btnVolver.Location = new System.Drawing.Point(260, 320);
             this.btnVolver.Margin = new System.Windows.Forms.Padding(2);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(92, 56);
+            this.btnVolver.Size = new System.Drawing.Size(92, 35);
             this.btnVolver.TabIndex = 6;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // cmbDocentes
+            // grp2
             // 
-            this.cmbDocentes.FormattingEnabled = true;
-            this.cmbDocentes.Location = new System.Drawing.Point(131, 29);
-            this.cmbDocentes.Name = "cmbDocentes";
-            this.cmbDocentes.Size = new System.Drawing.Size(121, 21);
-            this.cmbDocentes.TabIndex = 7;
+            this.grp2.Controls.Add(this.label2);
+            this.grp2.Controls.Add(this.btnLiquidar2);
+            this.grp2.Controls.Add(this.txtHorasSistema);
+            this.grp2.Controls.Add(this.btnCargarHoras);
+            this.grp2.Controls.Add(this.chkManual);
+            this.grp2.Controls.Add(this.lblIngresarHoras);
+            this.grp2.Controls.Add(this.txtHoras);
+            this.grp2.Controls.Add(this.btnLiquidar);
+            this.grp2.Location = new System.Drawing.Point(305, 44);
+            this.grp2.Name = "grp2";
+            this.grp2.Size = new System.Drawing.Size(284, 252);
+            this.grp2.TabIndex = 7;
+            this.grp2.TabStop = false;
+            this.grp2.Text = "Calculo de sueldo";
+            // 
+            // chkManual
+            // 
+            this.chkManual.AutoSize = true;
+            this.chkManual.Location = new System.Drawing.Point(21, 147);
+            this.chkManual.Name = "chkManual";
+            this.chkManual.Size = new System.Drawing.Size(159, 17);
+            this.chkManual.TabIndex = 7;
+            this.chkManual.Text = "Ingresar horas manualmente";
+            this.chkManual.UseVisualStyleBackColor = true;
+            this.chkManual.CheckedChanged += new System.EventHandler(this.chkManual_CheckedChanged);
+            // 
+            // btnCargarHoras
+            // 
+            this.btnCargarHoras.Location = new System.Drawing.Point(61, 69);
+            this.btnCargarHoras.Name = "btnCargarHoras";
+            this.btnCargarHoras.Size = new System.Drawing.Size(78, 22);
+            this.btnCargarHoras.TabIndex = 8;
+            this.btnCargarHoras.Text = "Cargar Horas";
+            this.btnCargarHoras.UseVisualStyleBackColor = true;
+            this.btnCargarHoras.Click += new System.EventHandler(this.btnCargarHoras_Click);
+            // 
+            // txtHorasSistema
+            // 
+            this.txtHorasSistema.Location = new System.Drawing.Point(61, 43);
+            this.txtHorasSistema.Name = "txtHorasSistema";
+            this.txtHorasSistema.Size = new System.Drawing.Size(159, 20);
+            this.txtHorasSistema.TabIndex = 9;
+            // 
+            // btnLiquidar2
+            // 
+            this.btnLiquidar2.Location = new System.Drawing.Point(142, 69);
+            this.btnLiquidar2.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLiquidar2.Name = "btnLiquidar2";
+            this.btnLiquidar2.Size = new System.Drawing.Size(78, 22);
+            this.btnLiquidar2.TabIndex = 10;
+            this.btnLiquidar2.Text = "Liquidar sueldo";
+            this.btnLiquidar2.UseVisualStyleBackColor = true;
+            this.btnLiquidar2.Click += new System.EventHandler(this.btnLiquidar2_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(58, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(153, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Horas registradas en el sistema";
             // 
             // Liquidaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
-            this.Controls.Add(this.cmbDocentes);
+            this.ClientSize = new System.Drawing.Size(673, 360);
+            this.Controls.Add(this.grp2);
             this.Controls.Add(this.btnVolver);
-            this.Controls.Add(this.btnLiquidar);
-            this.Controls.Add(this.txtHoras);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.grpBDatos);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Liquidaciones";
             this.Text = "Liquidaciones";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Liquidaciones_FormCLosed);
             this.Load += new System.EventHandler(this.Liquidaciones_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpBDatos.ResumeLayout(false);
+            this.grpBDatos.PerformLayout();
+            this.grp2.ResumeLayout(false);
+            this.grp2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpBDatos;
         private System.Windows.Forms.RadioButton rbtnProfesor;
         private System.Windows.Forms.TextBox txtDNI;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblDNI;
         private System.Windows.Forms.TextBox txtApellido;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblApellido;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtAntiguedad;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblAntiguedad;
         private System.Windows.Forms.RadioButton rbtnAyudante;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblIngresarHoras;
         private System.Windows.Forms.TextBox txtHoras;
         private System.Windows.Forms.Button btnLiquidar;
         private System.Windows.Forms.Button btnVolver;
-        private System.Windows.Forms.ComboBox cmbDocentes;
+        private System.Windows.Forms.GroupBox grp2;
+        private System.Windows.Forms.CheckBox chkManual;
+        private System.Windows.Forms.Button btnLiquidar2;
+        private System.Windows.Forms.TextBox txtHorasSistema;
+        private System.Windows.Forms.Button btnCargarHoras;
+        private System.Windows.Forms.Label label2;
     }
 }

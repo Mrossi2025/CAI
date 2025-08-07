@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    public class Materias
+    public class AlumnosRecibidos
     {
+
         public long id {  get; set; }
         public string nombre { get; set; }
-        public int horasSemanales {  get; set; }
-        public List<Materias> correlativas { get; set; }
+        public string apellido { get; set; }
+        public string titulo { get; set; }
+        public string carrera { get; set; }
+
+
+
     }
 }

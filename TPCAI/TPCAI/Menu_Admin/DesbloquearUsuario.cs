@@ -41,14 +41,15 @@ namespace TPCAI
 
             if ( !long.TryParse(txtIdUsuario.Text,out id))
             { MessageBox.Show("Ingrese un ID numérico válido."); return; } //return para cortar
+            if (id < 0)
+            { MessageBox.Show("El ID no puede ser negativo");return; }
             
                 string resp = desbloquear.SolicitarDesbloqueo(id);
 
-            if (resp == "Id Usuario inválido")
-            { MessageBox.Show("Debe ingresar un idUsuario válido"); }
-            else if (resp == "OK")
-            { MessageBox.Show("Usuario desbloqueado exitosamente"); }
-            else { MessageBox.Show("Ha ocurrido un error"); }
+            
+            if (resp == "OK")
+            { MessageBox.Show("Usuario desbloqueado exitosamente", resp); }
+            else { MessageBox.Show("Ha ocurrido un error",resp); }
 
         }
 

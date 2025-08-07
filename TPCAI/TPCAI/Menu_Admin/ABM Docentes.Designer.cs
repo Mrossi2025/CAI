@@ -36,11 +36,12 @@
             this.txtIdDocente = new System.Windows.Forms.TextBox();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.grpDatosAlumno = new System.Windows.Forms.GroupBox();
-            this.lblCurso = new System.Windows.Forms.Label();
-            this.txtCurso = new System.Windows.Forms.TextBox();
+            this.txtTipoDocente = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtAntiguedad = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtCUIT2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbCargo = new System.Windows.Forms.ComboBox();
             this.txtCUIT = new System.Windows.Forms.TextBox();
             this.lblCuit = new System.Windows.Forms.Label();
             this.txtDni = new System.Windows.Forms.TextBox();
@@ -53,34 +54,44 @@
             this.lblCargarDocentes = new System.Windows.Forms.Label();
             this.btnCargarDocentes = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnLimpiar2 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtIdDocenteNuevo = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.clbCursos = new System.Windows.Forms.CheckedListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbMaterias = new System.Windows.Forms.ComboBox();
+            this.cmbCarreras = new System.Windows.Forms.ComboBox();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.txtCuitAgregarDocente2 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cmbCargoDocenteNuevo = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtCursoAgregarDocente = new System.Windows.Forms.TextBox();
             this.txtCuitAgregarDocente = new System.Windows.Forms.TextBox();
             this.txtDniAgregarDocente = new System.Windows.Forms.TextBox();
             this.txtApellidoAgregarDocente = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtNombreAgregardocente = new System.Windows.Forms.TextBox();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.btnLimpiar2 = new System.Windows.Forms.Button();
-            this.txtCUIT2 = new System.Windows.Forms.TextBox();
-            this.txtCuitAgregarDocente2 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.grpBuscarAlumno.SuspendLayout();
             this.grpDatosAlumno.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(54, 387);
+            this.btnModificar.Location = new System.Drawing.Point(129, 509);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(96, 31);
+            this.btnModificar.Size = new System.Drawing.Size(89, 31);
             this.btnModificar.TabIndex = 15;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
@@ -93,9 +104,9 @@
             this.grpBuscarAlumno.Controls.Add(this.label4);
             this.grpBuscarAlumno.Controls.Add(this.txtIdDocente);
             this.grpBuscarAlumno.Controls.Add(this.btnEliminar);
-            this.grpBuscarAlumno.Location = new System.Drawing.Point(402, 12);
+            this.grpBuscarAlumno.Location = new System.Drawing.Point(33, 12);
             this.grpBuscarAlumno.Name = "grpBuscarAlumno";
-            this.grpBuscarAlumno.Size = new System.Drawing.Size(256, 107);
+            this.grpBuscarAlumno.Size = new System.Drawing.Size(264, 107);
             this.grpBuscarAlumno.TabIndex = 14;
             this.grpBuscarAlumno.TabStop = false;
             this.grpBuscarAlumno.Text = "Buscar Docente";
@@ -148,11 +159,12 @@
             // 
             // grpDatosAlumno
             // 
+            this.grpDatosAlumno.Controls.Add(this.txtTipoDocente);
+            this.grpDatosAlumno.Controls.Add(this.label11);
+            this.grpDatosAlumno.Controls.Add(this.txtAntiguedad);
+            this.grpDatosAlumno.Controls.Add(this.label10);
             this.grpDatosAlumno.Controls.Add(this.txtCUIT2);
-            this.grpDatosAlumno.Controls.Add(this.lblCurso);
-            this.grpDatosAlumno.Controls.Add(this.txtCurso);
             this.grpDatosAlumno.Controls.Add(this.label2);
-            this.grpDatosAlumno.Controls.Add(this.groupBox1);
             this.grpDatosAlumno.Controls.Add(this.txtCUIT);
             this.grpDatosAlumno.Controls.Add(this.lblCuit);
             this.grpDatosAlumno.Controls.Add(this.txtDni);
@@ -161,29 +173,53 @@
             this.grpDatosAlumno.Controls.Add(this.lblApellido);
             this.grpDatosAlumno.Controls.Add(this.lblNombre);
             this.grpDatosAlumno.Controls.Add(this.txtNombre);
-            this.grpDatosAlumno.Location = new System.Drawing.Point(24, 12);
+            this.grpDatosAlumno.Location = new System.Drawing.Point(33, 132);
             this.grpDatosAlumno.Name = "grpDatosAlumno";
-            this.grpDatosAlumno.Size = new System.Drawing.Size(264, 349);
+            this.grpDatosAlumno.Size = new System.Drawing.Size(264, 289);
             this.grpDatosAlumno.TabIndex = 13;
             this.grpDatosAlumno.TabStop = false;
             this.grpDatosAlumno.Text = "Datos Docente";
             // 
-            // lblCurso
+            // txtTipoDocente
             // 
-            this.lblCurso.AutoSize = true;
-            this.lblCurso.Location = new System.Drawing.Point(5, 224);
-            this.lblCurso.Name = "lblCurso";
-            this.lblCurso.Size = new System.Drawing.Size(42, 16);
-            this.lblCurso.TabIndex = 18;
-            this.lblCurso.Text = "Curso";
+            this.txtTipoDocente.Location = new System.Drawing.Point(9, 232);
+            this.txtTipoDocente.Name = "txtTipoDocente";
+            this.txtTipoDocente.Size = new System.Drawing.Size(221, 22);
+            this.txtTipoDocente.TabIndex = 23;
             // 
-            // txtCurso
+            // label11
             // 
-            this.txtCurso.Location = new System.Drawing.Point(7, 243);
-            this.txtCurso.Name = "txtCurso";
-            this.txtCurso.Size = new System.Drawing.Size(221, 22);
-            this.txtCurso.TabIndex = 17;
-            this.txtCurso.Enter += new System.EventHandler(this.txtCurso_Enter);
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 212);
+            this.label11.Name = "label11";
+            this.label11.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label11.Size = new System.Drawing.Size(35, 16);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Tipo";
+            // 
+            // txtAntiguedad
+            // 
+            this.txtAntiguedad.Location = new System.Drawing.Point(10, 181);
+            this.txtAntiguedad.Name = "txtAntiguedad";
+            this.txtAntiguedad.Size = new System.Drawing.Size(221, 22);
+            this.txtAntiguedad.TabIndex = 21;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 162);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(76, 16);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Antiguedad";
+            // 
+            // txtCUIT2
+            // 
+            this.txtCUIT2.Location = new System.Drawing.Point(197, 129);
+            this.txtCUIT2.Name = "txtCUIT2";
+            this.txtCUIT2.Size = new System.Drawing.Size(35, 22);
+            this.txtCUIT2.TabIndex = 19;
+            this.txtCUIT2.Enter += new System.EventHandler(this.txtCUIT2_Enter);
             // 
             // label2
             // 
@@ -193,36 +229,12 @@
             this.label2.Size = new System.Drawing.Size(0, 16);
             this.label2.TabIndex = 13;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cmbCargo);
-            this.groupBox1.Location = new System.Drawing.Point(10, 167);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(222, 52);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cargo";
-            // 
-            // cmbCargo
-            // 
-            this.cmbCargo.FormattingEnabled = true;
-            this.cmbCargo.Items.AddRange(new object[] {
-            "PROFESOR",
-            "AYUDANTE",
-            "AYUDANTE_AD_HONOREM"});
-            this.cmbCargo.Location = new System.Drawing.Point(6, 21);
-            this.cmbCargo.Name = "cmbCargo";
-            this.cmbCargo.Size = new System.Drawing.Size(210, 24);
-            this.cmbCargo.TabIndex = 0;
-            this.cmbCargo.Enter += new System.EventHandler(this.cmbCargo_Enter);
-            // 
             // txtCUIT
             // 
             this.txtCUIT.Location = new System.Drawing.Point(10, 129);
             this.txtCUIT.Name = "txtCUIT";
             this.txtCUIT.Size = new System.Drawing.Size(35, 22);
             this.txtCUIT.TabIndex = 7;
-            this.txtCUIT.Enter += new System.EventHandler(this.txtCUIT_Enter);
             // 
             // lblCuit
             // 
@@ -239,7 +251,6 @@
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(140, 22);
             this.txtDni.TabIndex = 5;
-            this.txtDni.Enter += new System.EventHandler(this.txtDni_Enter);
             // 
             // txtApellido
             // 
@@ -247,7 +258,6 @@
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(221, 22);
             this.txtApellido.TabIndex = 4;
-            this.txtApellido.Enter += new System.EventHandler(this.txtApellido_Enter);
             // 
             // lblDni
             // 
@@ -281,7 +291,6 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(221, 22);
             this.txtNombre.TabIndex = 0;
-            this.txtNombre.Enter += new System.EventHandler(this.txtNombre_Enter);
             // 
             // btnVolver
             // 
@@ -296,7 +305,7 @@
             // lblCargarDocentes
             // 
             this.lblCargarDocentes.AutoSize = true;
-            this.lblCargarDocentes.Location = new System.Drawing.Point(356, 179);
+            this.lblCargarDocentes.Location = new System.Drawing.Point(339, 12);
             this.lblCargarDocentes.Name = "lblCargarDocentes";
             this.lblCargarDocentes.Size = new System.Drawing.Size(340, 16);
             this.lblCargarDocentes.TabIndex = 19;
@@ -304,7 +313,7 @@
             // 
             // btnCargarDocentes
             // 
-            this.btnCargarDocentes.Location = new System.Drawing.Point(460, 215);
+            this.btnCargarDocentes.Location = new System.Drawing.Point(443, 48);
             this.btnCargarDocentes.Name = "btnCargarDocentes";
             this.btnCargarDocentes.Size = new System.Drawing.Size(138, 66);
             this.btnCargarDocentes.TabIndex = 18;
@@ -314,30 +323,148 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnLimpiar2);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.txtIdDocenteNuevo);
+            this.groupBox2.Controls.Add(this.groupBox4);
+            this.groupBox2.Controls.Add(this.btnAgregar);
             this.groupBox2.Controls.Add(this.txtCuitAgregarDocente2);
+            this.groupBox2.Controls.Add(this.btnModificar);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.txtCursoAgregarDocente);
             this.groupBox2.Controls.Add(this.txtCuitAgregarDocente);
             this.groupBox2.Controls.Add(this.txtDniAgregarDocente);
             this.groupBox2.Controls.Add(this.txtApellidoAgregarDocente);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.txtNombreAgregardocente);
-            this.groupBox2.Location = new System.Drawing.Point(770, 12);
+            this.groupBox2.Location = new System.Drawing.Point(725, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(295, 370);
+            this.groupBox2.Size = new System.Drawing.Size(340, 553);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Agregar Docente y Asignar Curso:";
             // 
+            // btnLimpiar2
+            // 
+            this.btnLimpiar2.Location = new System.Drawing.Point(224, 508);
+            this.btnLimpiar2.Name = "btnLimpiar2";
+            this.btnLimpiar2.Size = new System.Drawing.Size(75, 32);
+            this.btnLimpiar2.TabIndex = 28;
+            this.btnLimpiar2.Text = "Limpiar";
+            this.btnLimpiar2.UseVisualStyleBackColor = true;
+            this.btnLimpiar2.Click += new System.EventHandler(this.btnLimpiar2_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(14, 27);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(72, 16);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Id Docente";
+            // 
+            // txtIdDocenteNuevo
+            // 
+            this.txtIdDocenteNuevo.Location = new System.Drawing.Point(17, 47);
+            this.txtIdDocenteNuevo.Name = "txtIdDocenteNuevo";
+            this.txtIdDocenteNuevo.Size = new System.Drawing.Size(221, 22);
+            this.txtIdDocenteNuevo.TabIndex = 33;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.clbCursos);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.cmbMaterias);
+            this.groupBox4.Controls.Add(this.cmbCarreras);
+            this.groupBox4.Location = new System.Drawing.Point(6, 301);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(328, 202);
+            this.groupBox4.TabIndex = 32;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Selección de cursos";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 84);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(142, 16);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Seleccione los cursos:";
+            // 
+            // clbCursos
+            // 
+            this.clbCursos.FormattingEnabled = true;
+            this.clbCursos.Location = new System.Drawing.Point(163, 84);
+            this.clbCursos.Name = "clbCursos";
+            this.clbCursos.Size = new System.Drawing.Size(149, 106);
+            this.clbCursos.TabIndex = 31;
+            this.clbCursos.Enter += new System.EventHandler(this.clbCursos_Enter);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 57);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(151, 16);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Seleccione una Materia:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 24);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(151, 16);
+            this.label6.TabIndex = 20;
+            this.label6.Text = "Seleccione una Carrera:";
+            // 
+            // cmbMaterias
+            // 
+            this.cmbMaterias.FormattingEnabled = true;
+            this.cmbMaterias.Location = new System.Drawing.Point(167, 49);
+            this.cmbMaterias.Name = "cmbMaterias";
+            this.cmbMaterias.Size = new System.Drawing.Size(121, 24);
+            this.cmbMaterias.TabIndex = 30;
+            this.cmbMaterias.SelectedIndexChanged += new System.EventHandler(this.cmbMaterias_SelectedIndexChanged);
+            this.cmbMaterias.TextChanged += new System.EventHandler(this.cmbMaterias_TextChanged);
+            // 
+            // cmbCarreras
+            // 
+            this.cmbCarreras.FormattingEnabled = true;
+            this.cmbCarreras.Location = new System.Drawing.Point(167, 16);
+            this.cmbCarreras.Name = "cmbCarreras";
+            this.cmbCarreras.Size = new System.Drawing.Size(121, 24);
+            this.cmbCarreras.TabIndex = 29;
+            this.cmbCarreras.SelectedIndexChanged += new System.EventHandler(this.cmbCarreras_SelectedIndexChanged);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(48, 509);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 32);
+            this.btnAgregar.TabIndex = 24;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // txtCuitAgregarDocente2
+            // 
+            this.txtCuitAgregarDocente2.Location = new System.Drawing.Point(197, 190);
+            this.txtCuitAgregarDocente2.Name = "txtCuitAgregarDocente2";
+            this.txtCuitAgregarDocente2.Size = new System.Drawing.Size(39, 22);
+            this.txtCuitAgregarDocente2.TabIndex = 24;
+            this.txtCuitAgregarDocente2.Enter += new System.EventHandler(this.txtCuitAgregarDocente2_Enter);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.cmbCargoDocenteNuevo);
-            this.groupBox3.Location = new System.Drawing.Point(17, 185);
+            this.groupBox3.Location = new System.Drawing.Point(17, 235);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(202, 52);
+            this.groupBox3.Size = new System.Drawing.Size(317, 52);
             this.groupBox3.TabIndex = 23;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Cargo";
@@ -351,39 +478,22 @@
             "AYUDANTE_AD_HONOREM"});
             this.cmbCargoDocenteNuevo.Location = new System.Drawing.Point(6, 21);
             this.cmbCargoDocenteNuevo.Name = "cmbCargoDocenteNuevo";
-            this.cmbCargoDocenteNuevo.Size = new System.Drawing.Size(157, 24);
+            this.cmbCargoDocenteNuevo.Size = new System.Drawing.Size(214, 24);
             this.cmbCargoDocenteNuevo.TabIndex = 0;
             this.cmbCargoDocenteNuevo.Enter += new System.EventHandler(this.cmbCargoDocenteNuevo_Enter);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 120);
+            this.label5.Location = new System.Drawing.Point(14, 170);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 16);
             this.label5.TabIndex = 21;
             this.label5.Text = "CUIT";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 243);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 16);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Curso";
-            // 
-            // txtCursoAgregarDocente
-            // 
-            this.txtCursoAgregarDocente.Location = new System.Drawing.Point(16, 264);
-            this.txtCursoAgregarDocente.Name = "txtCursoAgregarDocente";
-            this.txtCursoAgregarDocente.Size = new System.Drawing.Size(221, 22);
-            this.txtCursoAgregarDocente.TabIndex = 19;
-            this.txtCursoAgregarDocente.Enter += new System.EventHandler(this.txtCursoAgregarDocente_Enter);
-            // 
             // txtCuitAgregarDocente
             // 
-            this.txtCuitAgregarDocente.Location = new System.Drawing.Point(17, 140);
+            this.txtCuitAgregarDocente.Location = new System.Drawing.Point(17, 190);
             this.txtCuitAgregarDocente.Name = "txtCuitAgregarDocente";
             this.txtCuitAgregarDocente.Size = new System.Drawing.Size(39, 22);
             this.txtCuitAgregarDocente.TabIndex = 13;
@@ -391,7 +501,7 @@
             // 
             // txtDniAgregarDocente
             // 
-            this.txtDniAgregarDocente.Location = new System.Drawing.Point(62, 140);
+            this.txtDniAgregarDocente.Location = new System.Drawing.Point(62, 190);
             this.txtDniAgregarDocente.Name = "txtDniAgregarDocente";
             this.txtDniAgregarDocente.Size = new System.Drawing.Size(129, 22);
             this.txtDniAgregarDocente.TabIndex = 12;
@@ -399,7 +509,7 @@
             // 
             // txtApellidoAgregarDocente
             // 
-            this.txtApellidoAgregarDocente.Location = new System.Drawing.Point(16, 94);
+            this.txtApellidoAgregarDocente.Location = new System.Drawing.Point(16, 144);
             this.txtApellidoAgregarDocente.Name = "txtApellidoAgregarDocente";
             this.txtApellidoAgregarDocente.Size = new System.Drawing.Size(221, 22);
             this.txtApellidoAgregarDocente.TabIndex = 11;
@@ -408,7 +518,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 74);
+            this.label7.Location = new System.Drawing.Point(13, 124);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 16);
             this.label7.TabIndex = 10;
@@ -417,7 +527,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 28);
+            this.label8.Location = new System.Drawing.Point(13, 78);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 16);
             this.label8.TabIndex = 9;
@@ -425,25 +535,15 @@
             // 
             // txtNombreAgregardocente
             // 
-            this.txtNombreAgregardocente.Location = new System.Drawing.Point(16, 48);
+            this.txtNombreAgregardocente.Location = new System.Drawing.Point(16, 98);
             this.txtNombreAgregardocente.Name = "txtNombreAgregardocente";
             this.txtNombreAgregardocente.Size = new System.Drawing.Size(221, 22);
             this.txtNombreAgregardocente.TabIndex = 8;
             this.txtNombreAgregardocente.Enter += new System.EventHandler(this.txtNombreAgregardocente_Enter);
             // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Location = new System.Drawing.Point(844, 387);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 32);
-            this.btnAgregar.TabIndex = 24;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(156, 387);
+            this.btnLimpiar.Location = new System.Drawing.Point(107, 427);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(96, 31);
             this.btnLimpiar.TabIndex = 27;
@@ -451,42 +551,44 @@
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // btnLimpiar2
+            // groupBox1
             // 
-            this.btnLimpiar2.Location = new System.Drawing.Point(925, 387);
-            this.btnLimpiar2.Name = "btnLimpiar2";
-            this.btnLimpiar2.Size = new System.Drawing.Size(75, 32);
-            this.btnLimpiar2.TabIndex = 28;
-            this.btnLimpiar2.Text = "Limpiar";
-            this.btnLimpiar2.UseVisualStyleBackColor = true;
-            this.btnLimpiar2.Click += new System.EventHandler(this.btnLimpiar2_Click);
+            this.groupBox1.Controls.Add(this.btnAceptar);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Location = new System.Drawing.Point(35, 480);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(288, 85);
+            this.groupBox1.TabIndex = 28;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Modificar Busqueda";
             // 
-            // txtCUIT2
+            // btnAceptar
             // 
-            this.txtCUIT2.Location = new System.Drawing.Point(197, 129);
-            this.txtCUIT2.Name = "txtCUIT2";
-            this.txtCUIT2.Size = new System.Drawing.Size(35, 22);
-            this.txtCUIT2.TabIndex = 19;
-            this.txtCUIT2.Enter += new System.EventHandler(this.txtCUIT2_Enter);
+            this.btnAceptar.Location = new System.Drawing.Point(82, 38);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 32);
+            this.btnAceptar.TabIndex = 35;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // txtCuitAgregarDocente2
+            // label12
             // 
-            this.txtCuitAgregarDocente2.Location = new System.Drawing.Point(197, 140);
-            this.txtCuitAgregarDocente2.Name = "txtCuitAgregarDocente2";
-            this.txtCuitAgregarDocente2.Size = new System.Drawing.Size(39, 22);
-            this.txtCuitAgregarDocente2.TabIndex = 24;
-            this.txtCuitAgregarDocente2.Enter += new System.EventHandler(this.txtCuitAgregarDocente2_Enter);
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(4, 19);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(252, 16);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "¿Desea modificar el docente que busco?";
             // 
             // ABM_Docentes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1088, 450);
-            this.Controls.Add(this.btnLimpiar2);
+            this.ClientSize = new System.Drawing.Size(1088, 577);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.lblCargarDocentes);
             this.Controls.Add(this.btnCargarDocentes);
             this.Controls.Add(this.btnVolver);
@@ -500,10 +602,13 @@
             this.grpBuscarAlumno.PerformLayout();
             this.grpDatosAlumno.ResumeLayout(false);
             this.grpDatosAlumno.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -528,19 +633,14 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cmbCargo;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label lblCargarDocentes;
         private System.Windows.Forms.Button btnCargarDocentes;
-        private System.Windows.Forms.Label lblCurso;
-        private System.Windows.Forms.TextBox txtCurso;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox cmbCargoDocenteNuevo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtCursoAgregarDocente;
         private System.Windows.Forms.TextBox txtCuitAgregarDocente;
         private System.Windows.Forms.TextBox txtDniAgregarDocente;
         private System.Windows.Forms.TextBox txtApellidoAgregarDocente;
@@ -552,5 +652,20 @@
         private System.Windows.Forms.Button btnLimpiar2;
         private System.Windows.Forms.TextBox txtCUIT2;
         private System.Windows.Forms.TextBox txtCuitAgregarDocente2;
+        private System.Windows.Forms.ComboBox cmbCarreras;
+        private System.Windows.Forms.ComboBox cmbMaterias;
+        private System.Windows.Forms.CheckedListBox clbCursos;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtIdDocenteNuevo;
+        private System.Windows.Forms.TextBox txtTipoDocente;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtAntiguedad;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Label label12;
     }
 }

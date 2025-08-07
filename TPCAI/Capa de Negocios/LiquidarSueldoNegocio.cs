@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Datos.Menu_PersonalClases;
-using Capa_de_Negocios;
+using Datos;
+using Persistencia;
 
-namespace Capa_de_Negocios.Menu_Personal
+namespace Capa_de_Negocios
 {
     public class LiquidarSueldoNegocio
     {
@@ -26,12 +26,21 @@ namespace Capa_de_Negocios.Menu_Personal
             else
                 throw new Exception("Al tipo de docente no le corresponde liquidación.");
 
-            // Calculamos coeficiente por antigüedad 
-            int tramos = docente.antiguedad / 5;  // cada 5 años
-            decimal coefAntiguedad = 1.1m * tramos;
+            
+            decimal coefAntiguedad = 1;
 
-            // Fórmula
-            decimal sueldo = horas * PRECIO_HORA * coefCargo * coefAntiguedad;
+            if (docente.antiguedad >= 15)
+            { coefAntiguedad = 1.1m * 1.1m * 1.1m; }
+            else if (docente.antiguedad >= 10)
+            { coefAntiguedad = 1.1m * 1.1m; }
+            else if (docente.antiguedad >= 5)
+            { coefAntiguedad = 1.1m; }
+            else { coefAntiguedad = 1; }
+
+
+
+                // Fórmula
+                decimal sueldo = horas * PRECIO_HORA * coefCargo * coefAntiguedad;
 
             return sueldo;
         }

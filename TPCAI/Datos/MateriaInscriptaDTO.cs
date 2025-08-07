@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Datos.Menu_Admin.ABM_DocentesClases;
 
-namespace Datos.EgresadosReportes
+namespace Datos
 {
     public class MateriaInscriptaDTO
     {

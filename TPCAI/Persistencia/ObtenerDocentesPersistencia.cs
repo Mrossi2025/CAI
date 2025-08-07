@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Persistencia.utils;
 using Datos;
-using Capa_de_Negocios;
 using System.Net.Http;
 
 namespace Persistencia
