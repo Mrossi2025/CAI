@@ -9,39 +9,29 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_de_Negocios;
 using Datos;
+using Persistencia;
 
 namespace TPCAI
 {
-    public partial class Menu_principal___Alumno : Form
+    public partial class MenuPrincipalAlumno : Form
     {
+        private int idAlumno;
+        List<Alumnos> listaAlumnos = new List<Alumnos>();
 
-        
-        
 
-
-        public Menu_principal___Alumno(int idAlumno) //Constructor que recibe el parametro del usuario que ingresa para ya tener sus datos a mano.
+        public MenuPrincipalAlumno(int idAlumno) //Constructor que recibe el parametro del usuario que ingresa para ya tener sus datos a mano.
         {
-            int IdAlumno;
-
             InitializeComponent();
-            IdAlumno = idAlumno;
-
-            lblBienvenida.Text = $"Bienvenido/a {IdAlumno}"; //Da la bienvenida con el dato del usuario que traje por parametros.
-
+            this.idAlumno = idAlumno;
+            
         }
 
-       
-
-
-
-        public Menu_principal___Alumno()
+        public MenuPrincipalAlumno()
         {
             InitializeComponent();
         }
 
-       
-
-        private void Menu_principal___Alumno_FormClosed_1(object sender, FormClosedEventArgs e)
+        private void MenuPrincipalAlumno_FormClosed(object sender, FormClosedEventArgs e)
         {
             MessageBox.Show("Sesion Cerrada");
             Login formLogin = new Login();
@@ -52,5 +42,44 @@ namespace TPCAI
         {
 
         }
+
+        private void btnInscribirte_Click(object sender, EventArgs e)
+        {
+            InscripcionAMaterias inscripcionAMaterias = new InscripcionAMaterias(this.idAlumno);
+            inscripcionAMaterias.ShowDialog();
+        }
+
+        private void CargarAlumnos(ref List<Alumnos> alumnos)
+        {
+            RepositorioAlumno repo = new RepositorioAlumno();
+
+            try
+            {
+
+                alumnos = repo.ObtenerAlumnos();
+
+
+            }
+            catch (Exception ex) { MessageBox.Show("Error cargando los alumnos", ex.ToString()); }
+
+
+
+
+
+
+        }
+
+        private void MenuPrincipalAlumno_Load(object sender, EventArgs e)
+        {
+            CargarAlumnos(ref listaAlumnos);
+
+            Alumnos a = new Alumnos();
+
+            a = listaAlumnos.Find(b => b.id == idAlumno);
+
+            lblBienvenida.Text = $"Bienvenido/a {a.nombre} {a.apellido}";
+        }
+
     }
+
 }

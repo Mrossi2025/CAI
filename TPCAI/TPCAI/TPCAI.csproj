@@ -70,12 +70,6 @@
     <Compile Include="Menu_Alumno\InscripcionAMaterias.Designer.cs">
       <DependentUpon>InscripcionAMaterias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu_Alumno\Inscripciones.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Menu_Alumno\Inscripciones.Designer.cs">
-      <DependentUpon>Inscripciones.cs</DependentUpon>
-    </Compile>
     <Compile Include="Menu_Personal\Liquidaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,9 +120,6 @@
     <EmbeddedResource Include="Menu_Alumno\InscripcionAMaterias.resx">
       <DependentUpon>InscripcionAMaterias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu_Alumno\Inscripciones.resx">
-      <DependentUpon>Inscripciones.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Menu_Personal\Liquidaciones.resx">
       <DependentUpon>Liquidaciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +168,10 @@
     <ProjectReference Include="..\Datos\Datos.csproj">
       <Project>{f1ee3ea5-7a23-4a51-b2f9-63e74aa10b83}</Project>
       <Name>Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Persistencia\Persistencia.csproj">
+      <Project>{201023A7-421D-4D3C-83A1-DDAA5FA4ECE8}</Project>
+      <Name>Persistencia</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

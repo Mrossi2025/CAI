@@ -19,7 +19,6 @@ namespace TPCAI
         public Login()
         {
             InitializeComponent();
-
         }
 
 
@@ -51,7 +50,7 @@ namespace TPCAI
                             break;
 
                         case "ALUMNO":
-                            new Menu_principal___Alumno(resp.id).Show();
+                            new MenuPrincipalAlumno(resp.id).Show();
                             break;
 
                         default:

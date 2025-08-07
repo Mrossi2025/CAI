@@ -12,10 +12,5 @@ namespace Datos
         public string nombre { get; set; }
         public int horasSemanales {  get; set; }
         public List<Materias> correlativas { get; set; }
-
-
-
-
     }
-
 }
