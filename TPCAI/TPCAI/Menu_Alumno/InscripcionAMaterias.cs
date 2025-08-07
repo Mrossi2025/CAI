@@ -1,14 +1,10 @@
-﻿using Datos.Menu_Admin.ABM_DocentesClases;
-using Persistencia;
-using Persistencia.Menu_ReporteEgresados;
+﻿using Persistencia;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using Datos;
 using Capa_de_Negocios;
-using Persistencia.Menu_AdminPersistencia.Egresados;
-using Datos.EgresadosReportes;
 
 namespace TPCAI
 {
@@ -18,7 +14,7 @@ namespace TPCAI
         private RepositorioAlumno repositorioAlumno;
         private CargarMateriasCarreraPersistencia materiasPersistencia;
         private Alumnos alumnoActual;
-        private CargarCursosMateriaPersistencia cursosPersistencia = new CargarCursosMateriaPersistencia();
+        private CargarCursosPersistencia cursosPersistencia = new CargarCursosPersistencia();
         private List<Docente> listaDocentes;
 
         public InscripcionAMaterias(int idAlumno)
@@ -192,7 +188,7 @@ namespace TPCAI
             if (cmbMateria1.SelectedItem != null)
             {
                 var materiaSeleccionada = (Materias)cmbMateria1.SelectedItem;
-                var cursos = cursosPersistencia.cargarCursosMateria(materiaSeleccionada.id);
+                var cursos = cursosPersistencia.CargarCursos(materiaSeleccionada.id);
                 CargarCursosEnComboBox(cursos, cmbCurso1);
             }
         }
@@ -204,7 +200,7 @@ namespace TPCAI
             if (cmbMateria2.SelectedItem != null)
             {
                 var materiaSeleccionada = (Materias)cmbMateria2.SelectedItem;
-                var cursos = cursosPersistencia.cargarCursosMateria(materiaSeleccionada.id);
+                var cursos = cursosPersistencia.CargarCursos(materiaSeleccionada.id);
                 CargarCursosEnComboBox(cursos, cmbCurso2);
             }
         }
@@ -216,7 +212,7 @@ namespace TPCAI
             if (cmbMateria3.SelectedItem != null)
             {
                 var materiaSeleccionada = (Materias)cmbMateria3.SelectedItem;
-                var cursos = cursosPersistencia.cargarCursosMateria(materiaSeleccionada.id);
+                var cursos = cursosPersistencia.CargarCursos(materiaSeleccionada.id);
                 CargarCursosEnComboBox(cursos, cmbCurso3);
             }
         }
