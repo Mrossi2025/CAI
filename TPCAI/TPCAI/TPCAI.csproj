@@ -70,12 +70,6 @@
     <Compile Include="Menu_Alumno\InscripcionAMaterias.Designer.cs">
       <DependentUpon>InscripcionAMaterias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu_Alumno\Inscripciones.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Menu_Alumno\Inscripciones.Designer.cs">
-      <DependentUpon>Inscripciones.cs</DependentUpon>
-    </Compile>
     <Compile Include="Menu_Personal\Liquidaciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,9 +113,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu_Alumno\InscripcionAMaterias.resx">
       <DependentUpon>InscripcionAMaterias.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Menu_Alumno\Inscripciones.resx">
-      <DependentUpon>Inscripciones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu_Personal\Liquidaciones.resx">
       <DependentUpon>Liquidaciones.cs</DependentUpon>
