@@ -14,7 +14,7 @@ namespace TPCAI
 {
     
 
-    public partial class MenuAdmin1 : Form
+    public partial class ABM_Alumnos : Form
     {
 
         List<Alumnos> listaAlumnos = new List<Alumnos>(); //Declaro la lista donde se van a guardar
@@ -24,12 +24,12 @@ namespace TPCAI
         private MenuAdmin menuAdmin;
         
 
-        public MenuAdmin1()
+        public ABM_Alumnos()
         {
             InitializeComponent();
         }
 
-        public MenuAdmin1(MenuAdmin Volver)
+        public ABM_Alumnos(MenuAdmin Volver)
         {
             InitializeComponent();
             menuAdmin = Volver;
@@ -146,14 +146,12 @@ namespace TPCAI
             string nombre = txtNombre.Text;
             string apellido = txtApellido.Text;
             string DNI = txtDni.Text;
-            string idTexto = txtidAlumno.Text;
 
             if (string.IsNullOrEmpty(nombre) ||
                 string.IsNullOrEmpty(apellido) || //Aca validamos que no esten vacias las variables del alumno que pasamos por referencia
-                string.IsNullOrEmpty(DNI) ||
-                string.IsNullOrEmpty(idTexto))
+                string.IsNullOrEmpty(DNI))
             {
-                MessageBox.Show("Nombre, apellido, DNI y ID son obligatorios.");
+                MessageBox.Show("Nombre, apellido, DNI son obligatorios.");
                 return;
             }
 
@@ -163,10 +161,8 @@ namespace TPCAI
                 MessageBox.Show("Debe seleccionar al menos una carrera.");
                 return;                                // corta el evento porque valida si hay alguna carrera seleccionada
             }
-            if (!long.TryParse(txtidAlumno.Text, out long id))
-            { MessageBox.Show("El Id debe ser númerico"); return; }
-            if (id < 0)
-            { MessageBox.Show("El ID no puede ser negativo"); return; }
+            if (!string.IsNullOrWhiteSpace(txtidAlumno.Text))
+            { MessageBox.Show("El Id no es necesario para crear un alumno, por favor borrelo."); return; }
             if (txtDni.Text.Length < 7 || txtDni.Text.Length > 8)
             {MessageBox.Show("El DNI debe tener 7 u 8 dígitos.");return;}
             if (!int.TryParse(txtDni.Text, out int dni))
@@ -176,8 +172,7 @@ namespace TPCAI
             { MessageBox.Show("Debe cargar la lista de alumnos primero."); return; }
             if(listaAlumnos.Find(a => a.dni == txtDni.Text) != null)
             { MessageBox.Show("Ya existe un alumno registrado con ese Dni"); return; }
-            if (listaAlumnos.Find(a => a.id == id) != null)
-            { MessageBox.Show("Ya existe un alumno registrado con ese ID"); return; }
+            
 
 
 
@@ -188,7 +183,7 @@ namespace TPCAI
                 carrerasSeleccionadas.Add(carrera.id); //Agrego el ide a la lista de carrerasSeleccionadas
             }
 
-
+                long id = 0;
                 AgregarAlumnoNegocio nuevo = new AgregarAlumnoNegocio();  
                 string msj = nuevo.AgregarAlumno(nombre,apellido,DNI,id,carrerasSeleccionadas);
 
@@ -199,8 +194,11 @@ namespace TPCAI
                     ListaAlumnos listaAllamar = new ListaAlumnos(); //Instancio la clase de Negocio que contiene el metodo a llamar
 
                     listaAlumnos = listaAllamar.TraerAlumnos();
+                    Alumnos alumnoAgregado = listaAlumnos.Find(a => a.dni == txtDni.Text);
 
-                    MessageBox.Show($"Alumno nuevo añadido con exito. \n Lista actualizada: Hay {listaAlumnos.Count} alumnos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Alumno nuevo añadido con exito (id: {alumnoAgregado.id}.) \n Lista actualizada: Hay {listaAlumnos.Count} alumnos.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtidAlumno.Text = alumnoAgregado.id.ToString();
+                    
 
                 }
                 catch (Exception ex) { MessageBox.Show("Alumno agregado con exito, pero ha ocurrido un error actualizando la lista de alumnos. \n (Recargue la lista nuevamente)", ex.ToString()); }
@@ -262,8 +260,7 @@ namespace TPCAI
             "¿Estás seguro que querés continuar?",
             "Confirmación",
             MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question
-);
+            MessageBoxIcon.Question);
 
             if (respuesta != DialogResult.Yes)
             {
@@ -347,6 +344,26 @@ namespace TPCAI
             string apellido = txtApellido.Text;
             string dnitexto = txtDni.Text;
             List<long> carrerasSeleccionadas = new List<long>();
+
+            if (listaAlumnos.Count == 0)
+            { MessageBox.Show("Debe cargar la lista de alumnos primero."); return; }
+            
+            if (listaAlumnos.Find(b => b.id == id) == null)
+            { MessageBox.Show("No existe un alumno registrado con ese ID"); return; }
+
+
+            DialogResult respuesta = MessageBox.Show(
+            $"¿Estás seguro que querés modificar el alumno con el id {id}? (Presione No para verificar nuevamente los datos)",
+            "Confirmación",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if (respuesta != DialogResult.Yes)
+            {
+                // Si presionó "No", se cancela
+                return;
+            }
+
 
 
             //Por cada Item checked, como esa lista son los objetos carreraResponse cargados, carrera lo transformo en Carrerarepsonde item, que es cada seleccion.
