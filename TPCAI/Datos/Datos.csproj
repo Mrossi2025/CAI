@@ -53,7 +53,6 @@
     <Compile Include="Docente.cs" />
     <Compile Include="LoginRequest.cs" />
     <Compile Include="LoginResponse.cs" />
-    <Compile Include="LiquidacionSueldo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
