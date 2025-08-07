@@ -44,7 +44,6 @@
             this.grpSystemLogin.Controls.Add(this.txtUsuario);
             this.grpSystemLogin.Controls.Add(this.lblContraseña);
             this.grpSystemLogin.Controls.Add(this.lblUsuario);
-
             this.grpSystemLogin.Location = new System.Drawing.Point(9, 18);
             this.grpSystemLogin.Margin = new System.Windows.Forms.Padding(2);
             this.grpSystemLogin.Name = "grpSystemLogin";
@@ -57,7 +56,7 @@
             // 
             // btnIniciarSesion
             // 
-            this.btnIniciarSesion.Location = new System.Drawing.Point(12, 124);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(12, 151);
             this.btnIniciarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(112, 23);
@@ -68,7 +67,7 @@
             // 
             // txtConstraseña
             // 
-            this.txtConstraseña.Location = new System.Drawing.Point(4, 92);
+            this.txtConstraseña.Location = new System.Drawing.Point(4, 118);
             this.txtConstraseña.Margin = new System.Windows.Forms.Padding(2);
             this.txtConstraseña.Name = "txtConstraseña";
             this.txtConstraseña.Size = new System.Drawing.Size(135, 22);
@@ -77,8 +76,7 @@
             // 
             // txtUsuario
             // 
-
-            this.txtUsuario.Location = new System.Drawing.Point(4, 47);
+            this.txtUsuario.Location = new System.Drawing.Point(4, 60);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(135, 22);
