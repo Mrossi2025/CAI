@@ -9,8 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-
 namespace TPCAI
 {
     public partial class Liquidaciones : Form
@@ -35,34 +33,9 @@ namespace TPCAI
         {
             CargarDatosDocentePorId();
 
-            // Traer horas automáticamente desde la capa de negocio
-            HorasDocenteNegocio hdn = new HorasDocenteNegocio();
-            double horas = 0;
-            try
-            {
-                horas = hdn.HorasDocente(personalId);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error cargando las horas: {ex.Message}");
-            }
-
-            txtHoras.Text = horas.ToString();
+            txtHorasSistema.Enabled = false;
+            btnLiquidar.Enabled = false; 
             txtHoras.Enabled = false;
-
-            // Calcular sueldo automáticamente
-            if (_docente != null && horas > 0)
-            {
-                var negocio = new LiquidarSueldoNegocio();
-                decimal sueldo = negocio.CalcularSueldo(_docente, (int)horas);
-                txtSueldo.Text = sueldo.ToString("N2");
-            }
-            else
-            {
-                txtSueldo.Text = "0";
-            }
-
-            btnLiquidar.Enabled = false; // No hace falta liquidar manualmente
         }
         
         private Docente _docente;
@@ -125,6 +98,7 @@ namespace TPCAI
                 decimal sueldo = negocio.CalcularSueldo(_docente, horas);
 
                 MessageBox.Show($"Sueldo a liquidar: ${sueldo:N2}", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtSueldo.Text = sueldo.ToString();
             }
             catch (Exception ex)
             {
@@ -145,15 +119,60 @@ namespace TPCAI
             
         }
 
-        private void chkManual_CheckedChanged(object sender, EventArgs e)
-        {
-            bool habilitar = chkManual.Checked;
+        
 
-            btnLiquidar.Enabled = habilitar;
-            txtHoras.Enabled = habilitar;
+        
+
+        
+
+
+        
+
+        private async void btnCargar_Click(object sender, EventArgs e)
+        {
+            HorasDocenteNegocio hdn = new HorasDocenteNegocio();
+
+            // Desactivar botón y mostrar "Cargando..."
+            btnCargar.Enabled = false;
+            btnCargar.Text = "Cargando...";
+
+            try
+            {
+                // Ejecutar tarea pesada en segundo plano
+                double horas = await Task.Run(() => hdn.HorasDocente(personalId));
+
+                // Mostrar resultado en el textbox (ya en el hilo de UI)
+                txtHorasSistema.Text = horas.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error cargando las horas");
+            }
+            finally
+            {
+                // Restaurar el botón al estado original
+                btnCargar.Enabled = true;
+                btnCargar.Text = "Cargar horas";
+            }
+
         }
 
-        private void btnLiquidar2_Click(object sender, EventArgs e)
+
+        
+
+        private void chkManualHoras_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkManualHoras.Checked)
+            {
+                btnLiquidar.Enabled = true;
+                txtHoras.Enabled = true;
+            }
+            else { btnLiquidar.Enabled = false;
+            txtHoras.Enabled = false;}
+
+        }
+
+        private void btnLiquidar3_Click(object sender, EventArgs e)
         {
             try
             {
@@ -162,7 +181,7 @@ namespace TPCAI
                     MessageBox.Show("No se encontró el docente.");
                     return;
                 }
-                if(string.IsNullOrWhiteSpace(txtHorasSistema.Text))
+                if (string.IsNullOrWhiteSpace(txtHorasSistema.Text))
                 {
                     MessageBox.Show("Debe cargar primero las horas.");
                     return;
@@ -185,32 +204,12 @@ namespace TPCAI
                 decimal sueldo = negocio.CalcularSueldo(_docente, horas);
 
                 MessageBox.Show($"Sueldo a liquidar: ${sueldo:N2}", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtSueldo.Text = sueldo.ToString();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void btnCargarHoras_Click(object sender, EventArgs e)
-        {
-            HorasDocenteNegocio hdn = new HorasDocenteNegocio();
-
-            try
-            {
-                double horas = hdn.HorasDocente(personalId);
-
-                txtHorasSistema.Text = horas.ToString();
-
-            }
-            catch (Exception ex) { MessageBox.Show($"Error: {ex.Message}", "Error cargando las horas"); }
-
-
-        }
-
-        private void lblIngresarHoras_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
