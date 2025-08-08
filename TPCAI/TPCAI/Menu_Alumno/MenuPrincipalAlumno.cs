@@ -32,12 +32,7 @@ namespace TPCAI
             InitializeComponent();
         }
 
-       /* private void MenuPrincipalAlumno_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            MessageBox.Show("Sesion Cerrada");
-            Login formLogin = new Login();
-            formLogin.Show();
-        }*/
+        
 
         private void grpMenuAlumnos_Enter(object sender, EventArgs e)
         {
@@ -89,14 +84,6 @@ namespace TPCAI
             formFinales.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // Obtener la lista de materias inscriptas del alumno desde la capa de datos
-            List<MateriaInscriptaDTO> materiasInscritas = ObtenerMateriasInscritasPorAlumno(idAlumno);
-
-            var rankingForm = new RankingAlumnoForm(idAlumno, materiasInscritas);
-            rankingForm.ShowDialog();
-        }
 
         private List<MateriaInscriptaDTO> ObtenerMateriasInscritasPorAlumno(int idAlumno)
         {
@@ -110,10 +97,34 @@ namespace TPCAI
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Sesion Cerrada");
+            this.Close();
+        }
+
+        private void MenuPrincipalAlumno_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MessageBox.Show("Sesión Cerrada");
             Login formLogin = new Login();
             formLogin.Show();
-            this.Close();
+        }
+
+        private void btnRanking(object sender, EventArgs e)
+        {
+            // Obtener la lista de materias inscriptas del alumno desde la capa de datos
+            List<MateriaInscriptaDTO> materiasInscritas = ObtenerMateriasInscritasPorAlumno(idAlumno);
+            CalcularRankingNegocio c = new CalcularRankingNegocio();
+            /*var rankingForm = new RankingAlumnoForm(idAlumno, materiasInscritas);
+            rankingForm.ShowDialog();*/
+
+            int ranking = c.CalcularRanking(idAlumno, materiasInscritas);
+            
+            MessageBox.Show(
+               $"RANKING: {ranking}",
+               "Ranking calculado",
+               MessageBoxButtons.OK,
+               MessageBoxIcon.Information
+           );
+
+
         }
     }
 

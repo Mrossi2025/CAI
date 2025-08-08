@@ -1,34 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
-using Persistencia;
+using System.Text;
+using System.Threading.Tasks;
 using Datos;
+using Persistencia;
 
-namespace TPCAI.Menu_Alumno
+namespace Capa_de_Negocios
 {
-    public partial class RankingAlumnoForm : Form
+    public class CalcularRankingNegocio
     {
-        private int _idAlumno;
-        private System.Collections.Generic.List<MateriaInscriptaDTO> _materias;
-
-        public RankingAlumnoForm(int idAlumno, System.Collections.Generic.List<MateriaInscriptaDTO> materias)
-        {
-            
-            _idAlumno = idAlumno;
-            this.Load += RankingAlumnoForm_Load;
-            
-            CalcularYMostrarRanking();
-        }
-
-        private void RankingAlumnoForm_Load(object sender, EventArgs e)
-        {
-            // Método vacío para manejar el evento Load si es necesario en el futuro
-        }
-
-        private void CalcularYMostrarRanking()
+        public int CalcularRanking(long _idAlumno, List<MateriaInscriptaDTO> materias)
         {
             var reporte = new GenerarReportePersistencia();
-            var materias = reporte.ObtenerMateriasPorAlumno(_idAlumno) ?? new System.Collections.Generic.List<MateriaInscriptaDTO>();
+            materias = reporte.ObtenerMateriasPorAlumno(_idAlumno) ?? new List<MateriaInscriptaDTO>();
 
             int totalMaterias = materias.Count;
             int aprobadas = materias.Count(m => m.condicion == "APROBADA");
@@ -59,12 +44,10 @@ namespace TPCAI.Menu_Alumno
 
             int ranking = a + b + c + d;
 
-            MessageBox.Show(
-                $"RANKING: {ranking}",
-                "Ranking calculado",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+
+            return ranking;
+                
+            
         }
     }
 }
