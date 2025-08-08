@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Capa_de_Negocios;
 using Datos;
 using Persistencia;
-using TPCAI.Menu_Alumno; // Agrega esta directiva si RankingAlumnoForm está en este namespace.
+
 
 namespace TPCAI
 {

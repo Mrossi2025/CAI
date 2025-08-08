@@ -29,9 +29,17 @@ namespace TPCAI
 
 
             if (string.IsNullOrEmpty(usuario))
-            { MessageBox.Show("El campo usuario no puede estar vacio"); }
-            else if (string.IsNullOrEmpty(contraseña))
-            { MessageBox.Show("El campo contraseña no puede estar vacio"); }
+            { MessageBox.Show("El campo usuario no puede estar vacio"); return; }
+            if (string.IsNullOrEmpty(contraseña))
+            { MessageBox.Show("El campo contraseña no puede estar vacio"); return; }
+
+
+            if(!ValidarUsuarioYPassword(usuario, contraseña))
+            {
+                MessageBox.Show("Usuario y/o contraseña inválidos:\n" +
+                        "- Mínimo 8 caracteres\n- Al menos 1 letra y 1 número");
+            }
+
             else 
             {
                 try
@@ -80,9 +88,50 @@ namespace TPCAI
 
         private void Login_Load(object sender, EventArgs e)
         {
-            
+            txtConstraseña.UseSystemPasswordChar = true;
+
         }
 
-       
+        private void chkMostrar_CheckedChanged(object sender, EventArgs e)
+        {
+            txtConstraseña.UseSystemPasswordChar = !chkMostrar.Checked;
+        }
+
+
+        public bool ValidarUsuarioYPassword(string usuario, string contraseña)
+        {
+
+            if (usuario.Length < 8 || contraseña.Length < 8)
+            { return false; }
+
+            bool usuarioTieneLetra = false;
+            bool usuarioTieneNumero = false;
+            bool passTieneLetra = false;
+            bool passTieneNumero = false;
+
+            // Revisar usuario
+            foreach (char c in usuario)
+            {
+                if (char.IsLetter(c)) usuarioTieneLetra = true;
+                if (char.IsDigit(c)) usuarioTieneNumero = true;
+            }
+
+            // Revisar contraseña
+            foreach (char c in contraseña)
+            {
+                if (char.IsLetter(c)) passTieneLetra = true;
+                if (char.IsDigit(c)) passTieneNumero = true;
+            }
+
+            // Validar que ambas cumplan con letras y números
+            if (usuarioTieneLetra && usuarioTieneNumero && passTieneLetra && passTieneNumero)
+            { return true; }
+            else
+            { return false; }
+        }
+
+
+
+
     }
 }

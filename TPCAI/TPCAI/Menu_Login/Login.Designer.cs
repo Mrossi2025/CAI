@@ -34,11 +34,13 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.lblContraseña = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
+            this.chkMostrar = new System.Windows.Forms.CheckBox();
             this.grpSystemLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpSystemLogin
             // 
+            this.grpSystemLogin.Controls.Add(this.chkMostrar);
             this.grpSystemLogin.Controls.Add(this.btnIniciarSesion);
             this.grpSystemLogin.Controls.Add(this.txtConstraseña);
             this.grpSystemLogin.Controls.Add(this.txtUsuario);
@@ -49,14 +51,14 @@
             this.grpSystemLogin.Name = "grpSystemLogin";
             this.grpSystemLogin.Padding = new System.Windows.Forms.Padding(2);
             this.grpSystemLogin.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grpSystemLogin.Size = new System.Drawing.Size(228, 286);
+            this.grpSystemLogin.Size = new System.Drawing.Size(179, 286);
             this.grpSystemLogin.TabIndex = 0;
             this.grpSystemLogin.TabStop = false;
             this.grpSystemLogin.Text = "System Login";
             // 
             // btnIniciarSesion
             // 
-            this.btnIniciarSesion.Location = new System.Drawing.Point(12, 151);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(18, 179);
             this.btnIniciarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(112, 23);
@@ -72,7 +74,6 @@
             this.txtConstraseña.Name = "txtConstraseña";
             this.txtConstraseña.Size = new System.Drawing.Size(135, 22);
             this.txtConstraseña.TabIndex = 3;
-            this.txtConstraseña.Text = "password";
             // 
             // txtUsuario
             // 
@@ -81,7 +82,6 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(135, 22);
             this.txtUsuario.TabIndex = 2;
-            this.txtUsuario.Text = "20458765";
             // 
             // lblContraseña
             // 
@@ -100,6 +100,17 @@
             this.lblUsuario.Size = new System.Drawing.Size(54, 16);
             this.lblUsuario.TabIndex = 0;
             this.lblUsuario.Text = "Usuario";
+            // 
+            // chkMostrar
+            // 
+            this.chkMostrar.AutoSize = true;
+            this.chkMostrar.Location = new System.Drawing.Point(3, 145);
+            this.chkMostrar.Name = "chkMostrar";
+            this.chkMostrar.Size = new System.Drawing.Size(153, 20);
+            this.chkMostrar.TabIndex = 1;
+            this.chkMostrar.Text = "Mostrar Constraseña";
+            this.chkMostrar.UseVisualStyleBackColor = true;
+            this.chkMostrar.CheckedChanged += new System.EventHandler(this.chkMostrar_CheckedChanged);
             // 
             // Login
             // 
@@ -126,6 +137,7 @@
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label lblContraseña;
         private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.CheckBox chkMostrar;
     }
 }
 
