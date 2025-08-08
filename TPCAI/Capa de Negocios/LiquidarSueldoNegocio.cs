@@ -26,21 +26,16 @@ namespace Capa_de_Negocios
             else
                 throw new Exception("Al tipo de docente no le corresponde liquidación.");
 
-            
-            decimal coefAntiguedad = 1;
+            // Antigüedad: por cada 5 años completos, se aplica un coeficiente adicional de 1.1
+            int bloquesAntiguedad = docente.antiguedad / 5;
+            decimal coefAntiguedad = 1m;
+            for (int i = 0; i < bloquesAntiguedad; i++)
+            {
+                coefAntiguedad *= 1.1m;
+            }
 
-            if (docente.antiguedad >= 15)
-            { coefAntiguedad = 1.1m * 1.1m * 1.1m; }
-            else if (docente.antiguedad >= 10)
-            { coefAntiguedad = 1.1m * 1.1m; }
-            else if (docente.antiguedad >= 5)
-            { coefAntiguedad = 1.1m; }
-            else { coefAntiguedad = 1; }
-
-
-
-                // Fórmula
-                decimal sueldo = horas * PRECIO_HORA * coefCargo * coefAntiguedad;
+            // Fórmula
+            decimal sueldo = horas * PRECIO_HORA * coefCargo * coefAntiguedad;
 
             return sueldo;
         }

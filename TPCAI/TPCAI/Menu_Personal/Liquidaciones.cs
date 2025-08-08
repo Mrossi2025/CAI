@@ -34,8 +34,35 @@ namespace TPCAI
         private void Liquidaciones_Load(object sender, EventArgs e)
         {
             CargarDatosDocentePorId();
-            btnLiquidar.Enabled = false;
+
+            // Traer horas automáticamente desde la capa de negocio
+            HorasDocenteNegocio hdn = new HorasDocenteNegocio();
+            double horas = 0;
+            try
+            {
+                horas = hdn.HorasDocente(personalId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error cargando las horas: {ex.Message}");
+            }
+
+            txtHoras.Text = horas.ToString();
             txtHoras.Enabled = false;
+
+            // Calcular sueldo automáticamente
+            if (_docente != null && horas > 0)
+            {
+                var negocio = new LiquidarSueldoNegocio();
+                decimal sueldo = negocio.CalcularSueldo(_docente, (int)horas);
+                txtSueldo.Text = sueldo.ToString("N2");
+            }
+            else
+            {
+                txtSueldo.Text = "0";
+            }
+
+            btnLiquidar.Enabled = false; // No hace falta liquidar manualmente
         }
         
         private Docente _docente;
@@ -178,6 +205,11 @@ namespace TPCAI
             }
             catch (Exception ex) { MessageBox.Show($"Error: {ex.Message}", "Error cargando las horas"); }
 
+
+        }
+
+        private void lblIngresarHoras_Click(object sender, EventArgs e)
+        {
 
         }
     }

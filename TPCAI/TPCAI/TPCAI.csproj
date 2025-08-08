@@ -64,11 +64,23 @@
     <Compile Include="Menu_Admin\DesbloquearUsuario.Designer.cs">
       <DependentUpon>DesbloquearUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Menu_Alumno\InscripcionAFinales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_Alumno\InscripcionAFinales.Designer.cs">
+      <DependentUpon>InscripcionAFinales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu_Alumno\InscripcionAMaterias.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Menu_Alumno\InscripcionAMaterias.Designer.cs">
       <DependentUpon>InscripcionAMaterias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Alumno\RankingAlumnoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_Alumno\RankingAlumnoForm.Designer.cs">
+      <DependentUpon>RankingAlumnoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu_Personal\Liquidaciones.cs">
       <SubType>Form</SubType>

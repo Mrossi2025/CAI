@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Capa_de_Negocios;
 using Datos;
 using Persistencia;
+using TPCAI.Menu_Alumno; // Agrega esta directiva si RankingAlumnoForm está en este namespace.
 
 namespace TPCAI
 {
@@ -31,12 +32,12 @@ namespace TPCAI
             InitializeComponent();
         }
 
-        private void MenuPrincipalAlumno_FormClosed(object sender, FormClosedEventArgs e)
+       /* private void MenuPrincipalAlumno_FormClosed(object sender, FormClosedEventArgs e)
         {
             MessageBox.Show("Sesion Cerrada");
             Login formLogin = new Login();
             formLogin.Show();
-        }
+        }*/
 
         private void grpMenuAlumnos_Enter(object sender, EventArgs e)
         {
@@ -80,6 +81,40 @@ namespace TPCAI
             lblBienvenida.Text = $"Bienvenido/a {a.nombre} {a.apellido}";
         }
 
+        
+
+        private void btnFinales_Click(object sender, EventArgs e)
+        {
+            var formFinales = new InscripcionAFinales(idAlumno);
+            formFinales.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Obtener la lista de materias inscriptas del alumno desde la capa de datos
+            List<MateriaInscriptaDTO> materiasInscritas = ObtenerMateriasInscritasPorAlumno(idAlumno);
+
+            var rankingForm = new RankingAlumnoForm(idAlumno, materiasInscritas);
+            rankingForm.ShowDialog();
+        }
+
+        private List<MateriaInscriptaDTO> ObtenerMateriasInscritasPorAlumno(int idAlumno)
+        {
+            // Aquí deberías llamar a la capa de datos para obtener las materias inscriptas
+            // Ejemplo: RepositorioMateriaInscripta repo = new RepositorioMateriaInscripta();
+            // return repo.ObtenerPorAlumno(idAlumno);
+
+            // Simulación para evitar error de compilación
+            return new List<MateriaInscriptaDTO>();
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Sesion Cerrada");
+            Login formLogin = new Login();
+            formLogin.Show();
+            this.Close();
+        }
     }
 
 }

@@ -53,6 +53,7 @@
     <Compile Include="DesbloquearUsuarioNegocio.cs" />
     <Compile Include="GenerarReporteNegocio.cs" />
     <Compile Include="HorasDocenteNegocio.cs" />
+    <Compile Include="InscripcionLocalStore.cs" />
     <Compile Include="ListaAlumnos.cs" />
     <Compile Include="ListaDocentes.cs" />
     <Compile Include="LoginNegocio.cs" />

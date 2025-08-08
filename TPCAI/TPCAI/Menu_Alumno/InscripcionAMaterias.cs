@@ -1,304 +1,234 @@
-﻿using Persistencia;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using Datos;
 using Capa_de_Negocios;
+using Persistencia;
+using Datos;
 
 namespace TPCAI
 {
     public partial class InscripcionAMaterias : Form
     {
-        private int idAlumno;
-        private RepositorioAlumno repositorioAlumno;
-        private CargarMateriasCarreraPersistencia materiasPersistencia;
-        private Alumnos alumnoActual;
-        private CargarCursosPersistencia cursosPersistencia = new CargarCursosPersistencia();
-        private List<Docente> listaDocentes;
+        private int _alumnoId;
 
-        public InscripcionAMaterias(int idAlumno)
+        // Estado en memoria
+        private List<Materias> _materiasDisponibles = new List<Materias>();
+        private List<MateriaInscriptaDTO> _estadoMateriasAlumno = new List<MateriaInscriptaDTO>();
+        private List<Cursos> _cursosDeMateriaActual = new List<Cursos>();
+        private readonly List<Cursos> _cursosSeleccionados = new List<Cursos>();
+
+        public InscripcionAMaterias(int alumnoId)
         {
             InitializeComponent();
-            this.idAlumno = idAlumno;
-            repositorioAlumno = new RepositorioAlumno();
-            materiasPersistencia = new CargarMateriasCarreraPersistencia();
+            _alumnoId = alumnoId;
         }
 
         private void InscripcionAMaterias_Load(object sender, EventArgs e)
         {
-            if (ObtenerInformacionAlumno())
-            {
-                CargarCarrerasDelAlumno();
-            }
             try
             {
-                ListaDocentes loader = new ListaDocentes();
-                listaDocentes = loader.ObtenerListaDocentes();
+                // 1) Traemos el alumno y sus carreras
+                var repoAlu = new RepositorioAlumno();
+                var todos = repoAlu.ObtenerAlumnos();
+                var alumno = todos.FirstOrDefault(a => a.id == _alumnoId);
+                if (alumno == null)
+                {
+                    MessageBox.Show("No se encontró el alumno.");
+                    Close();
+                    return;
+                }
+
+                // 2) Traemos estado de materias del alumno (aprobadas/final/etc.)
+                var reporte = new GenerarReportePersistencia();
+                _estadoMateriasAlumno = reporte.ObtenerMateriasPorAlumno(_alumnoId) ?? new List<MateriaInscriptaDTO>();
+
+                // 3) Habilitamos materias por cada carrera del alumno, validando correlativas
+                var negocioMaterias = new CargarMateriasNegocio();
+                _materiasDisponibles.Clear();
+
+                foreach (var carreraIdLong in alumno.carrerasIds) // List<long>
+                {
+                    var materiasCarrera = negocioMaterias.CargarMaterias(carreraIdLong);
+                    if (materiasCarrera == null) continue;
+
+                    foreach (var mat in materiasCarrera)
+                    {
+                        if (MateriaHabilitadaPorCorrelativas(mat))
+                        {
+                            // Evitar duplicados (si la materia aparece en varias carreras)
+                            if (_materiasDisponibles.All(m => m.id != mat.id))
+                                _materiasDisponibles.Add(mat);
+                        }
+                    }
+                }
+
+                // 4) Bind a UI
+                cmbMaterias.DisplayMember = "nombre";
+                cmbMaterias.ValueMember = "id";
+                cmbMaterias.DataSource = _materiasDisponibles;
+
+                // DataGrid simple
+                dgvCursos.AutoGenerateColumns = true;
+                dgvCursos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                dgvCursos.MultiSelect = false;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar docentes: " + ex.Message);
+                MessageBox.Show("Error cargando datos: " + ex.Message);
             }
         }
 
-        private bool ObtenerInformacionAlumno()
+        private bool MateriaHabilitadaPorCorrelativas(Materias materia)
         {
-            try
-            {
-                var alumnos = repositorioAlumno.ObtenerAlumnos();
-                alumnoActual = alumnos.Find(a => a.id == idAlumno);
-
-                if (alumnoActual == null)
-                {
-                    MessageBox.Show("No se encontró información del alumno.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
-
+            // Regla: correlativas aprobadas o con final pendiente
+            if (materia.correlativas == null || materia.correlativas.Count == 0)
                 return true;
+
+            foreach (var corr in materia.correlativas)
+            {
+                var estado = _estadoMateriasAlumno
+                    .FirstOrDefault(m => m.id == corr.id);
+
+                var cond = estado?.condicion ?? string.Empty;
+                bool ok = cond == "APROBADO" || cond == "FINAL";
+
+                if (!ok) return false;
+            }
+            return true;
+        }
+
+        private void cmbMaterias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMaterias.SelectedValue == null) return;
+            if (!long.TryParse(cmbMaterias.SelectedValue.ToString(), out long materiaId)) return;
+
+            try
+            {
+                // Cargar cursos de la materia seleccionada
+                var negocioCursos = new CargarCursosNegocio();
+                _cursosDeMateriaActual = negocioCursos.CargarCursos(materiaId) ?? new List<Cursos>();
+
+                // Mostramos datos legibles
+                var view = _cursosDeMateriaActual.Select(c => new
+                {
+                    c.id,
+                    Profesor = c.profesorNombre,
+                    Dias = string.Join(", ", c.dias ?? new List<string>()),
+                    Horarios = string.Join(" | ", (c.horarios ?? new List<Horarios>())
+                                .Select(h => $"{h.dia} {h.horaInicio}-{h.horaFin}"))
+                }).ToList();
+
+                dgvCursos.DataSource = view;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al obtener información del alumno: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                MessageBox.Show("Error cargando cursos: " + ex.Message);
             }
         }
 
-        private void CargarCarrerasDelAlumno()
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
-            try
+            if (dgvCursos.CurrentRow == null)
             {
-                var cargarCarreras = new CargarCarreras();
-                var todasLasCarreras = cargarCarreras.cargarCarreras();
-                cmbCarrera1.Items.Clear();
-                cmbCarrera2.Items.Clear();
-                cmbCarrera3.Items.Clear();
-                foreach (var carrera in todasLasCarreras)
-                {
-                    if (alumnoActual.carrerasIds.Contains(carrera.id))
+                MessageBox.Show("Seleccioná un curso de la grilla.");
+                return;
+            }
+
+            // Tomamos el id de la fila seleccionada
+            if (!long.TryParse(dgvCursos.CurrentRow.Cells["id"].Value.ToString(), out long cursoId))
+            {
+                MessageBox.Show("No se pudo identificar el curso.");
+                return;
+            }
+
+            var curso = _cursosDeMateriaActual.FirstOrDefault(c => c.id == cursoId);
+            if (curso == null)
+            {
+                MessageBox.Show("Curso no encontrado en la lista actual.");
+                return;
+            }
+
+            // Regla: no permitir 2 cursos de la misma materia
+            // (Para chequear materia, comparamos si ya hay un curso cuyo ID pertenezca a la misma materia.
+            // Como el DTO no trae "materiaId", simplificamos: no agregar si ya hay un curso con el mismo profesor y mismos horarios)
+            bool mismaMateriaHeuristica = _cursosSeleccionados.Any(c =>
+                string.Join(",", c.horarios?.Select(h => $"{h.dia}{h.horaInicio}{h.horaFin}") ?? new List<string>())
+                ==
+                string.Join(",", curso.horarios?.Select(h => $"{h.dia}{h.horaInicio}{h.horaFin}") ?? new List<string>())
+            );
+
+            if (mismaMateriaHeuristica)
+            {
+                MessageBox.Show("Ya seleccionaste un curso con el mismo bloque horario (se asume misma materia).");
+                return;
+            }
+
+            // Validar superposición horaria
+            if (HaySolapamiento(curso))
+            {
+                MessageBox.Show("El curso se superpone horariamente con otro ya seleccionado.");
+                return;
+            }
+
+            _cursosSeleccionados.Add(curso);
+            lstMateriasInscriptas.Items.Add(DescripcionCurso(curso));
+        }
+
+        private bool HaySolapamiento(Cursos nuevo)
+        {
+            if (nuevo.horarios == null || nuevo.horarios.Count == 0) return false;
+
+            foreach (var ya in _cursosSeleccionados)
+            {
+                if (ya.horarios == null) continue;
+
+                foreach (var h1 in ya.horarios)
+                    foreach (var h2 in nuevo.horarios)
                     {
-                        cmbCarrera1.Items.Add(carrera);
-                        cmbCarrera2.Items.Add(carrera);
-                        cmbCarrera3.Items.Add(carrera);
+                        if (!string.Equals(h1.dia, h2.dia, StringComparison.OrdinalIgnoreCase))
+                            continue;
+
+                        // Parseo HH:mm
+                        if (!TimeSpan.TryParse(h1.horaInicio, out var i1)) continue;
+                        if (!TimeSpan.TryParse(h1.horaFin, out var f1)) continue;
+                        if (!TimeSpan.TryParse(h2.horaInicio, out var i2)) continue;
+                        if (!TimeSpan.TryParse(h2.horaFin, out var f2)) continue;
+
+                        bool solapan = i1 < f2 && i2 < f1; // clásico check de solape
+                        if (solapan) return true;
                     }
-                }
-                cmbCarrera1.DisplayMember = "nombre";
-                cmbCarrera1.ValueMember = "id";
-                cmbCarrera2.DisplayMember = "nombre";
-                cmbCarrera2.ValueMember = "id";
-                cmbCarrera3.DisplayMember = "nombre";
-                cmbCarrera3.ValueMember = "id";
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar las carreras: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            return false;
         }
 
-        private List<Materias> ObtenerMateriasDeCarrera(long idCarrera)
+        private string DescripcionCurso(Cursos c)
         {
-            try
-            {
-                return materiasPersistencia.cargarMateriasCarrera(idCarrera);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al obtener materias de la carrera: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new List<Materias>();
-            }
+            var dias = string.Join(", ", c.dias ?? new List<string>());
+            var hs = string.Join(" | ", (c.horarios ?? new List<Horarios>())
+                        .Select(h => $"{h.dia} {h.horaInicio}-{h.horaFin}"));
+            return $"[{c.id}] {c.profesorNombre} — {dias} — {hs}";
         }
 
-        private void CargarMateriasEnComboBox(List<Materias> materias, ComboBox cmbMateria)
+        private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            cmbMateria.Items.Clear();
-            foreach (var materia in materias)
+            if (_cursosSeleccionados.Count == 0)
             {
-                cmbMateria.Items.Add(materia);
-            }
-            cmbMateria.DisplayMember = "nombre";
-            cmbMateria.ValueMember = "id";
-        }
-
-        private void CargarMateriasDeCarreraSeleccionadaYAlumno(long idCarrera, ComboBox cmbMateria)
-        {
-            try
-            {
-                var materiasCarrera = ObtenerMateriasDeCarrera(idCarrera);
-                var materiasAlumno = ObtenerMateriasDelAlumno();
-                var materiasDisponibles = new List<Materias>();
-                foreach (var materiaCarrera in materiasCarrera)
-                {
-                    var materiaAlumno = materiasAlumno.FirstOrDefault(m => m.id == materiaCarrera.id);
-                    if (materiaAlumno == null || materiaAlumno.condicion == "DESAPROBADO")
-                    {
-                        materiasDisponibles.Add(materiaCarrera);
-                    }
-                }
-                CargarMateriasEnComboBox(materiasDisponibles, cmbMateria);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar materias de la carrera: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void cmbCarrera1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LimpiarControles(cmbCurso1, lblHorarios1, lblDocente1, cmbMateria1);
-            var carreraSeleccionada = cmbCarrera1.SelectedItem;
-            if (carreraSeleccionada == null) return;
-            var prop = carreraSeleccionada.GetType().GetProperty("id");
-            if (prop != null)
-            {
-                long idCarrera = Convert.ToInt64(prop.GetValue(carreraSeleccionada));
-                CargarMateriasDeCarreraSeleccionadaYAlumno(idCarrera, cmbMateria1);
-            }
-        }
-
-        private void cmbCarrera2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LimpiarControles(cmbCurso2, lblHorarios2, lblDocente2, cmbMateria2);
-            var carreraSeleccionada = cmbCarrera2.SelectedItem;
-            if (carreraSeleccionada == null) return;
-            var prop = carreraSeleccionada.GetType().GetProperty("id");
-            if (prop != null)
-            {
-                long idCarrera = Convert.ToInt64(prop.GetValue(carreraSeleccionada));
-                CargarMateriasDeCarreraSeleccionadaYAlumno(idCarrera, cmbMateria2);
-            }
-        }
-
-        private void cmbCarrera3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LimpiarControles(cmbCurso3, lblHorarios3, lblDocente3, cmbMateria3);
-            var carreraSeleccionada = cmbCarrera3.SelectedItem;
-            if (carreraSeleccionada == null) return;
-            var prop = carreraSeleccionada.GetType().GetProperty("id");
-            if (prop != null)
-            {
-                long idCarrera = Convert.ToInt64(prop.GetValue(carreraSeleccionada));
-                CargarMateriasDeCarreraSeleccionadaYAlumno(idCarrera, cmbMateria3);
-            }
-        }
-
-        private void cmbMateria1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LimpiarControles(cmbCurso1, lblHorarios1, lblDocente1);
-
-            if (cmbMateria1.SelectedItem != null)
-            {
-                var materiaSeleccionada = (Materias)cmbMateria1.SelectedItem;
-                var cursos = cursosPersistencia.CargarCursos(materiaSeleccionada.id);
-                CargarCursosEnComboBox(cursos, cmbCurso1);
-            }
-        }
-
-        private void cmbMateria2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LimpiarControles(cmbCurso2, lblHorarios2, lblDocente2);
-
-            if (cmbMateria2.SelectedItem != null)
-            {
-                var materiaSeleccionada = (Materias)cmbMateria2.SelectedItem;
-                var cursos = cursosPersistencia.CargarCursos(materiaSeleccionada.id);
-                CargarCursosEnComboBox(cursos, cmbCurso2);
-            }
-        }
-
-        private void cmbMateria3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LimpiarControles(cmbCurso3, lblHorarios3, lblDocente3);
-
-            if (cmbMateria3.SelectedItem != null)
-            {
-                var materiaSeleccionada = (Materias)cmbMateria3.SelectedItem;
-                var cursos = cursosPersistencia.CargarCursos(materiaSeleccionada.id);
-                CargarCursosEnComboBox(cursos, cmbCurso3);
-            }
-        }
-
-        private void cmbCurso1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var curso = cmbCurso1.SelectedItem as Cursos;
-            MostrarHorariosYDocentes(curso, lblHorarios1, lblDocente1);
-        }
-
-        private void cmbCurso2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var curso = cmbCurso2.SelectedItem as Cursos;
-            MostrarHorariosYDocentes(curso, lblHorarios2, lblDocente2);
-        }
-
-        private void cmbCurso3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var curso = cmbCurso3.SelectedItem as Cursos;
-            MostrarHorariosYDocentes(curso, lblHorarios3, lblDocente3);
-        }
-
-        private List<MateriaInscriptaDTO> ObtenerMateriasDelAlumno()
-        {
-            try
-            {
-                var persistencia = new GenerarReportePersistencia();
-                return persistencia.ObtenerMateriasPorAlumno(idAlumno);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al obtener materias del alumno: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new List<MateriaInscriptaDTO>();
-            }
-        }
-
-        private void CargarCursosEnComboBox(List<Cursos> cursos, ComboBox cmbCurso)
-        {
-            cmbCurso.Items.Clear();
-            foreach (var curso in cursos)
-            {
-                cmbCurso.Items.Add(curso);
-            }
-            cmbCurso.DisplayMember = "profesorNombre";
-            cmbCurso.ValueMember = "id";
-        }
-
-        private void MostrarHorariosYDocentes(Cursos curso, Label lblHorarios, Label lblDocente)
-        {
-            string horariosText = "No hay horarios disponibles.";
-            string docentesText = "No hay docentes.";
-
-            if (curso != null)
-            {
-                if (curso.horarios != null && curso.horarios.Count > 0)
-                {
-                    horariosText = string.Join(Environment.NewLine,
-                        curso.horarios.Select(h => $"{h.dia}: {h.horaInicio} - {h.horaFin}"));
-                }
-                if (curso.idDocentes != null && curso.idDocentes.Count > 0 && listaDocentes != null)
-                {
-                    var nombres = listaDocentes
-                        .Where(d => curso.idDocentes.Contains(d.id))
-                        .Select(d => d.DocenteCompleto);
-                    docentesText = string.Join(Environment.NewLine, nombres);
-                }
+                MessageBox.Show("No hay cursos seleccionados.");
+                return;
             }
 
-            lblHorarios.Text = horariosText;
-            lblDocente.Text = docentesText;
+            // Guardado local (en memoria estática)
+            InscripcionLocalStore.Confirmar(_alumnoId, _cursosSeleccionados);
+
+            MessageBox.Show("¡Inscripción realizada localmente!");
+            _cursosSeleccionados.Clear();
+            lstMateriasInscriptas.Items.Clear();
         }
 
-        private void LimpiarControles(ComboBox cmbCurso, Label lblHorarios, Label lblDocente, ComboBox cmbMateria = null)
+        private void btnVolver_Click(object sender, EventArgs e)
         {
-            // Limpiar controles de materia si se proporciona
-            if (cmbMateria != null)
-            {
-                cmbMateria.Items.Clear();
-                cmbMateria.Text = "";
-            }
-            
-            // Limpiar controles de curso y etiquetas siempre
-            cmbCurso.Items.Clear();
-            cmbCurso.Text = "";
-            lblHorarios.Text = "";
-            lblDocente.Text = "";
+            Close();
         }
     }
 }
