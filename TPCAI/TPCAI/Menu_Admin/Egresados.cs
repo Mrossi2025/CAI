@@ -29,74 +29,93 @@ namespace TPCAI
             MenuAdmin2.Show();
         }
 
-        private void btnReporte_Click(object sender, EventArgs e)
+        private async void btnReporte_Click(object sender, EventArgs e)
         {
             List<AlumnosRecibidos> reporte = new List<AlumnosRecibidos>();
             GenerarReporteNegocio grn = new GenerarReporteNegocio();
+
+            //Desactivo boton
+            btnReporte.Enabled = false;
+            btnReporte.Text = "Cargando...";
+
+
             try
             {
-                reporte = grn.Reportenuevo();
+                //lo ejecutamos en segundo platno
+
+                reporte = await Task.Run(() => grn.Reportenuevo());
 
 
                 dgvReporte.DataSource = reporte; ;
                 MessageBox.Show("Reporte generado con exito.");
 
+                // Lista de carreras fijas
+                string[] carreras = { "Administración", "Actuario", "Contador", "Economía", "Sistemas" };
+
+                // Lista de títulos honoríficos
+                string[] titulos = { "Summa Cum Laude", "Magna Cum Laude", "Cum Laude", "Sin título honorífico" };
+
+                // Crear DataTable para mostrar en el DataGridView
+                DataTable tablaResumen = new DataTable();
+                tablaResumen.Columns.Add("Carrera");
+                tablaResumen.Columns.Add("Total", typeof(int));
+                tablaResumen.Columns.Add("Summa Cum Laude", typeof(int));
+                tablaResumen.Columns.Add("Magna Cum Laude", typeof(int));
+                tablaResumen.Columns.Add("Cum Laude", typeof(int));
+                tablaResumen.Columns.Add("Sin título honorífico", typeof(int));
+
+                // Recorrer cada carrera y contar
+                foreach (string carrera in carreras)
+                {
+                    int total = 0;
+                    int sumaSumma = 0;
+                    int sumaMagna = 0;
+                    int sumaCum = 0;
+                    int sumaSin = 0;
+
+                    foreach (var alumno in reporte)
+                    {
+                        if (alumno.carrera == carrera)
+                        {
+                            total++;
+
+                            if (alumno.titulo == "Summa Cum Laude")
+                                sumaSumma++;
+                            else if (alumno.titulo == "Magna Cum Laude")
+                                sumaMagna++;
+                            else if (alumno.titulo == "Cum Laude")
+                                sumaCum++;
+                            else if (alumno.titulo == "Sin título honorífico")
+                                sumaSin++;
+                        }
+                    }
+
+                    // Agregar fila al DataTable
+                    tablaResumen.Rows.Add(carrera, total, sumaSumma, sumaMagna, sumaCum, sumaSin);
+                }
+
+                // Asignar al DataGridView
+                dgvReporteGeneral.DataSource = tablaResumen;
+
+
+
+
+
+
             }
             catch (Exception ex) {MessageBox.Show(ex.Message); }
 
 
-            // Lista de carreras fijas
-            string[] carreras = { "Administración", "Actuario", "Contador", "Economía", "Sistemas" };
+            
 
-            // Lista de títulos honoríficos
-            string[] titulos = { "Summa Cum Laude", "Magna Cum Laude", "Cum Laude", "Sin título honorífico" };
-
-            // Crear DataTable para mostrar en el DataGridView
-            DataTable tablaResumen = new DataTable();
-            tablaResumen.Columns.Add("Carrera");
-            tablaResumen.Columns.Add("Total", typeof(int));
-            tablaResumen.Columns.Add("Summa Cum Laude", typeof(int));
-            tablaResumen.Columns.Add("Magna Cum Laude", typeof(int));
-            tablaResumen.Columns.Add("Cum Laude", typeof(int));
-            tablaResumen.Columns.Add("Sin título honorífico", typeof(int));
-
-            // Recorrer cada carrera y contar
-            foreach (string carrera in carreras)
+            
+            finally
             {
-                int total = 0;
-                int sumaSumma = 0;
-                int sumaMagna = 0;
-                int sumaCum = 0;
-                int sumaSin = 0;
+                //restauro boton
+                btnReporte.Enabled = true;
+                btnReporte.Text = "Generar Reportes";
 
-                foreach (var alumno in reporte)
-                {
-                    if (alumno.carrera == carrera)
-                    {
-                        total++;
-
-                        if (alumno.titulo == "Summa Cum Laude")
-                            sumaSumma++;
-                        else if (alumno.titulo == "Magna Cum Laude")
-                            sumaMagna++;
-                        else if (alumno.titulo == "Cum Laude")
-                            sumaCum++;
-                        else if (alumno.titulo == "Sin título honorífico")
-                            sumaSin++;
-                    }
-                }
-
-                // Agregar fila al DataTable
-                tablaResumen.Rows.Add(carrera, total, sumaSumma, sumaMagna, sumaCum, sumaSin);
             }
-
-            // Asignar al DataGridView
-            dgvReporteGeneral.DataSource = tablaResumen;
-
-
-
-
-
 
 
 
