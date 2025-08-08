@@ -47,16 +47,22 @@ namespace TPCAI
                 var negocioMaterias = new CargarMateriasNegocio();
                 _materiasDisponibles.Clear();
 
-                foreach (var carreraIdLong in alumno.carrerasIds) // List<long>
+                // 1) Obtener IDs de materias desaprobadas
+                var materiasDesaprobadasIds = _estadoMateriasAlumno
+                    .Where(m => m.condicion == "DESAPROBADO")
+                    .Select(m => m.id)
+                    .ToHashSet();
+
+                foreach (var carreraIdLong in alumno.carrerasIds)
                 {
                     var materiasCarrera = negocioMaterias.CargarMaterias(carreraIdLong);
                     if (materiasCarrera == null) continue;
 
                     foreach (var mat in materiasCarrera)
                     {
-                        if (MateriaHabilitadaPorCorrelativas(mat))
+                        // 2) Solo agregar si está desaprobada
+                        if (materiasDesaprobadasIds.Contains(mat.id))
                         {
-                            // Evitar duplicados (si la materia aparece en varias carreras)
                             if (_materiasDisponibles.All(m => m.id != mat.id))
                                 _materiasDisponibles.Add(mat);
                         }

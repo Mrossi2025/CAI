@@ -74,6 +74,7 @@ namespace TPCAI
             a = listaAlumnos.Find(b => b.id == idAlumno);
 
             lblBienvenida.Text = $"Bienvenido/a {a.nombre} {a.apellido}";
+            
         }
 
         

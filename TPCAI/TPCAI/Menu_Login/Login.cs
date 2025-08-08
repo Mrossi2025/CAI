@@ -34,11 +34,11 @@ namespace TPCAI
             { MessageBox.Show("El campo contraseña no puede estar vacio"); return; }
 
 
-            if(!ValidarUsuarioYPassword(usuario, contraseña))
+           /* if(!ValidarUsuarioYPassword(usuario, contraseña))
             {
                 MessageBox.Show("Usuario y/o contraseña inválidos:\n" +
                         "- Mínimo 8 caracteres\n- Al menos 1 letra y 1 número");
-            }
+            }*/
 
             else 
             {
