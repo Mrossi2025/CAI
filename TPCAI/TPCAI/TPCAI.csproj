@@ -76,12 +76,6 @@
     <Compile Include="Menu_Alumno\InscripcionAMaterias.Designer.cs">
       <DependentUpon>InscripcionAMaterias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu_Alumno\RankingAlumnoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Menu_Alumno\RankingAlumnoForm.Designer.cs">
-      <DependentUpon>RankingAlumnoForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Menu_Personal\Liquidaciones.cs">
       <SubType>Form</SubType>
     </Compile>
